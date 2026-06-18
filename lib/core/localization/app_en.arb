@@ -1,0 +1,526 @@
+{
+"@@locale": "en",
+
+"appTitle": "Smart Kishan",
+
+"language": "Language",
+"selectLanguage": "Please select your preferred language",
+
+"next": "Next",
+"skip": "Skip",
+"getStarted": "Get Started",
+
+"onboardingFarmingTitle": "Farming Made Easier",
+"onboardingFarmingDescription": "Simplify farm management with tools designed to help you grow and succeed effortlessly.",
+
+"onboardingFarmlandTitle": "Manage Multiple Farmlands",
+"onboardingFarmlandDescription": "Store and track data from different farmlands, customized for each plot.",
+
+"onboardingStockTitle": "Organize Farm Stock Efficiently",
+"onboardingStockDescription": "Keep a clear record of all farm supplies and stock levels in one place.",
+
+"onboardingNotesTitle": "Quick Notes for Fast Reminders",
+"onboardingNotesDescription": "Note down important tasks or ideas instantly to stay organized and stay on top of your farm's needs.",
+
+"errorNoInternet": "Couldn't connect. Please check your internet connection and try again.",
+"errorGeneric": "Something went wrong. Please try again.",
+
+"authWelcomeBack": "Welcome Back!",
+"authLoginDescription": "Please sign in to continue.",
+"authLoginButton": "Login",
+"authForgotPassword": "Forgot your password ?",
+"authNoAccount": "Don't have an account ?",
+"authRegisterNow": "Register Now",
+"authInvalidCredentials": "गलत फोन नम्बर वा पासवर्ड।",
+
+"phoneNumber": "Phone Number",
+"phoneNumberHint": "Enter your phone number",
+"phoneNumberRequired": "Please enter your phone number",
+"phoneNumberInvalid": "Please enter a valid phone number",
+
+"password": "Password",
+"passwordHint": "Enter your password",
+"passwordRequired": "Please enter your password",
+
+"orDividerText": "OR",
+
+"authRegisterTitle": "Create Account",
+"authRegisterDescription": "Please enter your phone number to continue. We will send a verification code to verify your account.",
+
+"authRequestOtpButton": "Request OTP",
+
+"authAlreadyHaveAccount": "Already have an account ?",
+"authSignInNow": "Sign In",
+
+"authOtpSent": "The OTP code has been sent to your phone number.",
+"authPhoneAlreadyRegistered": "This phone number is already registered.",
+"authPhoneNotRegistered": "This phone number is not registered.",
+"authOtpThrottled": "Please wait {seconds} seconds before requesting another code.",
+"authOtpSendFailed": "Failed to send OTP.",
+
+"authOtpInvalid": "The verification code is incorrect.",
+"authOtpResent": "The OTP code has been resent to your phone number.",
+
+"authOtpTitle": "Verification Code",
+"authOtpDescription": "Please enter the 6-digit verification code sent to {phoneNumber}.",
+"authVerificationExpired": "Your verification expired. Please verify your number again.",
+
+"authVerifyButton": "Verify",
+
+"authDidNotReceiveOtp": "Didn't receive the OTP ?",
+"authResendInSeconds": "Try again in {seconds} seconds.",
+"authResendButton": "Resend",
+"authOtpTooManyAttempts": "Too many incorrect OTP attempts. Please request a new OTP and try again.", "authOtpExpired": "The OTP code has expired. Please request a new OTP.",
+"authOtpExpired": "OTP code expired, Please request a new one.",
+
+"authCreateAccountTitle": "Create Account",
+"authCreateAccountDescription": "Complete the details below to create your Smart Kishan account and get started.",
+
+"authAccountCreated": "Your account has been created successfully!",
+
+"authForgotPasswordTitle": "Forgot Password",
+"authForgotPasswordDescription": "Enter your phone number to receive an OTP code for password reset.",
+"authRememberedPassword": "Remembered your password?",
+
+"fullNameLabel": "Full Name",
+"fullNameHint": "Enter your full name",
+"fullNameRequired": "Please enter your full name",
+"fullNameInvalid": "Please enter a valid full name (at least 3 characters).",
+
+"emailLabel": "Email Address",
+"emailHint": "Enter your email address",
+"emailInvalid": "Please enter a valid email address.",
+
+"passwordTooShort": "Password must be at least 8 characters long.",
+
+"confirmPasswordLabel": "Confirm Password",
+"confirmPasswordHint": "Re-enter your password",
+"confirmPasswordRequired": "Please confirm your password.",
+"confirmPasswordInvalid": "Passwords do not match.",
+
+"authCreateAccountButton": "Create Account",
+"authBackToLogin": "Back to Login",
+"authEmailAlreadyRegistered": "This email address is already registered.", 
+"authInvalidRegistrationData": "The provided registration information is invalid. Please review your details and try again.",
+
+
+"inventory": "Inventory",
+"dailyActivities": "Daily Activities",
+"farmLands": "Farm Lands",
+"notes": "Notes",
+"crops": "Crops",
+"kalimatiPrice": "Kalimati Price",
+"users": "Users",
+"subsidies": "Subsidies",
+
+"weatherPesticideRecommended": "Today is a good day to apply pesticides.",
+"weatherPesticideNotRecommended": "Today is not a good day to apply pesticides.",
+"weatherHumidity": "Humidity",
+"weatherThunderstorm": "Thunderstorm",
+"weatherDrizzle": "Drizzle",
+"weatherRain": "Rain",
+"weatherSnow": "Snow",
+"weatherClear": "Clear",
+"weatherClouds": "Cloudy",
+"weatherMist": "Mist",
+"weatherHaze": "Haze",
+"weatherFog": "Fog",
+
+"navigationHome": "Home",
+"navigationChart": "Chart",
+"navigationUsers": "Users",
+"navigationProfile": "Profile",
+
+"marketplaceBuyerMode": "Buyer Mode",
+"marketplaceSellerMode": "Seller Mode",
+
+"authLogout": "Logout",
+
+
+"profile": "Profile",
+"profileEdit": "Edit Profile",
+"profileUpdate": "Update Profile",
+
+"profileUpdatedSuccessfully": "Profile updated successfully.",
+"profileUpdateFailed": "Failed to update profile.",
+
+"profileChangePassword": "Change Password",
+"profileUpdateLocation": "Update Location",
+
+"confirmLogout": "Confirm Logout",
+"confirmLogoutMessage": "Are you sure you want to logout?",
+
+"notesAdd": "Add Note",
+"notesUpdate": "Update Note",
+
+"notesAddedSuccessfully": "Note added successfully.",
+"notesUpdatedSuccessfully": "Note updated successfully.",
+
+"notesTitleLabel": "Note Title",
+"notesTitleHint": "Enter note title",
+"notesTitleRequired": "Note title is required.",
+"notesTitleInvalid": "Note title must be at least 3 characters.",
+
+"notesDescriptionLabel": "Note Description",
+"notesDescriptionHint": "Enter note description",
+
+"notesPriorityLabel": "Note Priority",
+"notesPriorityHint": "Enter note priority",
+
+"notesDeleteConfirmTitle": "Confirm Delete",
+"notesDeleteConfirmMessage": "Are you sure you want to delete this note? This action cannot be undone.",
+
+"notesEmpty": "You don't have any notes yet !",
+"notesEmptyDescription": "Add notes to keep your important thoughts and information safe.",
+
+"commonAdd": "Add",
+"commonUpdate": "Update",
+"commonDelete": "Delete",
+"commonRefresh": "Refresh",
+"commonCancel": "Cancel",
+"commonEdit": "Edit",
+
+"income": "Income", 
+"expense": "Expense",
+
+"quickActions": "Quick Actions",
+
+"inventoryItemAdd": "Add Inventory Item",
+"inventoryItemUpdate": "Update Inventory Item",
+
+"inventoryItemEmpty": "You don't have any inventory items yet!",
+"inventoryItemEmptyDescription": "Click the button below to add a new inventory item.",
+
+"inventoryItemNameLabel": "Inventory Item Name",
+"inventoryItemNameHint": "Enter inventory item name",
+"inventoryItemNameRequired": "Inventory item name is required.",
+"inventoryItemNameInvalid": "Inventory item name must be at least 3 characters.",
+
+"inventoryItemStockLabel": "Stock",
+"inventoryItemStockHint": "Enter stock quantity",
+"inventoryItemStockRequired": "Stock is required.",
+
+"inventoryItemUnitLabel": "Unit",
+"inventoryItemUnitRequired": "Please select a unit.",
+
+"inventoryItemDescriptionLabel": "Inventory Item Description",
+"inventoryItemDescriptionHint": "Enter inventory item description",
+
+"inventoryItemTradeOptionLabel": "Buy/Sell Option",
+
+"inventoryItemBuy": "Buy",
+"inventoryItemSell": "Sell",
+"inventoryItemBoth": "Both",
+
+"inventoryItemDeleteConfirmTitle": "Confirm Delete",
+"inventoryItemDeleteConfirmMessage": "Are you sure you want to delete this inventory item?",
+
+"inventoryItemAddedSuccessfully": "Inventory item added successfully.",
+"inventoryItemUpdatedSuccessfully": "Inventory item updated successfully.",
+
+"dailyActivityAdd": "Add Activity",
+"dailyActivityUpdate": "Update Activity",
+
+"dailyActivityAddedSuccessfully": "Activity added successfully.",
+"dailyActivityUpdatedSuccessfully": "Activity updated successfully.",
+
+"dailyActivityEmpty": "You don't have any activities yet!",
+"dailyActivityEmptyDescription": "Record your daily purchases, sales, and other farming activities here.",
+
+"dailyActivityTitleLabel": "Activity Title",
+"dailyActivityTitleHint": "Enter activity title",
+"dailyActivityTitleRequired": "Activity title is required.",
+
+"dailyActivityDescriptionLabel": "Description",
+"dailyActivityDescriptionHint": "Enter description",
+
+"dailyActivityTypeLabel": "Activity Type",
+"dailyActivityBuy": "Buy",
+"dailyActivitySell": "Sell",
+"dailyActivityOther": "Other",
+
+"dailyActivityInventoryItemLabel": "Inventory Item",
+"dailyActivityInventoryItemHint": "Select inventory item",
+"dailyActivityInventoryItemRequired": "Please select an inventory item.",
+
+"dailyActivityQuantityLabel": "Quantity",
+"dailyActivityQuantityHint": "Enter quantity",
+"dailyActivityQuantityRequired": "Quantity is required.",
+
+"dailyActivitySalePriceLabel": "Sale Price",
+"dailyActivityCostPriceLabel": "Cost Price",
+
+"dailyActivityAmountHint": "0.00",
+"dailyActivityAmountRequired": "Amount is required.",
+
+"dailyActivityDeleteConfirmTitle": "Delete Activity",
+"dailyActivityDeleteConfirmMessage": "Are you sure you want to delete this activity? This action cannot be undone.",
+
+"currencySymbol": "Rs.",
+"dailyActivityExpenseLabel": "Expense (if any)",
+"dailyActivityIncomeLabel": "Income (if any)",
+
+"myIncome": "My Income",
+"myExpense": "My Expense",
+
+"financialRecords": "Financial Records",
+"financialRecordsEmpty": "No records found for this period.",
+
+"chartScreenTitle": "Financial Charts",
+
+"chartIncomeAnalysis": "Income Analysis",
+"chartExpenseAnalysis": "Expense Analysis",
+
+"chartIncomeEmpty": "No income records found yet.",
+"chartExpenseEmpty": "No expense records found yet.",
+
+"chartFilterDaily": "Daily",
+"chartFilterMonthly": "Monthly",
+"chartFilterYearly": "Yearly",
+
+"chartLast7Days": "Last 7 Days",
+"chartLast7Months": "Last 7 Months",
+"chartLast5Years": "Last 5 Years",
+
+"chartNoDateFound": "No date found.",
+
+"chartIncomeTitle": "{period} Income Chart",
+"@chartIncomeTitle": {
+"placeholders": {
+    "period": {}
+}
+},
+
+"chartExpenseTitle": "{period} Expense Chart",
+"@chartExpenseTitle": {
+"placeholders": {
+    "period": {}
+}
+},
+
+"chartIncomeExpenseTitle": "{period} Income/Expense Chart",
+"@chartIncomeExpenseTitle": {
+"placeholders": {
+    "period": {}
+}
+},
+
+"farmlandAdd": "Add Farmland",
+"farmlandUpdate": "Update Farmland",
+
+"farmlandAddedSuccessfully": "Farmland added successfully.",
+"farmlandUpdatedSuccessfully": "Farmland updated successfully.",
+
+"farmlandEmpty": "No farmlands yet!",
+"farmlandEmptyDescription": "Add your farmland with its location and soil details.",
+
+"farmlandAddImage": "Add Farmland Photo",
+
+"farmlandNameLabel": "Farmland Name",
+"farmlandNameHint": "Enter farmland name",
+"farmlandNameRequired": "Farmland name is required.",
+"farmlandNameInvalid": "Farmland name must be at least 3 characters.",
+
+"farmlandDescriptionLabel": "Description",
+"farmlandDescriptionHint": "Enter description",
+
+"farmlandLocationSection": "Location",
+"farmlandUseMyLocation": "Use My Location",
+
+"farmlandLatLabel": "Latitude",
+"farmlandLatHint": "Enter latitude",
+
+"farmlandLngLabel": "Longitude",
+"farmlandLngHint": "Enter longitude",
+
+"farmlandCoordinatesRequired": "Please enter latitude and longitude first.",
+
+"farmlandSoilSection": "Soil Properties",
+"farmlandAutoFetch": "Auto-fetch",
+"farmlandSoilFetchFailed": "Couldn't fetch soil data.",
+
+"farmlandNitrogen": "Nitrogen (%)",
+"farmlandOrganicMatter": "Organic Matter (%)",
+"farmlandPhosphate": "Phosphate (kg/ha)",
+"farmlandPotassium": "Potassium",
+"farmlandPH": "pH",
+
+"farmlandLocationChip": "Location",
+"farmlandSoilChip": "Soil",
+
+"farmlandDeleteConfirmTitle": "Delete Farmland",
+"farmlandDeleteConfirmMessage": "Are you sure you want to delete this farmland? This action cannot be undone.",
+
+"imageUploadAdd": "Add photo",
+"mediaPickerTitle": "Choose a source",
+"mediaPickerCamera": "Camera",
+"mediaPickerGallery": "Gallery",
+"mediaPickerFiles": "Files",
+
+"farmlandBasicInfoSection": "Basic Information",
+"farmlandAddressLabel": "Address",
+"farmlandAddressHint": "Tap 'Use my location' to auto-fill, or type",
+"farmlandImageSection": "Farmland Photo",
+"farmlandRecommendedCrops": "Recommended Crops",
+"farmlandRecommendedVegetables": "Vegetables",
+"farmlandRecommendedFruits": "Fruits",
+
+"marketPrices": "Market Prices",
+"marketPricesEmpty": "No market prices available",
+"marketSearchHint": "Search commodity...",
+"marketLastUpdated": "Last updated",
+"marketNoResults": "No commodities match your search",
+
+"minPrice": "Min Price",
+"maxPrice": "Max Price",
+"avgPrice": "Avg Price",
+
+"cropInfoTitle": "Crop Information",
+"cropInfoSearchHint": "Search crops...",
+"cropInfoEmpty": "No crop information available",
+"cropInfoNoResults": "No crops match your search",
+"cropInfoBannerTitle": "Crop Information",
+"cropInfoBannerSubtitle": "Learn how to grow your crops",
+"cropInfoBannerExplore": "Explore crops",
+
+"drawerSectionMain": "Main",
+"drawerSectionServices": "Services",
+"modeFarmer": "Farmer",
+"modeVendor": "Vendor",
+"modeBuyer": "Buyer",
+
+
+"governmentServices": "Government Services",
+
+"homeServiceCentersTitle": "Service Centers",
+"homeServiceCentersSubtitle": "Nearby government offices",
+"homeServiceCentersBadge": "Offices",
+
+"homeSubsidiesTitle": "Subsidies",
+"homeSubsidiesSubtitle": "View available subsidies",
+"homeSubsidiesBadge": "Grants",
+
+"homeComplaintsTitle": "Complaints",
+"homeComplaintsSubtitle": "Report an issue",
+"homeComplaintsBadge": "Report",
+
+"homeSurveysTitle": "Surveys",
+"homeSurveysSubtitle": "Share your feedback",
+"homeSurveysBadge": "Feedback",
+
+"serviceCenters": "Service Centers",
+
+"listView": "List",
+"mapView": "Map",
+
+"filters": "Filters",
+"filtersAndSort": "Filters & Sort",
+"sortBy": "Sort by",
+"clearAll": "Clear All",
+"applyFilters": "Apply Filters",
+
+"searchServiceCentersHint": "Search service centers...",
+"searchRadius": "Search Radius",
+"showFeaturedOnly": "Show featured only",
+
+"distance": "Distance",
+"name": "Name",
+"rating": "Rating",
+"newest": "Newest",
+"featured": "Featured",
+
+"top5ByDistance": "Top 5 by Distance",
+"top5ByName": "Top 5 by Name",
+"top5ByRating": "Top 5 by Rating",
+"top5Newest": "Top 5 Newest",
+
+"details": "Details",
+"viewOnMap": "View on Map",
+"viewDetails": "View Details",
+
+"loadingRoute": "Loading route...",
+"routeLoaded": "Route loaded",
+"routeUnavailable": "Route unavailable",
+"directions": "Directions",
+
+"noServiceCentersFound": "No service centers found",
+"tryAdjustingFilters": "Try adjusting your filters or search",
+"serviceCenterNotFound": "Service center not found",
+
+"km": "km",
+"away": "away",
+"notApplicable": "N/A",
+
+"wardNo": "Ward No: {no}",
+"@wardNo": {
+"placeholders": {
+    "no": {
+    "type": "String"
+    }
+}
+},
+
+"contactInformation": "Contact Information",
+"phone": "Phone",
+"website": "Website",
+"contactPerson": "Contact Person",
+"operatingHours": "Operating Hours",
+"servicesOffered": "Services Offered",
+
+"basedOnUserReviews": "Based on user reviews",
+
+"ratingSingular": "rating",
+"ratingPlural": "ratings",
+
+"recentReviews": "Recent Reviews",
+"yourRating": "Your Rating",
+
+"helpOthersRate": "Help others by rating this service center",
+"addYourRating": "Add Your Rating",
+
+"editRating": "Edit",
+
+"rateServiceCenter": "Rate Service Center",
+"editYourRating": "Edit Your Rating",
+
+"writeReviewOptional": "Write a review (optional)",
+"shareYourExperienceHint": "Share your experience...",
+
+"submit": "Submit",
+
+"deleteRatingQuestion": "Delete rating?",
+"deleteRatingReviewConfirm": "Are you sure you want to delete your rating and review? This cannot be undone.",
+
+"ratingSubmittedSuccess": "Rating submitted successfully!",
+"ratingUpdatedSuccess": "Rating updated successfully!",
+
+"anonymous": "Anonymous",
+
+"ago": "ago",
+
+"commonMinuteUnit": "min",
+"commonHourUnit": "hr",
+"commonDayUnit": "day",
+"commonDaysUnit": "days",
+"commonWeekUnit": "week",
+"commonWeeksUnit": "weeks",
+"commonAll": "All",
+
+"basicInformation": "Basic Information",
+"ratingDeletedSuccess": "Rating deleted successfully!",
+
+
+
+"resetPasswordTitle": "Reset Password",
+"resetPasswordDesc": "Create a new password for your account.",
+"newPassword": "New Password",
+"inputPassword": "Enter your password",
+"confirmPassword": "Confirm Password",
+"inputConfirmPassword": "Re-enter your password",
+"inputPasswordMsg": "Please enter your password",
+"passwordMismatch": "Passwords do not match.",
+"passwordResetSuccess": "Your password has been reset successfully!",
+"passwordResetFailed": "Failed to reset password. Please try again."
+
+
+}

@@ -1,0 +1,59 @@
+# -------------------------------------------------------------------------
+# Secrets and Environment Variables (CRUCIAL)
+# -------------------------------------------------------------------------
+.env
+.env.*
+*.secret
+credentials.json
+
+# -------------------------------------------------------------------------
+# Flutter / Dart Internal Folders
+# -------------------------------------------------------------------------
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+
+# -------------------------------------------------------------------------
+# Android Specifics
+# -------------------------------------------------------------------------
+.gradle/
+local.properties
+*.kwj
+*.keystore
+!**/keystore/*.keystore
+**/android/app/src/main/res/raw/
+**/android/captures/
+
+# -------------------------------------------------------------------------
+# iOS/macOS Specifics
+# -------------------------------------------------------------------------
+.generated/
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Pods/
+**/macOS/Pods/
+App.framework
+Flutter.framework
+XCTest.framework
+Pods/
+DerivedData/
+*.hmap
+
+# -------------------------------------------------------------------------
+# IDEs and Text Editors
+# -------------------------------------------------------------------------
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# -------------------------------------------------------------------------
+# Operating System System Files
+# -------------------------------------------------------------------------
+.DS_Store
+Thumbs.db

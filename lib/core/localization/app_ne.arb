@@ -1,0 +1,525 @@
+{
+"@@locale": "ne",
+
+"appTitle": "Smart Kishan",
+
+"language": "भाषा",
+"selectLanguage": "कृपया आफूलाई उपयुक्त भाषा छनोट गर्नुहोस्।",
+
+"next": "अर्को",
+"skip": "स्किप गर्नुहोस्",
+"getStarted": "सुरु गर्नुहोस्",
+
+"onboardingFarmingTitle": "अब कृषि अझ सजिलो",
+"onboardingFarmingDescription": "तपाईंको कृषि व्यवस्थापनलाई सहज बनाउन डिजाइन गरिएका उपकरणहरूको प्रयोग गरी सजिलै सफल बन्नुहोस्।",
+
+"onboardingFarmlandTitle": "धेरै खेतबारी व्यवस्थापन गर्नुहोस्",
+"onboardingFarmlandDescription": "विभिन्न खेतबारीहरूको विवरण सुरक्षित राख्नुहोस् र प्रत्येक जमिनको लागि छुट्टाछुट्टै व्यवस्थापन गर्नुहोस्।",
+
+"onboardingStockTitle": "फार्म स्टक प्रभावकारी रूपमा व्यवस्थापन गर्नुहोस्",
+"onboardingStockDescription": "सबै कृषि सामग्री र स्टकको अवस्थाको स्पष्ट अभिलेख एकै ठाउँमा राख्नुहोस्।",
+
+"onboardingNotesTitle": "छिटो सम्झनका लागि नोटहरू",
+"onboardingNotesDescription": "महत्त्वपूर्ण कामहरू वा विचारहरू तुरुन्त टिपोट गर्नुहोस् र आफ्नो फार्मका आवश्यकताहरू व्यवस्थित राख्नुहोस्।",
+
+"errorNoInternet": "इन्टरनेटमा जडान हुन सकेन। कृपया आफ्नो इन्टरनेट जाँच गरी पुनः प्रयास गर्नुहोस्।",
+"errorGeneric": "केही समस्या उत्पन्न भयो। कृपया फेरि प्रयास गर्नुहोस्।",
+
+"authWelcomeBack": "फेरि स्वागत छ!",
+"authLoginDescription": "जारी राख्न कृपया साइन इन गर्नुहोस्।",
+"authLoginButton": "लगइन गर्नुहोस्",
+"authForgotPassword": "पासवर्ड बिर्सनुभयो ?",
+"authNoAccount": "खाता छैन ?",
+"authRegisterNow": "नयाँ खाता खोल्नुहोस्",
+"authInvalidCredentials": "गलत फोन नम्बर वा पासवर्ड।",
+
+"phoneNumber": "फोन नम्बर",
+"phoneNumberHint": "आफ्नो फोन नम्बर प्रविष्ट गर्नुहोस्",
+"phoneNumberRequired": "कृपया आफ्नो फोन नम्बर प्रविष्ट गर्नुहोस्",
+"phoneNumberInvalid": "कृपया मान्य फोन नम्बर प्रविष्ट गर्नुहोस्",
+
+"password": "पासवर्ड",
+"passwordHint": "आफ्नो पासवर्ड प्रविष्ट गर्नुहोस्",
+"passwordRequired": "कृपया आफ्नो पासवर्ड प्रविष्ट गर्नुहोस्",
+
+"orDividerText": "अथवा",
+
+"authRegisterTitle": "नयाँ खाता सिर्जना गर्नुहोस्",
+"authRegisterDescription": "जारी राख्न कृपया आफ्नो फोन नम्बर प्रविष्ट गर्नुहोस्। हामी तपाईंको खाताको प्रमाणीकरणका लागि OTP कोड पठाउनेछौँ।",
+
+"authRequestOtpButton": "OTP अनुरोध गर्नुहोस्",
+
+"authAlreadyHaveAccount": "पहिले नै खाता छ?",
+"authSignInNow": "लगइन गर्नुहोस्",
+
+"authOtpSent": "OTP कोड तपाईंको फोन नम्बरमा पठाइएको छ।",
+"authPhoneAlreadyRegistered": "यो फोन नम्बर पहिले नै दर्ता भइसकेको छ।",
+"authPhoneNotRegistered": "यो फोन नम्बर दर्ता भएको छैन।",
+"authOtpThrottled": "कृपया पुनः कोड पठाउनु अघि {seconds} सेकेन्ड पर्खनुहोस्।",
+"authOtpSendFailed": "OTP पठाउन सकिएन।",
+
+"authOtpInvalid": "प्रमाणीकरण कोड गलत छ।",
+"authOtpResent": "OTP कोड पुनः तपाईंको फोन नम्बरमा पठाइएको छ।",
+
+"authOtpTitle": "प्रमाणीकरण कोड",
+"authOtpDescription": "कृपया {phoneNumber} मा पठाइएको ६ अङ्कको प्रमाणीकरण कोड प्रविष्ट गर्नुहोस्।",
+"authVerificationExpired": "तपाईंको प्रमाणीकरण समाप्त भयो। कृपया आफ्नो नम्बर फेरि प्रमाणित गर्नुहोस्।",
+
+"authVerifyButton": "प्रमाणित गर्नुहोस्",
+
+"authDidNotReceiveOtp": "OTP प्राप्त भएन ?",
+"authResendInSeconds": "कृपया पुनः प्रयास गर्न {seconds} सेकेन्ड पर्खनुहोस्।",
+"authResendButton": "पुनः पठाउनुहोस्",
+"authOtpTooManyAttempts": "धेरै पटक गलत OTP प्रविष्ट गरिएको छ। कृपया नयाँ OTP अनुरोध गरी पुनः प्रयास गर्नुहोस्।",
+"authOtpExpired": "OTP कोडको म्याद समाप्त भएको छ। कृपया नयाँ OTP अनुरोध गर्नुहोस्।",
+
+"authCreateAccountTitle": "खाता सिर्जना गर्नुहोस्",
+"authCreateAccountDescription": "तलका विवरणहरू भरी आफ्नो Smart Kishan खाता सिर्जना गर्नुहोस् र सेवाहरूको प्रयोग सुरु गर्नुहोस्।",
+
+"authAccountCreated": "तपाईंको खाता सफलतापूर्वक सिर्जना गरिएको छ!",
+
+"authForgotPasswordTitle": "पासवर्ड बिर्सनुभयो?",
+"authForgotPasswordDescription": "पासवर्ड रिसेट गर्न OTP कोड प्राप्त गर्न आफ्नो फोन नम्बर प्रविष्ट गर्नुहोस्।",
+"authRememberedPassword": "पासवर्ड सम्झनुभयो?",
+
+"fullNameLabel": "पूरा नाम",
+"fullNameHint": "आफ्नो पूरा नाम प्रविष्ट गर्नुहोस्",
+"fullNameRequired": "कृपया आफ्नो पूरा नाम प्रविष्ट गर्नुहोस्",
+"fullNameInvalid": "कृपया मान्य पूरा नाम प्रविष्ट गर्नुहोस् (कम्तीमा ३ अक्षर)।",
+
+"emailLabel": "ईमेल ठेगाना",
+"emailHint": "आफ्नो ईमेल ठेगाना प्रविष्ट गर्नुहोस्",
+"emailInvalid": "कृपया मान्य ईमेल ठेगाना प्रविष्ट गर्नुहोस्।",
+
+"passwordTooShort": "पासवर्ड कम्तीमा ८ अक्षर लामो हुनुपर्छ।",
+
+"confirmPasswordLabel": "पासवर्ड पुष्टि गर्नुहोस्",
+"confirmPasswordHint": "पुनः आफ्नो पासवर्ड प्रविष्ट गर्नुहोस्",
+"confirmPasswordRequired": "कृपया पासवर्ड पुष्टि गर्नुहोस्।",
+"confirmPasswordInvalid": "पासवर्ड मेल खाएन।",
+
+"authCreateAccountButton": "खाता सिर्जना गर्नुहोस्",
+"authBackToLogin": "लगइन पृष्ठमा फर्कनुहोस्",
+"authEmailAlreadyRegistered": "यो ईमेल ठेगाना पहिले नै दर्ता भएको छ।",
+"authInvalidRegistrationData": "प्रदान गरिएको दर्ता विवरण मान्य छैन। कृपया आफ्नो विवरण जाँच गरी पुनः प्रयास गर्नुहोस्।",
+
+
+"inventory": "मौज्दात",
+"dailyActivities": "दैनिक गतिविधिहरू",
+"farmLands": "खेतबारी",
+"notes": "टिपोटहरू",
+"crops": "बालीहरू",
+"kalimatiPrice": "कालीमाटी मूल्य सूची",
+"users": "प्रयोगकर्ताहरू",
+"subsidies": "अनुदानहरू",
+
+"weatherPesticideRecommended": "आज विषादी प्रयोग गर्न उपयुक्त दिन हो।",
+"weatherPesticideNotRecommended": "आज विषादी प्रयोग गर्न उपयुक्त दिन होइन।",
+"weatherHumidity": "आर्द्रता",
+"weatherThunderstorm": "चट्याङ",
+"weatherDrizzle": "सिमसिम वर्षा",
+"weatherRain": "वर्षा",
+"weatherSnow": "हिमपात",
+"weatherClear": "सफा आकाश",
+"weatherClouds": "बदली",
+"weatherMist": "तुवाँलो",
+"weatherHaze": "धुम्म",
+"weatherFog": "कुहिरो",
+
+"navigationHome": "गृहपृष्ठ",
+"navigationChart": "चार्ट",
+"navigationUsers": "प्रयोगकर्ताहरू",
+"navigationProfile": "प्रोफाइल",
+
+"marketplaceBuyerMode": "खरिदकर्ता मोड",
+"marketplaceSellerMode": "विक्रेता मोड",
+
+"authLogout": "लगआउट गर्नुहोस्",
+
+"profile": "प्रोफाइल",
+"profileEdit": "प्रोफाइल सम्पादन गर्नुहोस्",
+"profileUpdate": "प्रोफाइल अद्यावधिक गर्नुहोस्",
+
+"profileUpdatedSuccessfully": "प्रोफाइल सफलतापूर्वक अद्यावधिक गरियो।",
+"profileUpdateFailed": "प्रोफाइल अद्यावधिक गर्न सकिएन।",
+
+"profileChangePassword": "पासवर्ड परिवर्तन गर्नुहोस्",
+"profileUpdateLocation": "स्थान अद्यावधिक गर्नुहोस्",
+
+"confirmLogout": "लगआउट पुष्टि गर्नुहोस्",
+"confirmLogoutMessage": "के तपाईं निश्चित रूपमा लगआउट गर्न चाहनुहुन्छ?",
+
+"notesAdd": "नोट थप्नुहोस्",
+"notesUpdate": "नोट अद्यावधिक गर्नुहोस्",
+
+"notesAddedSuccessfully": "नोट सफलतापूर्वक थपियो।",
+"notesUpdatedSuccessfully": "नोट सफलतापूर्वक अद्यावधिक गरियो।",
+
+"notesTitleLabel": "नोट शीर्षक",
+"notesTitleHint": "नोटको शीर्षक प्रविष्ट गर्नुहोस्",
+"notesTitleRequired": "नोटको शीर्षक आवश्यक छ।",
+"notesTitleInvalid": "नोटको शीर्षक कम्तीमा ३ अक्षर लामो हुनुपर्छ।",
+
+"notesDescriptionLabel": "नोट विवरण",
+"notesDescriptionHint": "नोटको विवरण प्रविष्ट गर्नुहोस्",
+
+"notesPriorityLabel": "नोट प्राथमिकता",
+"notesPriorityHint": "नोटको प्राथमिकता प्रविष्ट गर्नुहोस्",
+
+"notesDeleteConfirmTitle": "मेटाउने पुष्टि गर्नुहोस्",
+"notesDeleteConfirmMessage": "के तपाईं यो नोट मेटाउन निश्चित हुनुहुन्छ? यो कार्य पूर्ववत गर्न सकिँदैन।",
+
+"notesEmpty": "तपाईंसँग हाल कुनै नोट छैन !",
+"notesEmptyDescription": "आफ्ना महत्त्वपूर्ण विचार र जानकारी सुरक्षित राख्न नोटहरू थप्नुहोस्।",
+
+"commonAdd": "थप्नुहोस्",
+"commonUpdate": "अद्यावधिक गर्नुहोस्",
+"commonDelete": "मेटाउनुहोस्",
+"commonRefresh": "रिफ्रेस गर्नुहोस्",
+"commonCancel": "रद्द गर्नुहोस्",
+"commonEdit": "सम्पादन गर्नुहोस्",
+
+"income": "आम्दानी",
+"expense": "खर्च",
+
+"quickActions": "द्रुत कार्यहरू",
+
+"inventoryItemAdd": "जिन्सी सामान थप्नुहोस्",
+"inventoryItemUpdate": "जिन्सी सामान अद्यावधिक गर्नुहोस्",
+
+"inventoryItemEmpty": "तपाईंसँग हाल कुनै जिन्सी सामान छैन!",
+"inventoryItemEmptyDescription": "नयाँ जिन्सी सामान थप्न तलको बटनमा क्लिक गर्नुहोस्।",
+
+"inventoryItemNameLabel": "जिन्सी सामानको नाम",
+"inventoryItemNameHint": "जिन्सी सामानको नाम प्रविष्ट गर्नुहोस्",
+"inventoryItemNameRequired": "जिन्सी सामानको नाम आवश्यक छ।",
+"inventoryItemNameInvalid": "जिन्सी सामानको नाम कम्तीमा ३ अक्षर लामो हुनुपर्छ।",
+
+"inventoryItemStockLabel": "मौज्दात",
+"inventoryItemStockHint": "मौज्दात प्रविष्ट गर्नुहोस्",
+"inventoryItemStockRequired": "मौज्दात आवश्यक छ।",
+
+"inventoryItemUnitLabel": "एकाइ",
+"inventoryItemUnitRequired": "कृपया एकाइ चयन गर्नुहोस्।",
+
+"inventoryItemDescriptionLabel": "जिन्सी सामानको विवरण",
+"inventoryItemDescriptionHint": "जिन्सी सामानको विवरण प्रविष्ट गर्नुहोस्",
+
+"inventoryItemTradeOptionLabel": "खरिद/बिक्री विकल्प",
+
+"inventoryItemBuy": "खरिद",
+"inventoryItemSell": "बिक्री",
+"inventoryItemBoth": "दुवै",
+
+"inventoryItemDeleteConfirmTitle": "मेटाउने पुष्टि गर्नुहोस्",
+"inventoryItemDeleteConfirmMessage": "के तपाईं यो जिन्सी सामान मेटाउन निश्चित हुनुहुन्छ?",
+
+"inventoryItemAddedSuccessfully": "जिन्सी सामान सफलतापूर्वक थपियो।",
+"inventoryItemUpdatedSuccessfully": "जिन्सी सामान सफलतापूर्वक अद्यावधिक गरियो।",
+
+"dailyActivityAdd": "गतिविधि थप्नुहोस्",
+"dailyActivityUpdate": "गतिविधि अद्यावधिक गर्नुहोस्",
+
+"dailyActivityAddedSuccessfully": "गतिविधि सफलतापूर्वक थपियो।",
+"dailyActivityUpdatedSuccessfully": "गतिविधि सफलतापूर्वक अद्यावधिक गरियो।",
+
+"dailyActivityEmpty": "तपाईंसँग हाल कुनै गतिविधि छैन!",
+"dailyActivityEmptyDescription": "आफ्ना दैनिक खरिद, बिक्री तथा अन्य खेतीसम्बन्धी गतिविधिहरू यहाँ अभिलेख गर्नुहोस्।",
+
+"dailyActivityTitleLabel": "गतिविधि शीर्षक",
+"dailyActivityTitleHint": "गतिविधि शीर्षक लेख्नुहोस्",
+"dailyActivityTitleRequired": "कृपया गतिविधिको शीर्षक लेख्नुहोस्।",
+
+"dailyActivityDescriptionLabel": "विवरण",
+"dailyActivityDescriptionHint": "विवरण लेख्नुहोस्",
+
+"dailyActivityTypeLabel": "गतिविधिको प्रकार",
+"dailyActivityBuy": "खरिद",
+"dailyActivitySell": "बिक्री",
+"dailyActivityOther": "अन्य",
+
+"dailyActivityInventoryItemLabel": "जिन्सी सामान",
+"dailyActivityInventoryItemHint": "जिन्सी सामान छान्नुहोस्",
+"dailyActivityInventoryItemRequired": "कृपया जिन्सी सामान छान्नुहोस्।",
+
+"dailyActivityQuantityLabel": "परिमाण",
+"dailyActivityQuantityHint": "परिमाण लेख्नुहोस्",
+"dailyActivityQuantityRequired": "कृपया परिमाण लेख्नुहोस्।",
+
+"dailyActivitySalePriceLabel": "बिक्री मूल्य",
+"dailyActivityCostPriceLabel": "लागत मूल्य",
+
+"dailyActivityAmountHint": "०.००",
+"dailyActivityAmountRequired": "कृपया रकम लेख्नुहोस्।",
+
+"dailyActivityDeleteConfirmTitle": "गतिविधि मेटाउनुहोस्",
+"dailyActivityDeleteConfirmMessage": "के तपाईं यो गतिविधि मेटाउन निश्चित हुनुहुन्छ? यो कार्य फिर्ता गर्न सकिँदैन।",
+
+"currencySymbol": "रु.",
+"dailyActivityExpenseLabel": "खर्च (छ भने)",
+"dailyActivityIncomeLabel": "आम्दानी (छ भने)",
+
+"myIncome": "मेरो आम्दानी",
+"myExpense": "मेरो खर्च",
+
+"financialRecords": "आर्थिक अभिलेख",
+"financialRecordsEmpty": "यस अवधिमा कुनै अभिलेख फेला परेन।",
+
+"chartScreenTitle": "लेखा चार्ट",
+
+"chartIncomeAnalysis": "आम्दानी विश्लेषण",
+"chartExpenseAnalysis": "खर्च विश्लेषण",
+
+"chartIncomeEmpty": "अहिलेसम्म कुनै आम्दानी रेकर्ड छैन।",
+"chartExpenseEmpty": "अहिलेसम्म कुनै खर्च रेकर्ड छैन।",
+
+"chartFilterDaily": "दैनिक",
+"chartFilterMonthly": "मासिक",
+"chartFilterYearly": "वार्षिक",
+
+"chartLast7Days": "पछिल्लो ७ दिन",
+"chartLast7Months": "पछिल्लो ७ महिना",
+"chartLast5Years": "पछिल्लो ५ वर्ष",
+
+"chartNoDateFound": "मिति फेला परेन।",
+
+"chartIncomeTitle": "{period} आम्दानी चार्ट",
+"@chartIncomeTitle": {
+"placeholders": {
+    "period": {}
+}
+},
+
+"chartExpenseTitle": "{period} खर्च चार्ट",
+"@chartExpenseTitle": {
+"placeholders": {
+    "period": {}
+}
+},
+
+"chartIncomeExpenseTitle": "{period} आम्दानी/खर्च चार्ट",
+"@chartIncomeExpenseTitle": {
+"placeholders": {
+    "period": {}
+}
+},
+
+"farmlandAdd": "खेतबारी थप्नुहोस्",
+"farmlandUpdate": "खेतबारी अद्यावधिक गर्नुहोस्",
+
+"farmlandAddedSuccessfully": "खेतबारी सफलतापूर्वक थपियो।",
+"farmlandUpdatedSuccessfully": "खेतबारी सफलतापूर्वक अद्यावधिक गरियो।",
+
+"farmlandEmpty": "तपाईंसँग हाल कुनै खेतबारी छैन!",
+"farmlandEmptyDescription": "आफ्नो खेतबारी स्थान र माटोको विवरणसहित थप्नुहोस्।",
+
+"farmlandAddImage": "खेतबारीको फोटो थप्नुहोस्",
+
+"farmlandNameLabel": "खेतबारीको नाम",
+"farmlandNameHint": "खेतबारीको नाम लेख्नुहोस्",
+"farmlandNameRequired": "कृपया खेतबारीको नाम लेख्नुहोस्।",
+"farmlandNameInvalid": "खेतबारीको नाम कम्तीमा ३ अक्षर लामो हुनुपर्छ।",
+
+"farmlandDescriptionLabel": "विवरण",
+"farmlandDescriptionHint": "विवरण लेख्नुहोस्",
+
+"farmlandLocationSection": "स्थान",
+"farmlandUseMyLocation": "मेरो स्थान प्रयोग गर्नुहोस्",
+
+"farmlandLatLabel": "अक्षांश",
+"farmlandLatHint": "अक्षांश लेख्नुहोस्",
+
+"farmlandLngLabel": "देशान्तर",
+"farmlandLngHint": "देशान्तर लेख्नुहोस्",
+
+"farmlandCoordinatesRequired": "कृपया पहिले अक्षांश र देशान्तर लेख्नुहोस्।",
+
+"farmlandSoilSection": "माटोको गुण",
+"farmlandAutoFetch": "स्वतः प्राप्त गर्नुहोस्",
+"farmlandSoilFetchFailed": "माटोको डाटा प्राप्त गर्न सकिएन।",
+
+"farmlandNitrogen": "नाइट्रोजन (%)",
+"farmlandOrganicMatter": "जैविक पदार्थ (%)",
+"farmlandPhosphate": "फस्फेट (किलोग्राम/हेक्टर)",
+"farmlandPotassium": "पोटासियम",
+"farmlandPH": "पीएच",
+
+"farmlandLocationChip": "स्थान",
+"farmlandSoilChip": "माटो",
+
+"farmlandDeleteConfirmTitle": "खेतबारी मेटाउनुहोस्",
+"farmlandDeleteConfirmMessage": "के तपाईं यो खेतबारी मेटाउन निश्चित हुनुहुन्छ? यो कार्य फिर्ता गर्न सकिँदैन।",
+
+"imageUploadAdd": "फोटो थप्नुहोस्",
+"mediaPickerTitle": "स्रोत छान्नुहोस्",
+"mediaPickerCamera": "क्यामेरा",
+"mediaPickerGallery": "ग्यालेरी",
+"mediaPickerFiles": "फाइलहरू",
+
+"farmlandBasicInfoSection": "आधारभूत जानकारी",
+"farmlandAddressLabel": "ठेगाना",
+"farmlandAddressHint": "स्वतः भर्न 'मेरो स्थान प्रयोग गर्नुहोस्' थिच्नुहोस्, वा टाइप गर्नुहोस्",
+"farmlandImageSection": "खेतबारीको फोटो",
+"farmlandRecommendedCrops": "सिफारिश गरिएका बाली",
+"farmlandRecommendedVegetables": "तरकारीहरू",
+"farmlandRecommendedFruits": "फलफूलहरू",
+
+"marketPrices": "बजार मूल्य",
+"marketPricesEmpty": "कुनै बजार मूल्य उपलब्ध छैन",
+"marketSearchHint": "वस्तु खोज्नुहोस्...",
+"marketLastUpdated": "अन्तिम अद्यावधिक",
+"marketNoResults": "तपाईंको खोजसँग मिल्ने कुनै वस्तु छैन",
+
+"minPrice": "न्यूनतम मूल्य",
+"maxPrice": "अधिकतम मूल्य",
+"avgPrice": "औसत मूल्य",
+
+"cropInfoTitle": "बाली सम्बन्धी जानकारी",
+"cropInfoSearchHint": "बाली खोज्नुहोस्...",
+"cropInfoEmpty": "कुनै बाली जानकारी उपलब्ध छैन",
+"cropInfoNoResults": "तपाईंको खोजसँग मिल्ने बाली छैन",
+"cropInfoBannerTitle": "बाली जानकारी",
+"cropInfoBannerSubtitle": "आफ्ना बाली कसरी उब्जाउने जान्नुहोस्",
+"cropInfoBannerExplore": "बालीहरू हेर्नुहोस्",
+
+"drawerSectionMain": "मुख्य",
+"drawerSectionServices": "सेवाहरू",
+"modeFarmer": "किसान",
+"modeVendor": "विक्रेता",
+"modeBuyer": "क्रेता",
+
+
+"governmentServices": "सरकारी सेवाहरू",
+
+"homeServiceCentersTitle": "सेवा केन्द्रहरू",
+"homeServiceCentersSubtitle": "नजिकका सरकारी कार्यालयहरू",
+"homeServiceCentersBadge": "कार्यालय",
+
+"homeSubsidiesTitle": "अनुदान",
+"homeSubsidiesSubtitle": "उपलब्ध अनुदानहरू हेर्नुहोस्",
+"homeSubsidiesBadge": "अनुदान",
+
+"homeComplaintsTitle": "गुनासो",
+"homeComplaintsSubtitle": "समस्या रिपोर्ट गर्नुहोस्",
+"homeComplaintsBadge": "रिपोर्ट",
+
+"homeSurveysTitle": "सर्वेक्षण",
+"homeSurveysSubtitle": "आफ्नो प्रतिक्रिया दिनुहोस्",
+"homeSurveysBadge": "प्रतिक्रिया",
+
+"serviceCenters": "सेवा केन्द्रहरू",
+
+"listView": "सूची",
+"mapView": "नक्सा",
+
+"filters": "फिल्टर",
+"filtersAndSort": "फिल्टर र क्रमबद्धता",
+"sortBy": "क्रमबद्ध गर्नुहोस्",
+"clearAll": "सबै हटाउनुहोस्",
+"applyFilters": "फिल्टर लागू गर्नुहोस्",
+
+"searchServiceCentersHint": "सेवा केन्द्र खोज्नुहोस्...",
+"searchRadius": "खोज दायरा",
+"showFeaturedOnly": "केवल विशेष देखाउनुहोस्",
+
+"distance": "दूरी",
+"name": "नाम",
+"rating": "रेटिङ",
+"newest": "नवीनतम",
+"featured": "विशेष",
+
+"top5ByDistance": "दूरी अनुसार शीर्ष ५",
+"top5ByName": "नाम अनुसार शीर्ष ५",
+"top5ByRating": "रेटिङ अनुसार शीर्ष ५",
+"top5Newest": "नवीनतम शीर्ष ५",
+
+"details": "विवरण",
+"viewOnMap": "नक्सामा हेर्नुहोस्",
+"viewDetails": "विवरण हेर्नुहोस्",
+
+"loadingRoute": "मार्ग लोड हुँदैछ...",
+"routeLoaded": "मार्ग लोड भयो",
+"routeUnavailable": "मार्ग उपलब्ध छैन",
+"directions": "दिशानिर्देश",
+
+"noServiceCentersFound": "कुनै सेवा केन्द्र भेटिएन",
+"tryAdjustingFilters": "फिल्टर वा खोज परिवर्तन गरी हेर्नुहोस्",
+"serviceCenterNotFound": "सेवा केन्द्र भेटिएन",
+
+"km": "कि.मि.",
+"away": "टाढा",
+"notApplicable": "लागू हुँदैन",
+
+"wardNo": "वडा नं: {no}",
+"@wardNo": {
+"placeholders": {
+    "no": {
+    "type": "String"
+    }
+}
+},
+
+"contactInformation": "सम्पर्क जानकारी",
+"phone": "फोन",
+"website": "वेबसाइट",
+"contactPerson": "सम्पर्क व्यक्ति",
+"operatingHours": "खुल्ने समय",
+"servicesOffered": "उपलब्ध सेवाहरू",
+
+"basedOnUserReviews": "प्रयोगकर्ता समीक्षामा आधारित",
+
+"ratingSingular": "रेटिङ",
+"ratingPlural": "रेटिङहरू",
+
+"recentReviews": "हालका समीक्षाहरू",
+"yourRating": "तपाईंको रेटिङ",
+
+"helpOthersRate": "यो सेवा केन्द्रलाई रेटिङ दिएर अरूलाई सहयोग गर्नुहोस्",
+"addYourRating": "रेटिङ थप्नुहोस्",
+
+"editRating": "सम्पादन",
+
+"rateServiceCenter": "सेवा केन्द्रलाई रेटिङ दिनुहोस्",
+"editYourRating": "आफ्नो रेटिङ सम्पादन गर्नुहोस्",
+
+"writeReviewOptional": "समीक्षा लेख्नुहोस् (वैकल्पिक)",
+"shareYourExperienceHint": "आफ्नो अनुभव साझा गर्नुहोस्...",
+
+"submit": "पेश गर्नुहोस्",
+
+"deleteRatingQuestion": "रेटिङ हटाउने?",
+"deleteRatingReviewConfirm": "के तपाईं आफ्नो रेटिङ र समीक्षा हटाउन निश्चित हुनुहुन्छ? यो कार्य फिर्ता गर्न सकिँदैन।",
+
+"ratingSubmittedSuccess": "रेटिङ सफलतापूर्वक पेश भयो!",
+"ratingUpdatedSuccess": "रेटिङ सफलतापूर्वक अद्यावधिक भयो!",
+
+"anonymous": "अज्ञात",
+
+"ago": "अघि",
+
+"commonMinuteUnit": "मिनेट",
+"commonHourUnit": "घण्टा",
+"commonDayUnit": "दिन",
+"commonDaysUnit": "दिन",
+"commonWeekUnit": "हप्ता",
+"commonWeeksUnit": "हप्ता",
+"commonAll": "सबै",
+
+
+"basicInformation": "आधारभूत जानकारी",
+"ratingDeletedSuccess": "रेटिङ सफलतापूर्वक हटाइयो!",
+
+
+"resetPasswordTitle": "पासवर्ड रिसेट गर्नुहोस्",
+"resetPasswordDesc": "आफ्नो खाताको लागि नयाँ पासवर्ड बनाउनुहोस्।",
+"newPassword": "नयाँ पासवर्ड",
+"inputPassword": "आफ्नो पासवर्ड प्रविष्ट गर्नुहोस्",
+"confirmPassword": "पासवर्ड पुष्टि गर्नुहोस्",
+"inputConfirmPassword": "आफ्नो पासवर्ड पुनः प्रविष्ट गर्नुहोस्",
+"inputPasswordMsg": "कृपया आफ्नो पासवर्ड प्रविष्ट गर्नुहोस्",
+"passwordMismatch": "पासवर्डहरू मिलेनन्।",
+"passwordResetSuccess": "तपाईंको पासवर्ड सफलतापूर्वक रिसेट भयो!",
+"passwordResetFailed": "पासवर्ड रिसेट गर्न असफल भयो। कृपया पुनः प्रयास गर्नुहोस्।"
+
+
+}
