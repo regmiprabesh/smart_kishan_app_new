@@ -5,9 +5,9 @@ import 'package:smart_kishan/core/utils/app_snackbar.dart';
 import 'package:smart_kishan/core/utils/validators.dart';
 import 'package:smart_kishan/core/widgets/app_text_field.dart';
 import 'package:smart_kishan/core/widgets/app_primary_button.dart';
-import 'package:smart_kishan/features/auth/register_details/register_details_cubit.dart';
-import 'package:smart_kishan/features/auth/register_details/register_details_state.dart';
-import 'package:smart_kishan/features/auth/session/session_cubit.dart';
+import 'package:smart_kishan/features/auth/register_details/cubit/register_details_cubit.dart';
+import 'package:smart_kishan/features/auth/register_details/cubit/register_details_state.dart';
+import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
 import 'package:smart_kishan/features/auth/widgets/auth_flow_scaffold.dart';
 
 /// Registration step 3: the actual account form. On success the session

@@ -662,9 +662,8 @@ class _LocationCard extends StatelessWidget {
   const _LocationCard({required this.center});
   final ServiceCenter center;
 
-  void _openDirections() => _launch(
-    'https://www.google.com/maps/dir/?api=1&destination=${center.latitude},${center.longitude}',
-  );
+  void _openDirections() =>
+      _launch(MapConstants.directionsUrl(center.latitude, center.longitude));
 
   @override
   Widget build(BuildContext context) {

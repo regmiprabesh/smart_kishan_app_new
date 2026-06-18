@@ -14,8 +14,8 @@ import 'package:smart_kishan/features/farmer/daily_activity/cubit/daily_activity
 import 'package:smart_kishan/features/farmer/daily_activity/cubit/daily_activity_state.dart';
 import 'package:smart_kishan/features/farmer/daily_activity/data/activity.dart';
 import 'package:smart_kishan/features/farmer/daily_activity/view/activity_args.dart';
-import 'package:smart_kishan/features/auth/session/session_cubit.dart';
-import 'package:smart_kishan/features/auth/session/session_state.dart';
+import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
+import 'package:smart_kishan/features/auth/session/cubit/session_state.dart';
 
 /// Full daily-activity list. Rich cards with a type badge (Buy/Sell/Other),
 /// income/expense, quantity, and an ⋮ menu (edit/delete). Receives the live

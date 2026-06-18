@@ -6,6 +6,8 @@ abstract final class MapConstants {
   static const userAgent = 'com.example.smartKishan';
   static const osrmBase = 'https://router.project-osrm.org/route/v1/driving';
   static const nominatimBase = 'https://nominatim.openstreetmap.org/reverse';
+  static String directionsUrl(double lat, double lng) =>
+      'https://www.google.com/maps/dir/?api=1&destination=$lat,$lng';
 
   // Kathmandu fallback when user location isn't available.
   static const fallbackCenter = LatLng(27.7103, 85.3222);

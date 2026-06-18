@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_kishan/core/constants/app_constants.dart';
+import 'package:smart_kishan/app/theme/app_colors.dart';
 
 /// Global key wired to MaterialApp.router(scaffoldMessengerKey: ...) —
 /// snackbars work from anywhere without a BuildContext.
@@ -12,10 +12,10 @@ abstract final class AppSnackbar {
   static const _infoColor = Color(0xFF3B82F6);
 
   static void success(String message) =>
-      _show(message, kSuccessColor, Icons.check_circle_outline);
+      _show(message, AppColors.success, Icons.check_circle_outline);
 
   static void error(String message) =>
-      _show(message, kErrorColor, Icons.error_outline);
+      _show(message, AppColors.error, Icons.error_outline);
 
   static void warning(String message) =>
       _show(message, _warningColor, Icons.warning_amber_rounded);

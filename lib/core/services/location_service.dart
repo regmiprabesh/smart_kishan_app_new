@@ -1,21 +1,23 @@
 import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:smart_kishan/core/config/map_constants.dart';
 
 /// Wraps geolocator. Permission is requested once at app launch (see
-/// LocationService.ensurePermission called from bootstrap), so screens just
-/// call currentLatLng(). On a simulator / when location is unavailable, falls
-/// back to default coordinates (Kathmandu) so the soil flow still works.
+/// [ensurePermission], called from bootstrap), so screens just call
+/// [currentLatLng]. When location is unavailable (denied, disabled, timeout)
+/// it falls back to [MapConstants.fallbackCenter] so callers always get
+/// usable coordinates.
 class LocationService {
-  // Simulator / fallback coordinates (Kathmandu valley).
-  static const double _fallbackLat = 27.7172;
-  static const double _fallbackLng = 85.3240;
-  // Simulator / fallback coordinates (Terai crop area).
-  static const double _fallbackLatCrop = 28.5737;
-  static const double _fallbackLngCrop = 80.8068;
+  /// Debug-only escape hatch: when true AND in a debug build, skip GPS and
+  /// return the fallback immediately (handy on a simulator). NEVER affects
+  /// release builds. Defaults off.
+  bool debugUseFallback = false;
 
-  /// Dev override — when true, always return fallback coords (skip real GPS).
-  /// Set from a debug toggle, or use kDebugMode + an env flag.
-  bool useFallbackOverride = true;
+  /// Single source of truth for fallback coordinates.
+  ({double lat, double lng}) get _fallback => (
+    lat: MapConstants.fallbackCenter.latitude,
+    lng: MapConstants.fallbackCenter.longitude,
+  );
 
   /// Request permission + enable check. Call ONCE at app launch.
   Future<void> ensurePermission() async {
@@ -31,15 +33,13 @@ class LocationService {
     }
   }
 
-  /// Best-effort current location. Returns fallback coords if anything fails
-  /// (simulator, denied, timeout) so the caller always gets usable values.
+  /// Best-effort current location. Returns [MapConstants.fallbackCenter] if
+  /// anything fails so the caller always gets usable values.
   Future<({double lat, double lng})> currentLatLng() async {
-    if (useFallbackOverride) {
-      return (lat: _fallbackLatCrop, lng: _fallbackLngCrop);
-    }
+    if (kDebugMode && debugUseFallback) return _fallback;
     try {
       final enabled = await Geolocator.isLocationServiceEnabled();
-      if (!enabled) return (lat: _fallbackLat, lng: _fallbackLng);
+      if (!enabled) return _fallback;
 
       var perm = await Geolocator.checkPermission();
       if (perm == LocationPermission.denied) {
@@ -47,7 +47,7 @@ class LocationService {
       }
       if (perm == LocationPermission.denied ||
           perm == LocationPermission.deniedForever) {
-        return (lat: _fallbackLat, lng: _fallbackLng);
+        return _fallback;
       }
 
       final pos = await Geolocator.getCurrentPosition(
@@ -59,7 +59,7 @@ class LocationService {
       return (lat: pos.latitude, lng: pos.longitude);
     } catch (e) {
       debugPrint('currentLatLng failed, using fallback: $e');
-      return (lat: _fallbackLat, lng: _fallbackLng);
+      return _fallback;
     }
   }
 }

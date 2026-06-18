@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_kishan/core/network/api_client.dart';
-import 'package:smart_kishan/features/auth/session/session_cubit.dart';
+import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
 import 'package:smart_kishan/features/profile/cubit/edit_profile_state.dart';
 import 'package:smart_kishan/features/profile/data/profile_repository.dart';
 

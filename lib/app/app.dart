@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:smart_kishan/core/di/injector.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/app_snackbar.dart';
-import 'package:smart_kishan/features/auth/session/session_cubit.dart';
+import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
 import 'package:smart_kishan/features/language/cubit/locale_cubit.dart';
 
 import 'theme/app_theme.dart';
@@ -37,13 +37,13 @@ class SmartKishanApp extends StatelessWidget {
                 // Localization
                 localizationsDelegates: AppLocalizations.localizationsDelegates,
                 supportedLocales: AppLocalizations.supportedLocales,
-                locale: Locale('en'),
+                locale: locale,
 
                 // Theme — no lerp on theme/locale switches (fonts with
                 // different metrics made the lerp look like resizing).
                 theme: AppTheme.light(),
                 darkTheme: AppTheme.dark(),
-                themeMode: ThemeMode.light,
+                themeMode: themeMode,
                 themeAnimationDuration: Duration.zero,
 
                 routerConfig: sl<GoRouter>(),

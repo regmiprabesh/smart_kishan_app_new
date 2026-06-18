@@ -3,8 +3,8 @@ import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/widgets/app_card_menu.dart';
 import 'package:smart_kishan/core/widgets/app_network_image.dart';
-import 'package:smart_kishan/features/auth/session/session_cubit.dart';
-import 'package:smart_kishan/features/auth/session/session_state.dart';
+import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
+import 'package:smart_kishan/features/auth/session/cubit/session_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../data/farmland.dart';
 

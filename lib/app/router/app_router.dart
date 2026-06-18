@@ -9,19 +9,19 @@ import 'package:smart_kishan/core/enums/app_mode.dart';
 import 'package:smart_kishan/core/services/local_storage_service.dart';
 import 'package:smart_kishan/features/auth/data/auth_flow_args.dart';
 import 'package:smart_kishan/features/auth/data/otp_purpose.dart';
-import 'package:smart_kishan/features/auth/forgot_password_phone/forgot_password_phone_screen.dart';
-import 'package:smart_kishan/features/auth/otp/otp_cubit.dart';
-import 'package:smart_kishan/features/auth/otp/otp_screen.dart';
-import 'package:smart_kishan/features/auth/phone_entry/phone_entry_cubit.dart';
-import 'package:smart_kishan/features/auth/register_details/register_details_cubit.dart';
-import 'package:smart_kishan/features/auth/register_details/register_details_screen.dart';
-import 'package:smart_kishan/features/auth/register_phone/register_phone_screen.dart';
-import 'package:smart_kishan/features/auth/reset_password/reset_password_cubit.dart';
-import 'package:smart_kishan/features/auth/reset_password/reset_password_screen.dart';
-import 'package:smart_kishan/features/auth/session/session_cubit.dart';
-import 'package:smart_kishan/features/auth/session/session_state.dart';
-import 'package:smart_kishan/features/auth/sign_in/sign_in_cubit.dart';
-import 'package:smart_kishan/features/auth/sign_in/sign_in_screen.dart';
+import 'package:smart_kishan/features/auth/forgot_password_phone/view/forgot_password_phone_screen.dart';
+import 'package:smart_kishan/features/auth/otp/cubit/otp_cubit.dart';
+import 'package:smart_kishan/features/auth/otp/view/otp_screen.dart';
+import 'package:smart_kishan/features/auth/phone_entry/cubit/phone_entry_cubit.dart';
+import 'package:smart_kishan/features/auth/register_details/cubit/register_details_cubit.dart';
+import 'package:smart_kishan/features/auth/register_details/view/register_details_screen.dart';
+import 'package:smart_kishan/features/auth/register_phone/view/register_phone_screen.dart';
+import 'package:smart_kishan/features/auth/reset_password/cubit/reset_password_cubit.dart';
+import 'package:smart_kishan/features/auth/reset_password/view/reset_password_screen.dart';
+import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
+import 'package:smart_kishan/features/auth/session/cubit/session_state.dart';
+import 'package:smart_kishan/features/auth/sign_in/cubit/sign_in_cubit.dart';
+import 'package:smart_kishan/features/auth/sign_in/view/sign_in_screen.dart';
 import 'package:smart_kishan/features/common/comint_soon_screen.dart';
 import 'package:smart_kishan/features/farmer/crop_info/cubit/crop_info_cubit.dart';
 import 'package:smart_kishan/features/farmer/crop_info/view/crop_info_args.dart';
@@ -154,7 +154,7 @@ GoRouter createRouter(SessionCubit sessionCubit) {
         path: AppRoutePath.farmerDashboard,
         builder: (_, __) => MultiBlocProvider(
           providers: [
-            BlocProvider(create: (_) => WeatherCubit(sl())),
+            BlocProvider(create: (_) => WeatherCubit(sl(), sl())..load()),
             BlocProvider(create: (_) => NotesCubit(sl())..load()),
             BlocProvider(create: (_) => InventoryCubit(sl(), sl())..load()),
             BlocProvider(create: (_) => DailyActivityCubit(sl(), sl())..load()),

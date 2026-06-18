@@ -1,6 +1,11 @@
 import 'package:smart_kishan/core/config/env.dart';
 
 abstract final class ApiEndpoints {
+  // OpenWeatherMap. Key is supplied separately via Env.owmApiKey.
+  static const String owmBase = 'https://api.openweathermap.org/data/2.5';
+  static const String owmCurrentWeather = '$owmBase/weather';
+  static const String owmForecast = '$owmBase/forecast';
+
   static const String login = '/auth/login';
   static const String register = '/auth/register';
   static const String sendOtp = '/auth/send-otp';

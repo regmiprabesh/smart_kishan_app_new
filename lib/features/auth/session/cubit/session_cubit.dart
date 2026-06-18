@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_kishan/core/enums/app_mode.dart';
 import 'package:smart_kishan/features/auth/data/auth_repository.dart';
-import 'package:smart_kishan/features/auth/session/session_state.dart';
+import 'package:smart_kishan/features/auth/session/cubit/session_state.dart';
 import 'package:smart_kishan/shared/models/user.dart';
 
 /// THE app-wide auth state. One instance, created in main(), provided at

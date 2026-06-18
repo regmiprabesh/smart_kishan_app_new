@@ -1,24 +1,22 @@
 import 'package:dio/dio.dart';
 import 'package:smart_kishan/core/config/env.dart';
+import 'package:smart_kishan/core/constants/api_endpoints.dart';
 import 'package:smart_kishan/features/farmer/weather/data/weather_model.dart';
 
-/// OpenWeatherMap access. Separate Dio (different base URL + no auth header)
-/// from the app ApiClient. Key + default coords come from .env.
+/// OpenWeatherMap access. Uses its own [Dio] (different host + no auth header)
+/// rather than the app ApiClient. URLs live in [ApiEndpoints]; the API key
+/// comes from .env; the caller supplies coordinates (via LocationService).
 class WeatherRepository {
   WeatherRepository({Dio? dio}) : _dio = dio ?? Dio();
 
   final Dio _dio;
 
-  static const _base = 'https://api.openweathermap.org/data/2.5';
-  static const _lat = 27.7172; // Kathmandu fallback
-  static const _lng = 85.3240;
-
-  Future<Weather> current() async {
+  Future<Weather> current({required double lat, required double lng}) async {
     final res = await _dio.get(
-      '$_base/weather',
+      ApiEndpoints.owmCurrentWeather,
       queryParameters: {
-        'lat': _lat,
-        'lon': _lng,
+        'lat': lat,
+        'lon': lng,
         'appid': Env.owmApiKey,
         'units': 'metric',
       },
@@ -27,12 +25,12 @@ class WeatherRepository {
   }
 
   /// True if rain appears in today's forecast slots.
-  Future<bool> willRainToday() async {
+  Future<bool> willRainToday({required double lat, required double lng}) async {
     final res = await _dio.get(
-      '$_base/forecast',
+      ApiEndpoints.owmForecast,
       queryParameters: {
-        'lat': _lat,
-        'lon': _lng,
+        'lat': lat,
+        'lon': lng,
         'appid': Env.owmApiKey,
         'units': 'metric',
       },

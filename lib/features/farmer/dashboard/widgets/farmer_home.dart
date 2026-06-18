@@ -5,8 +5,8 @@ import 'package:smart_kishan/app/router/app_routes.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/widgets/app_section_header.dart';
-import 'package:smart_kishan/features/auth/session/session_cubit.dart';
-import 'package:smart_kishan/features/auth/session/session_state.dart';
+import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
+import 'package:smart_kishan/features/auth/session/cubit/session_state.dart';
 import 'package:smart_kishan/features/common/dashboard_tab_cubit.dart';
 import 'package:smart_kishan/features/farmer/crop_info/widgets/crop_info_banner.dart';
 import 'package:smart_kishan/features/farmer/daily_activity/cubit/daily_activity_cubit.dart';
@@ -20,21 +20,9 @@ import 'package:smart_kishan/features/farmer/govt_services/govt_services_section
 import 'package:smart_kishan/features/farmer/inventory/cubit/inventory_cubit.dart';
 import 'package:smart_kishan/features/farmer/inventory/cubit/inventory_state.dart';
 import 'package:smart_kishan/features/farmer/notes/widgets/notes_section.dart';
-import 'package:smart_kishan/features/farmer/weather/cubit/weather_cubit.dart';
 
-class FarmerHome extends StatefulWidget {
+class FarmerHome extends StatelessWidget {
   const FarmerHome({super.key});
-
-  @override
-  State<FarmerHome> createState() => _FarmerHomeState();
-}
-
-class _FarmerHomeState extends State<FarmerHome> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<WeatherCubit>().load();
-  }
 
   @override
   Widget build(BuildContext context) {

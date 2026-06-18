@@ -5,8 +5,8 @@ import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/features/auth/widgets/or_divider.dart';
 
-import '../widgets/phone_entry_form.dart';
-import '../widgets/auth_flow_scaffold.dart';
+import '../../widgets/phone_entry_form.dart';
+import '../../widgets/auth_flow_scaffold.dart';
 
 /// Password reset step 1: phone → OTP. Reuses PhoneEntryForm; the route
 /// provides PhoneEntryCubit(purpose: passwordReset).

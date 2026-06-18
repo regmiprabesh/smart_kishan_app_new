@@ -10,8 +10,8 @@ import 'package:smart_kishan/core/utils/formatters.dart';
 import 'package:smart_kishan/core/widgets/app_primary_button.dart';
 import 'package:smart_kishan/features/auth/data/auth_flow_args.dart';
 import 'package:smart_kishan/features/auth/data/otp_purpose.dart';
-import 'package:smart_kishan/features/auth/otp/otp_cubit.dart';
-import 'package:smart_kishan/features/auth/otp/otp_state.dart';
+import 'package:smart_kishan/features/auth/otp/cubit/otp_cubit.dart';
+import 'package:smart_kishan/features/auth/otp/cubit/otp_state.dart';
 import 'package:smart_kishan/features/auth/otp/widgets/otp_input.dart';
 import 'package:smart_kishan/features/auth/widgets/auth_flow_scaffold.dart';
 

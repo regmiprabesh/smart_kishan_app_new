@@ -1,15 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/network/api_client.dart';
-import '../data/auth_flow_args.dart';
-import '../data/auth_repository.dart';
+import '../../../../core/network/api_client.dart';
+import '../../data/auth_flow_args.dart';
+import '../../data/auth_repository.dart';
 import 'reset_password_state.dart';
 
 /// Password reset step 3: new password. Phone + verification token
 /// arrive via [args] from the OTP step.
 class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   ResetPasswordCubit(this._authRepository, this.args)
-      : super(const ResetPasswordInitial());
+    : super(const ResetPasswordInitial());
 
   final AuthRepository _authRepository;
   final VerifiedFlowArgs args;

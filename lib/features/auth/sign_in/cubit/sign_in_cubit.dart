@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_kishan/core/network/api_client.dart';
 import 'package:smart_kishan/features/auth/data/auth_repository.dart';
-import 'package:smart_kishan/features/auth/session/session_cubit.dart';
+import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
 
 import 'sign_in_state.dart';
 

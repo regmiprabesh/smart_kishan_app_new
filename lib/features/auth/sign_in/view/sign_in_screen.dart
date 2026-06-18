@@ -10,8 +10,8 @@ import 'package:smart_kishan/core/widgets/app_text_field.dart';
 import 'package:smart_kishan/core/widgets/app_primary_button.dart';
 import 'package:smart_kishan/features/auth/widgets/auth_flow_scaffold.dart';
 import 'package:smart_kishan/features/auth/widgets/or_divider.dart';
-import 'sign_in_cubit.dart';
-import 'sign_in_state.dart';
+import '../cubit/sign_in_cubit.dart';
+import '../cubit/sign_in_state.dart';
 
 /// Sign-in. Pure UI — logic in SignInCubit; on success SessionCubit emits
 /// Authenticated and the router redirects, so this screen does nothing.

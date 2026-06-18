@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_kishan/core/network/api_client.dart';
 import 'package:smart_kishan/features/auth/data/auth_flow_args.dart';
 import 'package:smart_kishan/features/auth/data/auth_repository.dart';
-import 'package:smart_kishan/features/auth/register_details/register_details_state.dart';
+import 'package:smart_kishan/features/auth/register_details/cubit/register_details_state.dart';
 
 class RegisterDetailsCubit extends Cubit<RegisterDetailsState> {
   RegisterDetailsCubit(this._authRepository, this.args)

@@ -7,7 +7,7 @@ import 'package:smart_kishan/app/app.dart';
 import 'package:smart_kishan/core/di/injector.dart';
 import 'package:smart_kishan/core/services/location_service.dart';
 import 'package:smart_kishan/core/services/notification_service.dart';
-import 'package:smart_kishan/features/auth/session/session_cubit.dart';
+import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
 import 'package:smart_kishan/firebase_options.dart';
 
 @pragma('vm:entry-point')
