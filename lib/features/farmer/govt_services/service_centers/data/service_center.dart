@@ -1,6 +1,4 @@
-import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:smart_kishan/shared/models/location.dart';
 import 'package:smart_kishan/shared/models/multilingual_field.dart';
 

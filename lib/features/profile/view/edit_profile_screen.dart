@@ -6,8 +6,8 @@ import 'package:smart_kishan/core/utils/app_snackbar.dart';
 import 'package:smart_kishan/core/utils/validators.dart';
 import 'package:smart_kishan/core/widgets/app_text_field.dart';
 import 'package:smart_kishan/core/widgets/app_primary_button.dart';
-import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
-import 'package:smart_kishan/features/auth/session/cubit/session_state.dart';
+import 'package:smart_kishan/features/auth/cubit/session_cubit.dart';
+import 'package:smart_kishan/features/auth/cubit/session_state.dart';
 import 'package:smart_kishan/features/profile/cubit/edit_profile_cubit.dart';
 import 'package:smart_kishan/features/profile/cubit/edit_profile_state.dart';
 

@@ -27,8 +27,9 @@ class CropInfo {
     // name/description may arrive as a Map or a JSON string.
     MultilingualField? ml(dynamic raw) {
       if (raw == null) return null;
-      if (raw is Map)
+      if (raw is Map) {
         return MultilingualField.fromJson(Map<String, dynamic>.from(raw));
+      }
       if (raw is String) {
         try {
           return MultilingualField.fromJson(
@@ -82,8 +83,9 @@ class CropActivity {
   factory CropActivity.fromJson(Map<String, dynamic> json) {
     MultilingualField? ml(dynamic raw) {
       if (raw == null) return null;
-      if (raw is Map)
+      if (raw is Map) {
         return MultilingualField.fromJson(Map<String, dynamic>.from(raw));
+      }
       if (raw is String) {
         try {
           return MultilingualField.fromJson(

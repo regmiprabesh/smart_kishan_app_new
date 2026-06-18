@@ -146,10 +146,10 @@ class CropInfoDetailScreen extends StatelessWidget {
                         ),
                       ),
                       if (crop.description?.of(context) != null &&
-                          crop.description!.of(context)!.isNotEmpty) ...[
+                          crop.description!.of(context).isNotEmpty) ...[
                         const SizedBox(height: 8),
                         Text(
-                          crop.description!.of(context)!,
+                          crop.description!.of(context),
                           style: TextStyle(
                             fontSize: 14,
                             height: 1.6,

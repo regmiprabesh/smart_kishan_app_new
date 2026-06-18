@@ -202,7 +202,7 @@ class _TypeChip extends StatelessWidget {
     required this.selected,
     required this.color,
     required this.onTap,
-    this.icon,
+    this.icon = Icons.location_pin,
   });
 
   final String label;

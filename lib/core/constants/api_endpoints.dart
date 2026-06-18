@@ -1,4 +1,3 @@
-import 'package:smart_kishan/core/config/env.dart';
 
 abstract final class ApiEndpoints {
   // OpenWeatherMap. Key is supplied separately via Env.owmApiKey.

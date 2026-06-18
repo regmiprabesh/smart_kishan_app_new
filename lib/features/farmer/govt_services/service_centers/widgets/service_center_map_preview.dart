@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/formatters.dart';
-import 'package:smart_kishan/core/widgets/app_primary_button.dart';
 
 import '../data/service_center.dart';
 import 'service_center_type_style.dart';

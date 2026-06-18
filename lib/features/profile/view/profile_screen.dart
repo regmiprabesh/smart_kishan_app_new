@@ -6,8 +6,8 @@ import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/app/theme/theme_cubit.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/widgets/app_confirm_dialog.dart';
-import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
-import 'package:smart_kishan/features/auth/session/cubit/session_state.dart';
+import 'package:smart_kishan/features/auth/cubit/session_cubit.dart';
+import 'package:smart_kishan/features/auth/cubit/session_state.dart';
 import 'package:smart_kishan/features/language/cubit/locale_cubit.dart';
 import 'package:smart_kishan/features/language/data/Language.dart';
 import 'package:smart_kishan/features/language/widgets/language_tile.dart';
@@ -158,7 +158,7 @@ class ProfileScreen extends StatelessWidget {
                 height: 32,
                 indent: 16,
                 endIndent: 16,
-                color: (colors.textSecondary as Color).withValues(alpha: 0.12),
+                color: (colors.textSecondary).withValues(alpha: 0.12),
               ),
               ProfileMenuOption(
                 icon: Icons.logout,
@@ -193,7 +193,7 @@ class _SectionLabel extends StatelessWidget {
           fontSize: 11,
           fontWeight: FontWeight.w700,
           letterSpacing: 1.0,
-          color: (colors.textSecondary as Color).withValues(alpha: 0.6),
+          color: (colors.textSecondary).withValues(alpha: 0.6),
         ),
       ),
     );

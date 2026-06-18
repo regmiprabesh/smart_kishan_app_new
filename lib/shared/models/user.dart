@@ -109,21 +109,21 @@ class User {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['email'] = this.email;
-    data['phone'] = this.phone;
-    data['parent_id'] = this.parentId;
-    data['password'] = this.password;
-    data['updated_at'] = this.updatedAt;
-    data['created_at'] = this.createdAt;
-    data['image'] = this.image;
-    data['address'] = this.address;
-    data['province_id'] = this.provinceId;
-    data['district_id'] = this.districtId;
-    data['municipality_id'] = this.municipalityId;
-    data['ward_id'] = this.wardId;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['email'] = email;
+    data['phone'] = phone;
+    data['parent_id'] = parentId;
+    data['password'] = password;
+    data['updated_at'] = updatedAt;
+    data['created_at'] = createdAt;
+    data['image'] = image;
+    data['address'] = address;
+    data['province_id'] = provinceId;
+    data['district_id'] = districtId;
+    data['municipality_id'] = municipalityId;
+    data['ward_id'] = wardId;
     return data;
   }
 }

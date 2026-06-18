@@ -138,8 +138,9 @@ class _AddFarmlandScreenState extends State<AddFarmlandScreen> {
           _nitrogen.text = soil.totalNitrogen!.toString();
         }
         if (soil.p2o5 != null) _phosphate.text = soil.p2o5!.toString();
-        if (soil.potassium != null)
+        if (soil.potassium != null) {
           _potassium.text = soil.potassium!.toString();
+        }
         if (soil.ph != null) _ph.text = soil.ph!.toString();
         if (soil.organicMatter != null) {
           _organic.text = soil.organicMatter!.toString();
@@ -147,8 +148,9 @@ class _AddFarmlandScreenState extends State<AddFarmlandScreen> {
       }
       _fetchingSoil = false;
     });
-    if (soil == null && mounted)
+    if (soil == null && mounted) {
       AppSnackbar.error(l10n.farmlandSoilFetchFailed);
+    }
   }
 
   Future<void> _submit() async {

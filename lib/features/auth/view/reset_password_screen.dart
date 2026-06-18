@@ -4,11 +4,11 @@ import 'package:go_router/go_router.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/widgets/app_primary_button.dart';
 
-import '../../../../app/router/app_routes.dart';
-import '../../../../core/utils/app_snackbar.dart';
-import '../../../../core/utils/validators.dart';
-import '../../../../core/widgets/app_text_field.dart';
-import '../../widgets/auth_flow_scaffold.dart';
+import '../../../app/router/app_routes.dart';
+import '../../../core/utils/app_snackbar.dart';
+import '../../../core/utils/validators.dart';
+import '../../../core/widgets/app_text_field.dart';
+import '../widgets/auth_flow_scaffold.dart';
 import '../cubit/reset_password_cubit.dart';
 import '../cubit/reset_password_state.dart';
 

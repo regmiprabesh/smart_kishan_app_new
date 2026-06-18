@@ -34,7 +34,7 @@ class CommodityPriceRow extends StatelessWidget {
                 ),
               ),
               if (commodity.unit?.of(context) != null &&
-                  commodity.unit!.of(context)!.isNotEmpty)
+                  commodity.unit!.of(context).isNotEmpty)
                 Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
@@ -43,7 +43,7 @@ class CommodityPriceRow extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(
-                    commodity.unit!.of(context)!,
+                    commodity.unit!.of(context),
                     style: TextStyle(
                         fontSize: 11, color: colors.textSecondary),
                   ),

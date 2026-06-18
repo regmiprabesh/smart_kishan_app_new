@@ -9,8 +9,8 @@ import 'package:smart_kishan/core/utils/validators.dart';
 import 'package:smart_kishan/core/widgets/app_text_field.dart';
 import 'package:smart_kishan/core/widgets/app_primary_button.dart';
 import 'package:smart_kishan/features/auth/data/auth_flow_args.dart';
-import 'package:smart_kishan/features/auth/phone_entry/cubit/phone_entry_cubit.dart';
-import 'package:smart_kishan/features/auth/phone_entry/cubit/phone_entry_state.dart';
+import 'package:smart_kishan/features/auth/cubit/phone_entry_cubit.dart';
+import 'package:smart_kishan/features/auth/cubit/phone_entry_state.dart';
 
 /// Phone field + submit button + error handling for "send me an OTP".
 /// Used by RegisterPhoneScreen AND ForgotPasswordPhoneScreen (shared sub-flow) — the cubit's

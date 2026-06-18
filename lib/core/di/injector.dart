@@ -10,7 +10,7 @@ import 'package:smart_kishan/core/services/location_service.dart';
 import 'package:smart_kishan/core/services/notification_service.dart';
 import 'package:smart_kishan/core/services/routing_service.dart';
 import 'package:smart_kishan/features/auth/data/auth_repository.dart';
-import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
+import 'package:smart_kishan/features/auth/cubit/session_cubit.dart';
 import 'package:smart_kishan/features/farmer/crop_info/data/crop_info_repository.dart';
 import 'package:smart_kishan/features/farmer/daily_activity/data/activity_repository.dart';
 import 'package:smart_kishan/features/farmer/farmland/data/farmland_repository.dart';

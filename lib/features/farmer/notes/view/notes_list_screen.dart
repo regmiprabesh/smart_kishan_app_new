@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 import 'package:smart_kishan/app/router/app_routes.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
@@ -11,8 +10,8 @@ import 'package:smart_kishan/core/widgets/app_bar.dart';
 import 'package:smart_kishan/core/widgets/app_confirm_dialog.dart';
 import 'package:smart_kishan/core/widgets/app_empty_state.dart';
 import 'package:smart_kishan/core/widgets/app_icon_action_button.dart';
-import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
-import 'package:smart_kishan/features/auth/session/cubit/session_state.dart';
+import 'package:smart_kishan/features/auth/cubit/session_cubit.dart';
+import 'package:smart_kishan/features/auth/cubit/session_state.dart';
 import 'package:smart_kishan/features/farmer/notes/cubit/notes_cubit.dart';
 import 'package:smart_kishan/features/farmer/notes/cubit/notes_state.dart';
 import 'package:smart_kishan/features/farmer/notes/data/note.dart';

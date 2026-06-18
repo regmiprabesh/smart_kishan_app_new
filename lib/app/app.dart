@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:smart_kishan/core/di/injector.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/app_snackbar.dart';
-import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
+import 'package:smart_kishan/features/auth/cubit/session_cubit.dart';
 import 'package:smart_kishan/features/language/cubit/locale_cubit.dart';
 
 import 'theme/app_theme.dart';

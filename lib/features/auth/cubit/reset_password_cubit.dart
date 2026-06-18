@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/network/api_client.dart';
-import '../../data/auth_flow_args.dart';
-import '../../data/auth_repository.dart';
+import '../../../core/network/api_client.dart';
+import '../data/auth_flow_args.dart';
+import '../data/auth_repository.dart';
 import 'reset_password_state.dart';
 
 /// Password reset step 3: new password. Phone + verification token

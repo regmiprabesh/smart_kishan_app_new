@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -10,8 +9,8 @@ import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/formatters.dart';
 import 'package:smart_kishan/core/widgets/app_bottom_nav.dart';
 import 'package:smart_kishan/core/widgets/app_drawer.dart';
-import 'package:smart_kishan/features/auth/session/cubit/session_cubit.dart';
-import 'package:smart_kishan/features/auth/session/cubit/session_state.dart';
+import 'package:smart_kishan/features/auth/cubit/session_cubit.dart';
+import 'package:smart_kishan/features/auth/cubit/session_state.dart';
 import 'package:smart_kishan/features/common/dashboard_tab_cubit.dart';
 import 'package:smart_kishan/features/farmer/daily_activity/cubit/daily_activity_cubit.dart';
 import 'package:smart_kishan/features/farmer/dashboard/widgets/farmer_home.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/network/api_client.dart';
-import '../../data/auth_repository.dart';
-import '../../data/otp_purpose.dart';
+import '../../../core/network/api_client.dart';
+import '../data/auth_repository.dart';
+import '../data/otp_purpose.dart';
 import 'phone_entry_state.dart';
 
 class PhoneEntryCubit extends Cubit<PhoneEntryState> {
