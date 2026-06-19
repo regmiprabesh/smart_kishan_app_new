@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:smart_kishan/app/router/app_routes.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/widgets/app_primary_button.dart';
-import 'package:smart_kishan/features/language/data/Language.dart';
+import 'package:smart_kishan/features/language/data/language.dart';
 import 'cubit/locale_cubit.dart';
 import 'widgets/language_tile.dart';
 

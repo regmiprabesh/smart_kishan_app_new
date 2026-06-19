@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_kishan/features/language/data/Language.dart';
+import 'package:smart_kishan/features/language/data/language.dart';
 
 class LanguageTile extends StatelessWidget {
   const LanguageTile({

@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -8,8 +5,8 @@ import 'package:smart_kishan/app/router/app_routes.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/formatters.dart';
-import 'package:smart_kishan/core/widgets/app_network_image.dart';
-import 'package:smart_kishan/core/widgets/app_image_preview.dart';
+import 'package:smart_kishan/core/widgets/app_detail_hero.dart';
+import 'package:smart_kishan/core/widgets/app_glass_back_button.dart';
 import 'package:smart_kishan/core/widgets/app_primary_button.dart';
 import 'package:smart_kishan/features/farmer/farmland/data/recommended_crops.dart';
 import '../cubit/farmland_cubit.dart';
@@ -61,8 +58,6 @@ class _DetailBody extends StatelessWidget {
   final Farmland farmland;
   final FarmlandCubit cubit;
 
-  bool get _hasImage => farmland.image != null && farmland.image!.isNotEmpty;
-
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
@@ -79,33 +74,12 @@ class _DetailBody extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Hero image — full-bleed, extends under the status bar.
-                GestureDetector(
-                  onTap: _hasImage
-                      ? () => AppImagePreview.open(
-                          context,
-                          imageUrls: [farmland.image!],
-                        )
-                      : null,
-                  child: SizedBox(
-                    height: 280,
-                    width: double.infinity,
-                    child: _hasImage
-                        ? AppNetworkImage(
-                            url: farmland.image,
-                            fit: BoxFit.cover,
-                          )
-                        : Container(
-                            color: colors.surfaceAlt,
-                            child: Center(
-                              child: Icon(
-                                Icons.landscape_rounded,
-                                size: 56,
-                                color: colors.primary.withValues(alpha: 0.4),
-                              ),
-                            ),
-                          ),
-                  ),
+                // Full-bleed hero (rich, shared) — unified with crop detail.
+                AppDetailHero(
+                  imageUrl: farmland.image,
+                  fallbackIcon: Icons.landscape_rounded,
+                  fit: BoxFit.cover,
+                  imageUnderStatusBar: true,
                 ),
 
                 // Details
@@ -218,7 +192,7 @@ class _DetailBody extends StatelessWidget {
           Positioned(
             top: topInset + 8,
             left: 12,
-            child: _GlassBackButton(onTap: () => context.pop()),
+            child: AppGlassBackButton(onTap: () => context.pop()),
           ),
         ],
       ),
@@ -313,32 +287,6 @@ class _InfoCard extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _GlassBackButton extends StatelessWidget {
-  const _GlassBackButton({required this.onTap});
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipOval(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-        child: Material(
-          color: Colors.black.withValues(alpha: 0.28),
-          shape: const CircleBorder(),
-          child: InkWell(
-            onTap: onTap,
-            customBorder: const CircleBorder(),
-            child: const Padding(
-              padding: EdgeInsets.all(10),
-              child: Icon(CupertinoIcons.back, color: Colors.white, size: 22),
-            ),
-          ),
-        ),
       ),
     );
   }

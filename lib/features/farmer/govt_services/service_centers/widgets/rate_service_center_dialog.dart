@@ -48,7 +48,6 @@ class _RateServiceCenterDialogState extends State<RateServiceCenterDialog> {
     super.dispose();
   }
 
-  @override
   static const _labels = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
 
   @override

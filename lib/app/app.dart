@@ -37,7 +37,7 @@ class SmartKishanApp extends StatelessWidget {
                 // Localization
                 localizationsDelegates: AppLocalizations.localizationsDelegates,
                 supportedLocales: AppLocalizations.supportedLocales,
-                locale: locale,
+                locale: Locale('ne'),
 
                 // Theme — no lerp on theme/locale switches (fonts with
                 // different metrics made the lerp look like resizing).

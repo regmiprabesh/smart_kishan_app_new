@@ -9,7 +9,7 @@ import 'package:smart_kishan/core/enums/app_mode.dart';
 import 'package:smart_kishan/core/services/local_storage_service.dart';
 import 'package:smart_kishan/features/auth/data/auth_flow_args.dart';
 import 'package:smart_kishan/features/auth/data/otp_purpose.dart';
-import 'package:smart_kishan/features/auth/forgot_password_phone/view/forgot_password_phone_screen.dart';
+import 'package:smart_kishan/features/auth/view/forgot_password_phone_screen.dart';
 import 'package:smart_kishan/features/auth/cubit/otp_cubit.dart';
 import 'package:smart_kishan/features/auth/view/otp_screen.dart';
 import 'package:smart_kishan/features/auth/cubit/phone_entry_cubit.dart';

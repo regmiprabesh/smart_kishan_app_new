@@ -121,13 +121,10 @@ class _InventoryItemCard extends StatelessWidget {
 
   Future<void> _confirmDelete(BuildContext context) async {
     final l10n = AppLocalizations.of(context)!;
-    final ok = await AppConfirmDialog.show(
+    final ok = await AppConfirmDialog.delete(
       context,
       title: l10n.inventoryItemDeleteConfirmTitle,
       message: l10n.inventoryItemDeleteConfirmMessage,
-      confirmLabel: l10n.commonDelete,
-      cancelLabel: l10n.commonCancel,
-      destructive: true,
     );
     if (ok) {
       final success = await cubit.delete(inventoryItem.id!);

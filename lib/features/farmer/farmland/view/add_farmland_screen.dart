@@ -212,7 +212,6 @@ class _AddFarmlandScreenState extends State<AddFarmlandScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final colors = context.colors;
 
     return Scaffold(
       appBar: AppAppBar(

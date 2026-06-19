@@ -85,7 +85,6 @@ class AppDrawer extends StatelessWidget {
 
   List<Widget> _buildItems(dynamic colors) {
     final widgets = <Widget>[];
-    bool seenDestructive = false;
 
     for (int i = 0; i < items.length; i++) {
       final item = items[i];

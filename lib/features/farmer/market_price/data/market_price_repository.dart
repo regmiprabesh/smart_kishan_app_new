@@ -11,8 +11,6 @@ class MarketPriceRepository {
   Future<List<Market>> fetchMarkets() async {
     final res = await _api.get(ApiEndpoints.marketPrices);
     final list = (res.data as List?) ?? const [];
-    return list
-        .map((e) => Market.fromJson(e as Map<String, dynamic>))
-        .toList();
+    return list.map((e) => Market.fromJson(e as Map<String, dynamic>)).toList();
   }
 }
