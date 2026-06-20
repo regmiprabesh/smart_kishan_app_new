@@ -8,6 +8,7 @@ import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/features/farmer/notes/cubit/notes_cubit.dart';
 import 'package:smart_kishan/features/farmer/notes/cubit/notes_state.dart';
 import 'package:smart_kishan/features/farmer/notes/data/note.dart';
+import 'package:smart_kishan/features/farmer/notes/view/notes_skeleton.dart';
 
 class NotesSection extends StatelessWidget {
   const NotesSection({super.key});
@@ -86,10 +87,7 @@ class NotesSection extends StatelessWidget {
               child: BlocBuilder<NotesCubit, NotesState>(
                 builder: (context, state) {
                   return switch (state) {
-                    NotesLoading() => const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20),
-                      child: Center(child: CircularProgressIndicator()),
-                    ),
+                    NotesLoading() => NotesSectionSkeleton(),
                     NotesLoaded(:final notes) =>
                       notes.isEmpty
                           ? _EmptyPreview(l10n: l10n, colors: colors)

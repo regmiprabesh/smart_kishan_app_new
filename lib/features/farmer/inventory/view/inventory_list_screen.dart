@@ -7,6 +7,7 @@ import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/app_snackbar.dart';
 import 'package:smart_kishan/core/utils/formatters.dart';
 import 'package:smart_kishan/core/widgets/app_bar.dart';
+import 'package:smart_kishan/core/widgets/app_card_list_skeleton.dart';
 import 'package:smart_kishan/core/widgets/app_card_menu.dart';
 import 'package:smart_kishan/core/widgets/app_confirm_dialog.dart';
 import 'package:smart_kishan/features/farmer/inventory/cubit/inventory_cubit.dart';
@@ -34,9 +35,7 @@ class InventoryListScreen extends StatelessWidget {
         body: BlocBuilder<InventoryCubit, InventoryState>(
           builder: (context, state) {
             return switch (state) {
-              InventoryLoading() => const Center(
-                child: CircularProgressIndicator(),
-              ),
+              InventoryLoading() => const AppCardListSkeleton(),
               InventoryFailure() => AppEmptyState(
                 icon: Icons.error_outline,
                 title: l10n.errorGeneric,

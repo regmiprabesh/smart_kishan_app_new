@@ -7,6 +7,7 @@ import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/app_snackbar.dart';
 import 'package:smart_kishan/core/utils/formatters.dart';
 import 'package:smart_kishan/core/widgets/app_bar.dart';
+import 'package:smart_kishan/core/widgets/app_card_list_skeleton.dart';
 import 'package:smart_kishan/core/widgets/app_card_menu.dart';
 import 'package:smart_kishan/core/widgets/app_confirm_dialog.dart';
 import 'package:smart_kishan/core/widgets/app_empty_state.dart';
@@ -35,9 +36,7 @@ class DailyActivityListScreen extends StatelessWidget {
         body: BlocBuilder<DailyActivityCubit, DailyActivityState>(
           builder: (context, state) {
             return switch (state) {
-              DailyActivityLoading() => const Center(
-                child: CircularProgressIndicator(),
-              ),
+              DailyActivityLoading() => const AppCardListSkeleton(),
               DailyActivityFailure() => AppEmptyState(
                 icon: Icons.error_outline,
                 title: l10n.errorGeneric,
