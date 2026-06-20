@@ -16,7 +16,7 @@ import 'package:smart_kishan/features/farmer/notes/cubit/notes_cubit.dart';
 import 'package:smart_kishan/features/farmer/notes/cubit/notes_state.dart';
 import 'package:smart_kishan/features/farmer/notes/data/note.dart';
 import 'package:smart_kishan/features/farmer/notes/view/note_args.dart';
-import 'package:smart_kishan/features/farmer/notes/view/notes_skeleton.dart';
+import 'package:smart_kishan/features/farmer/notes/widgets/notes_skeleton.dart';
 
 class NotesListScreen extends StatelessWidget {
   const NotesListScreen({super.key, required this.notesCubit});
@@ -44,7 +44,7 @@ class NotesListScreen extends StatelessWidget {
                   )
                 : null,
             body: switch (state) {
-              NotesLoading() => const NotesListSkeleton(),
+              NotesLoading() => NotesListSkeleton(),
               NotesFailure() => AppEmptyState(
                 icon: Icons.error_outline,
                 title: l10n.errorGeneric,

@@ -366,6 +366,12 @@ class AppLocalizationsNe extends AppLocalizations {
       'के तपाईं निश्चित रूपमा लगआउट गर्न चाहनुहुन्छ?';
 
   @override
+  String get notesSearchHint => 'नोटहरू खोज्नुहोस्';
+
+  @override
+  String get notesNoResults => 'कुनै नोट भेटिएन';
+
+  @override
   String get notesAdd => 'नोट थप्नुहोस्';
 
   @override

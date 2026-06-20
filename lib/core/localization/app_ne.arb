@@ -149,6 +149,10 @@
 "confirmLogout": "लगआउट पुष्टि गर्नुहोस्",
 "confirmLogoutMessage": "के तपाईं निश्चित रूपमा लगआउट गर्न चाहनुहुन्छ?",
 
+
+"notesSearchHint": "नोटहरू खोज्नुहोस्",
+"notesNoResults":  "कुनै नोट भेटिएन",
+
 "notesAdd": "नोट थप्नुहोस्",
 "notesUpdate": "नोट अद्यावधिक गर्नुहोस्",
 

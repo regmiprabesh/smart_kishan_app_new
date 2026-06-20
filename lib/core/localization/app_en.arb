@@ -150,6 +150,9 @@
 "confirmLogout": "Confirm Logout",
 "confirmLogoutMessage": "Are you sure you want to logout?",
 
+"notesSearchHint": "Search notes",      
+"notesNoResults":  "No matching notes",
+
 "notesAdd": "Add Note",
 "notesUpdate": "Update Note",
 

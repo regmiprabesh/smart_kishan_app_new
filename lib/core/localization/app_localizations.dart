@@ -758,6 +758,18 @@ abstract class AppLocalizations {
   /// **'Are you sure you want to logout?'**
   String get confirmLogoutMessage;
 
+  /// No description provided for @notesSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search notes'**
+  String get notesSearchHint;
+
+  /// No description provided for @notesNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching notes'**
+  String get notesNoResults;
+
   /// No description provided for @notesAdd.
   ///
   /// In en, this message translates to:

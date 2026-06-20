@@ -363,6 +363,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get confirmLogoutMessage => 'Are you sure you want to logout?';
 
   @override
+  String get notesSearchHint => 'Search notes';
+
+  @override
+  String get notesNoResults => 'No matching notes';
+
+  @override
   String get notesAdd => 'Add Note';
 
   @override
