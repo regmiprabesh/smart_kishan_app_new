@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smart_kishan/app/router/app_routes.dart';
-import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/widgets/app_bar.dart';
 import 'package:smart_kishan/core/widgets/app_empty_state.dart';
+import 'package:smart_kishan/core/widgets/app_search_field.dart';
 import '../cubit/crop_info_cubit.dart';
 import '../cubit/crop_info_state.dart';
 import '../widgets/crop_grid_card.dart';
@@ -40,7 +40,11 @@ class _CropInfoListScreenState extends State<CropInfoListScreen> {
         appBar: AppAppBar(title: l10n.cropInfoTitle),
         body: Column(
           children: [
-            _SearchBox(controller: _searchController, cubit: widget.cubit),
+            AppSearchField(
+              hintText: l10n.cropInfoSearchHint,
+              controller: _searchController,
+              onChanged: widget.cubit.search,
+            ),
             Expanded(
               child: BlocBuilder<CropInfoCubit, CropInfoState>(
                 builder: (context, state) {
@@ -102,48 +106,6 @@ class _Grid extends StatelessWidget {
         onTap: () => context.push(
           AppRoutePath.cropInfoDetail,
           extra: CropInfoArgs(crop: crops[i]),
-        ),
-      ),
-    );
-  }
-}
-
-class _SearchBox extends StatelessWidget {
-  const _SearchBox({required this.controller, required this.cubit});
-  final TextEditingController controller;
-  final CropInfoCubit cubit;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    final l10n = AppLocalizations.of(context)!;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
-      child: TextField(
-        controller: controller,
-        onChanged: cubit.search,
-        decoration: InputDecoration(
-          hintText: l10n.cropInfoSearchHint,
-          prefixIcon: Icon(Icons.search, color: colors.iconSecondary),
-          suffixIcon: controller.text.isNotEmpty
-              ? IconButton(
-                  icon: Icon(Icons.close, color: colors.iconSecondary),
-                  onPressed: () {
-                    controller.clear();
-                    cubit.search('');
-                  },
-                )
-              : null,
-          filled: true,
-          fillColor: colors.surfaceAlt,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 12,
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none,
-          ),
         ),
       ),
     );

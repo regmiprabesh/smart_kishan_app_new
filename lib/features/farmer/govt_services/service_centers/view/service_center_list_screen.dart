@@ -7,6 +7,7 @@ import 'package:smart_kishan/app/router/app_routes.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/widgets/app_bar.dart';
+import 'package:smart_kishan/core/widgets/app_search_field.dart';
 
 import '../cubit/service_center_list_cubit.dart';
 import '../cubit/service_center_list_state.dart';
@@ -16,7 +17,6 @@ import '../widgets/service_center_filter_sheet.dart';
 import '../widgets/service_center_list_body.dart';
 import '../widgets/service_center_list_skeleton.dart';
 import '../widgets/service_center_map_body.dart';
-import '../widgets/service_center_search_bar.dart';
 import 'service_center_detail_args.dart';
 
 class ServiceCenterListScreen extends StatefulWidget {
@@ -153,6 +153,7 @@ class _Loaded extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final cubit = context.read<ServiceCenterListCubit>();
 
     // Search + category chips are shared chrome above both views.
@@ -160,7 +161,8 @@ class _Loaded extends StatelessWidget {
       color: context.colors.surface,
       child: Column(
         children: [
-          ServiceCenterSearchBar(
+          AppSearchField(
+            hintText: l10n.searchServiceCentersHint,
             controller: searchController,
             onChanged: cubit.search,
           ),

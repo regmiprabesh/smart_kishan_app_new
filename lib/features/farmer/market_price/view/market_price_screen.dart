@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
-import 'package:smart_kishan/core/utils/formatters.dart';
 import 'package:smart_kishan/core/widgets/app_bar.dart';
 import 'package:smart_kishan/core/widgets/app_empty_state.dart';
+import 'package:smart_kishan/core/widgets/app_search_field.dart';
 import 'package:smart_kishan/features/farmer/market_price/widgets/market_price_skeleton.dart';
 import '../cubit/market_price_cubit.dart';
 import '../cubit/market_price_state.dart';
 import '../data/market_price.dart';
-import '../widgets/commodity_price_row.dart';
+import '../widgets/market_list.dart';
+import '../widgets/market_tab_bar.dart';
 
 /// Market prices: a tab per market (Kalimati, Attariya, ...), a search box that
 /// filters commodities, and a compact price list per market. Backend-driven.
@@ -86,6 +86,7 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final single = markets.length == 1;
 
     return DefaultTabController(
@@ -93,151 +94,25 @@ class _Body extends StatelessWidget {
       child: Column(
         children: [
           // Search box
-          _SearchBox(controller: searchController, cubit: cubit),
+          AppSearchField(
+            hintText: l10n.marketSearchHint,
+            controller: searchController,
+            onChanged: cubit.search,
+          ),
 
           // Market tabs — hidden when there's only one market.
-          if (!single) _MarketTabBar(markets: markets),
+          if (!single) MarketTabBar(markets: markets),
 
           // Per-market price lists
           Expanded(
             child: TabBarView(
               children: markets
-                  .map(
-                    (m) => _MarketList(market: m, query: query, cubit: cubit),
-                  )
+                  .map((m) => MarketList(market: m, query: query, cubit: cubit))
                   .toList(),
             ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class _SearchBox extends StatelessWidget {
-  const _SearchBox({required this.controller, required this.cubit});
-  final TextEditingController controller;
-  final MarketPriceCubit cubit;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    final l10n = AppLocalizations.of(context)!;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
-      child: TextField(
-        controller: controller,
-        onChanged: cubit.search,
-        decoration: InputDecoration(
-          hintText: l10n.marketSearchHint,
-          prefixIcon: Icon(Icons.search, color: colors.iconSecondary),
-          suffixIcon: controller.text.isNotEmpty
-              ? IconButton(
-                  icon: Icon(Icons.close, color: colors.iconSecondary),
-                  onPressed: () {
-                    controller.clear();
-                    cubit.search('');
-                  },
-                )
-              : null,
-          filled: true,
-          fillColor: colors.surfaceAlt,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 12,
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _MarketTabBar extends StatelessWidget {
-  const _MarketTabBar({required this.markets});
-  final List<Market> markets;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return TabBar(
-      isScrollable: true,
-      tabAlignment: TabAlignment.start,
-      labelColor: colors.primary,
-      unselectedLabelColor: colors.textSecondary,
-      indicatorColor: colors.primary,
-      indicatorWeight: 2.5,
-      labelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
-      tabs: markets
-          .map((m) => Tab(text: m.name?.of(context) ?? m.key))
-          .toList(),
-    );
-  }
-}
-
-class _MarketList extends StatelessWidget {
-  const _MarketList({
-    required this.market,
-    required this.query,
-    required this.cubit,
-  });
-  final Market market;
-  final String query;
-  final MarketPriceCubit cubit;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    final l10n = AppLocalizations.of(context)!;
-    final items = cubit.filtered(market, query);
-
-    return Column(
-      children: [
-        // Last-updated date
-        if (market.date != null && market.date!.isNotEmpty)
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.calendar_today_rounded,
-                  size: 14,
-                  color: colors.textSecondary,
-                ),
-                const SizedBox(width: 6),
-                Text(
-                  '${l10n.marketLastUpdated}: ${context.shortDate(market.date!)}',
-                  style: TextStyle(fontSize: 12, color: colors.textSecondary),
-                ),
-              ],
-            ),
-          ),
-
-        Expanded(
-          child: items.isEmpty
-              ? AppEmptyState(
-                  icon: Icons.search_off,
-                  title: l10n.marketNoResults,
-                  compact: true,
-                )
-              : ListView.separated(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  itemCount: items.length,
-                  separatorBuilder: (_, __) => Divider(
-                    height: 1,
-                    thickness: 1,
-                    indent: 16,
-                    endIndent: 16,
-                    color: colors.divider,
-                  ),
-                  itemBuilder: (_, i) => CommodityPriceRow(commodity: items[i]),
-                ),
-        ),
-      ],
     );
   }
 }
