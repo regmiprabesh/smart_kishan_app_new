@@ -8,6 +8,8 @@ import 'package:smart_kishan/core/utils/formatters.dart';
 import 'package:smart_kishan/features/farmer/weather/cubit/weather_cubit.dart';
 import 'package:smart_kishan/features/farmer/weather/cubit/weather_state.dart';
 
+import 'weather_card_skeleton.dart';
+
 class WeatherCard extends StatelessWidget {
   const WeatherCard({super.key});
 
@@ -43,8 +45,9 @@ class WeatherCard extends StatelessWidget {
 
     return BlocBuilder<WeatherCubit, WeatherState>(
       builder: (context, state) {
+        if (state is WeatherLoading) return const WeatherCardSkeleton();
         if (state is! WeatherLoaded) {
-          // Loading or failed → keep the header clean.
+          // Failed or initial → keep the header clean.
           return const SizedBox(height: 8);
         }
         final w = state.weather;

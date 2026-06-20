@@ -15,7 +15,7 @@ import '../widgets/service_center_rating_overview.dart';
 import '../widgets/service_center_recent_reviews.dart';
 import '../widgets/service_center_services.dart';
 import '../widgets/service_center_your_rating.dart';
-import 'service_center_detail_skeleton.dart';
+import '../widgets/service_center_detail_skeleton.dart';
 
 /// Service-center detail. Hero header (image-as-banner with the name/type
 /// overlaid, or a tinted placeholder when no image), a compact info card
