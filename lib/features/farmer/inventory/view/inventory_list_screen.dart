@@ -10,6 +10,7 @@ import 'package:smart_kishan/core/widgets/app_bar.dart';
 import 'package:smart_kishan/core/widgets/app_card_list_skeleton.dart';
 import 'package:smart_kishan/core/widgets/app_card_menu.dart';
 import 'package:smart_kishan/core/widgets/app_confirm_dialog.dart';
+import 'package:smart_kishan/core/widgets/app_search_field.dart';
 import 'package:smart_kishan/features/farmer/inventory/cubit/inventory_cubit.dart';
 import 'package:smart_kishan/features/farmer/inventory/cubit/inventory_state.dart';
 import 'package:smart_kishan/core/widgets/app_empty_state.dart';
@@ -20,48 +21,66 @@ import 'package:smart_kishan/shared/models/unit.dart';
 /// Full inventory list. Rich inventoryItem cards (name, stock + unit, sellable
 /// chip, description) with edit/delete. Receives the live InventoryCubit via
 /// `extra` from the home so the count + list stay in sync.
-class InventoryListScreen extends StatelessWidget {
+class InventoryListScreen extends StatefulWidget {
   const InventoryListScreen({super.key, required this.cubit});
   final InventoryCubit cubit;
 
   @override
+  State<InventoryListScreen> createState() => _InventoryListScreenState();
+}
+
+class _InventoryListScreenState extends State<InventoryListScreen> {
+  late final _searchController = TextEditingController(
+    text: widget.cubit.state is InventoryLoaded
+        ? (widget.cubit.state as InventoryLoaded).query
+        : '',
+  );
+
+  @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-
     return BlocProvider.value(
-      value: cubit,
+      value: widget.cubit,
       child: Scaffold(
         appBar: AppAppBar(title: l10n.inventory),
         body: BlocBuilder<InventoryCubit, InventoryState>(
           builder: (context, state) {
-            return switch (state) {
-              InventoryLoading() => const AppCardListSkeleton(),
-              InventoryFailure() => AppEmptyState(
-                icon: Icons.error_outline,
-                title: l10n.errorGeneric,
-                actionLabel: l10n.commonRefresh,
-                onAction: () => cubit.load(),
-                actionIcon: Icons.refresh,
-              ),
-              InventoryLoaded(:final inventoryItems, :final units) =>
-                inventoryItems.isEmpty
-                    ? AppEmptyState(
-                        icon: Icons.inventory_2_outlined,
-                        title: l10n.inventoryItemEmpty,
-                        description: l10n.inventoryItemEmptyDescription,
-                        actionLabel: l10n.inventoryItemAdd,
-                        onAction: () => _openEditor(context),
-                      )
-                    : ListView.builder(
-                        padding: const EdgeInsets.all(16),
-                        itemCount: inventoryItems.length,
-                        itemBuilder: (_, i) => _InventoryItemCard(
-                          inventoryItem: inventoryItems[i],
-                          units: units,
-                          cubit: cubit,
-                        ),
-                      ),
-            };
+            return Column(
+              children: [
+                ColoredBox(
+                  color: context.colors.surface,
+                  child: AppSearchField(
+                    hintText: l10n.commonSearch,
+                    controller: _searchController,
+                    onChanged: widget.cubit.search,
+                    enabled: state is InventoryLoaded,
+                  ),
+                ),
+
+                Expanded(
+                  child: switch (state) {
+                    InventoryLoading() => const AppCardListSkeleton(),
+                    InventoryFailure() => AppEmptyState(
+                      icon: Icons.error_outline,
+                      title: l10n.errorGeneric,
+                      actionLabel: l10n.commonRefresh,
+                      onAction: () => widget.cubit.load(),
+                      actionIcon: Icons.refresh,
+                    ),
+                    InventoryLoaded(:final inventoryItems, :final units) =>
+                      inventoryItems.isEmpty
+                          ? AppEmptyState(
+                              icon: Icons.inventory_2_outlined,
+                              title: l10n.inventoryItemEmpty,
+                              description: l10n.inventoryItemEmptyDescription,
+                              actionLabel: l10n.inventoryItemAdd,
+                              onAction: () => _openEditor(context),
+                            )
+                          : _loaded(context, state, l10n, units),
+                  },
+                ),
+              ],
+            );
           },
         ),
         floatingActionButton: BlocBuilder<InventoryCubit, InventoryState>(
@@ -81,10 +100,43 @@ class InventoryListScreen extends StatelessWidget {
     );
   }
 
+  Widget _loaded(
+    BuildContext context,
+    InventoryLoaded state,
+    AppLocalizations l10n,
+    List<Unit> units,
+  ) {
+    if (state.inventoryItems.isEmpty) {
+      return AppEmptyState(
+        icon: Icons.inventory_2_outlined,
+        title: l10n.inventoryItemEmpty,
+        description: l10n.inventoryItemEmptyDescription,
+        actionLabel: l10n.inventoryItemAdd,
+        onAction: () => _openEditor(context),
+      );
+    }
+    final filtered = widget.cubit.filtered(state);
+    if (filtered.isEmpty) {
+      return AppEmptyState(icon: Icons.search_off, title: l10n.commonNoResults);
+    }
+    return ListView.builder(
+      padding: const EdgeInsets.all(16),
+      itemCount: filtered.length,
+      itemBuilder: (context, i) => _InventoryItemCard(
+        inventoryItem: filtered[i],
+        cubit: widget.cubit,
+        units: units,
+      ),
+    );
+  }
+
   void _openEditor(BuildContext context, {InventoryItem? inventoryItem}) {
     context.push(
       AppRoutePath.addInventoryItem,
-      extra: InventoryItemArgs(cubit: cubit, inventoryItem: inventoryItem),
+      extra: InventoryItemArgs(
+        cubit: widget.cubit,
+        inventoryItem: inventoryItem,
+      ),
     );
   }
 }
@@ -152,7 +204,7 @@ class _InventoryItemCard extends StatelessWidget {
         border: Border.all(color: colors.border.withValues(alpha: 0.5)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
+            color: context.colors.shadow,
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),

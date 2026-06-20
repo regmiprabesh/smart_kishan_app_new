@@ -437,6 +437,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonEdit => 'Edit';
 
   @override
+  String get commonSearch => 'Search';
+
+  @override
+  String get commonNoResults => 'No results found';
+
+  @override
   String get income => 'Income';
 
   @override

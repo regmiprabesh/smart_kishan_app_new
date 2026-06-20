@@ -16,15 +16,22 @@ class DailyActivityLoaded extends DailyActivityState {
   const DailyActivityLoaded({
     required this.activities,
     required this.inventoryItems,
+    this.query = '',
   });
-
   final List<Activity> activities;
-
-  /// InventoryItems for the Buy/Sell inventoryItem dropdown (from inventory).
   final List<InventoryItem> inventoryItems;
-
+  final String query;
+  DailyActivityLoaded copyWith({
+    List<Activity>? activities,
+    List<InventoryItem>? inventoryItems,
+    String? query,
+  }) => DailyActivityLoaded(
+    activities: activities ?? this.activities,
+    inventoryItems: inventoryItems ?? this.inventoryItems,
+    query: query ?? this.query,
+  );
   @override
-  List<Object?> get props => [activities, inventoryItems];
+  List<Object?> get props => [activities, inventoryItems, query];
 }
 
 class DailyActivityFailure extends DailyActivityState {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smart_kishan/app/router/app_routes.dart';
+import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/di/injector.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/services/local_storage_service.dart';
@@ -117,7 +118,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                   decoration: BoxDecoration(
                     color: active
                         ? Theme.of(context).primaryColor
-                        : Colors.grey.shade300,
+                        : context.colors.border,
                     borderRadius: BorderRadius.circular(4),
                   ),
                 );

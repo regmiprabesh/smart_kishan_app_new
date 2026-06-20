@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 abstract final class AppColors {
   // ── Brand ──────────────────────────────────────────────────────────────
-  static const primary = Color(0xFF34A853);
-  static const primaryLight = Color(0xFFC8EDD3);
-  static const primaryDark = Color(0xFF1E7A32); // pressed / dark-mode accent
+  static const primary = Color(0xFF1A7A4A);
+  static const primaryLight = Color(0xFFD6EBE0);
+  static const primaryDark = Color(0xFF15663E); // pressed / dark-mode accent
   static const secondary = Color(0xFFFE724C);
   static const secondaryLight = Color(0xFFFFDDD4);
 
@@ -101,4 +101,9 @@ abstract final class AppColors {
   static const govGreenAmberD = <Color>[Color(0xFF15784A), Color(0xFFC98417)];
   static const govRedOrangeD = <Color>[Color(0xFFB02A28), Color(0xFFC2680C)];
   static const govPurpleIndigoD = <Color>[Color(0xFF6E1C84), Color(0xFF45289A)];
+
+  // Brand header / drawer gradient (deep greens, darker than primaryDark)
+  static const headerDeep = Color(0xFF062318); // darkest — dark-mode top
+  static const headerDark = Color(0xFF0E4F2F); // shared mid-dark
+  static const headerMid = Color(0xFF1A7A4A); // light-mode bottom
 }

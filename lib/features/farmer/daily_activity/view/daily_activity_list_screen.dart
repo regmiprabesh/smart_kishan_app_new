@@ -11,6 +11,7 @@ import 'package:smart_kishan/core/widgets/app_card_list_skeleton.dart';
 import 'package:smart_kishan/core/widgets/app_card_menu.dart';
 import 'package:smart_kishan/core/widgets/app_confirm_dialog.dart';
 import 'package:smart_kishan/core/widgets/app_empty_state.dart';
+import 'package:smart_kishan/core/widgets/app_search_field.dart';
 import 'package:smart_kishan/features/farmer/daily_activity/cubit/daily_activity_cubit.dart';
 import 'package:smart_kishan/features/farmer/daily_activity/cubit/daily_activity_state.dart';
 import 'package:smart_kishan/features/farmer/daily_activity/data/activity.dart';
@@ -21,49 +22,44 @@ import 'package:smart_kishan/features/auth/cubit/session_state.dart';
 /// Full daily-activity list. Rich cards with a type badge (Buy/Sell/Other),
 /// income/expense, quantity, and an ⋮ menu (edit/delete). Receives the live
 /// cubit via `extra` from the home so the count + list stay in sync.
-class DailyActivityListScreen extends StatelessWidget {
+class DailyActivityListScreen extends StatefulWidget {
   const DailyActivityListScreen({super.key, required this.cubit});
   final DailyActivityCubit cubit;
+
+  @override
+  State<DailyActivityListScreen> createState() =>
+      _DailyActivityListScreenState();
+}
+
+class _DailyActivityListScreenState extends State<DailyActivityListScreen> {
+  late final _searchController = TextEditingController(
+    text: widget.cubit.state is DailyActivityLoaded
+        ? (widget.cubit.state as DailyActivityLoaded).query
+        : '',
+  );
+
+  @override
+  void dispose() {
+    //widget.cubit.search('');
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _openEditor({Activity? activity}) {
+    context.push(
+      AppRoutePath.addDailyActivity,
+      extra: ActivityArgs(cubit: widget.cubit, activity: activity),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
     return BlocProvider.value(
-      value: cubit,
+      value: widget.cubit,
       child: Scaffold(
         appBar: AppAppBar(title: l10n.dailyActivities),
-        body: BlocBuilder<DailyActivityCubit, DailyActivityState>(
-          builder: (context, state) {
-            return switch (state) {
-              DailyActivityLoading() => const AppCardListSkeleton(),
-              DailyActivityFailure() => AppEmptyState(
-                icon: Icons.error_outline,
-                title: l10n.errorGeneric,
-                actionLabel: l10n.commonRefresh,
-                actionIcon: Icons.refresh,
-                onAction: () => cubit.load(),
-              ),
-              DailyActivityLoaded(:final activities) =>
-                activities.isEmpty
-                    ? AppEmptyState(
-                        icon: Icons.event_note_outlined,
-                        title: l10n.dailyActivityEmpty,
-                        description: l10n.dailyActivityEmptyDescription,
-                        actionLabel: l10n.dailyActivityAdd,
-                        onAction: () => _openEditor(context),
-                      )
-                    : ListView.builder(
-                        padding: const EdgeInsets.all(16),
-                        itemCount: activities.length,
-                        itemBuilder: (_, i) => _ActivityCard(
-                          activity: activities[i],
-                          cubit: cubit,
-                        ),
-                      ),
-            };
-          },
-        ),
         floatingActionButton:
             BlocBuilder<DailyActivityCubit, DailyActivityState>(
               builder: (context, state) {
@@ -71,21 +67,72 @@ class DailyActivityListScreen extends StatelessWidget {
                     state is DailyActivityLoaded && state.activities.isNotEmpty;
                 return hasItems
                     ? FloatingActionButton.extended(
-                        onPressed: () => _openEditor(context),
+                        onPressed: () => _openEditor(),
                         icon: const Icon(Icons.add),
                         label: Text(l10n.dailyActivityAdd),
                       )
                     : const SizedBox.shrink();
               },
             ),
+        body: BlocBuilder<DailyActivityCubit, DailyActivityState>(
+          builder: (context, state) {
+            return Column(
+              children: [
+                ColoredBox(
+                  color: context.colors.surface,
+                  child: AppSearchField(
+                    hintText: l10n.commonSearch,
+                    controller: _searchController,
+                    onChanged: widget.cubit.search,
+                    enabled: state is DailyActivityLoaded,
+                  ),
+                ),
+                Expanded(
+                  child: switch (state) {
+                    DailyActivityLoading() => const AppCardListSkeleton(),
+                    DailyActivityFailure() => AppEmptyState(
+                      icon: Icons.error_outline,
+                      title: l10n.errorGeneric,
+                      actionLabel: l10n.commonRefresh,
+                      actionIcon: Icons.refresh,
+                      onAction: () => widget.cubit.load(),
+                    ),
+                    DailyActivityLoaded() => _loaded(context, state, l10n),
+                  },
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
 
-  void _openEditor(BuildContext context, {Activity? activity}) {
-    context.push(
-      AppRoutePath.addDailyActivity,
-      extra: ActivityArgs(cubit: cubit, activity: activity),
+  Widget _loaded(
+    BuildContext context,
+    DailyActivityLoaded state,
+    AppLocalizations l10n,
+  ) {
+    // Empty = no activities at all (show the add CTA).
+    if (state.activities.isEmpty) {
+      return AppEmptyState(
+        icon: Icons.event_note_outlined,
+        title: l10n.dailyActivityEmpty,
+        description: l10n.dailyActivityEmptyDescription,
+        actionLabel: l10n.dailyActivityAdd,
+        onAction: () => _openEditor(),
+      );
+    }
+    // Filtered by the current query (lives in the cubit/state).
+    final filtered = widget.cubit.filtered(state);
+    if (filtered.isEmpty) {
+      return AppEmptyState(icon: Icons.search_off, title: l10n.commonNoResults);
+    }
+    return ListView.builder(
+      padding: const EdgeInsets.all(16),
+      itemCount: filtered.length,
+      itemBuilder: (_, i) =>
+          _ActivityCard(activity: filtered[i], cubit: widget.cubit),
     );
   }
 }
@@ -152,7 +199,7 @@ class _ActivityCard extends StatelessWidget {
         border: Border.all(color: colors.border.withValues(alpha: 0.5)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
+            color: context.colors.shadow,
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/app/theme/theme_cubit.dart';
 
 /// Light/dark theme row with a custom animated pill toggle.
@@ -130,7 +131,7 @@ class _ThemePillToggle extends StatelessWidget {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.18),
+                      color: context.colors.shadow,
                       blurRadius: 4,
                       offset: const Offset(0, 1),
                     ),

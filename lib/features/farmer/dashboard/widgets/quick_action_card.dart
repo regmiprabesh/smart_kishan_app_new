@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/utils/formatters.dart';
 
 class QuickAction {
@@ -35,7 +36,7 @@ class QuickActionCard extends StatelessWidget {
             offset: const Offset(0, 4),
           ),
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.08),
+            color: context.colors.shadow,
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),

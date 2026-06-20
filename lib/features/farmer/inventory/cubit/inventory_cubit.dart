@@ -13,6 +13,7 @@ class InventoryCubit extends Cubit<InventoryState> {
 
   final InventoryItemRepository _repository;
   final UnitRepository _unitRepository;
+  String _query = '';
 
   List<InventoryItem> get _inventoryItems => state is InventoryLoaded
       ? List.of((state as InventoryLoaded).inventoryItems)
@@ -31,7 +32,13 @@ class InventoryCubit extends Cubit<InventoryState> {
       } catch (e) {
         debugPrint('Units load failed: $e');
       }
-      emit(InventoryLoaded(inventoryItems: inventoryItems, units: units));
+      emit(
+        InventoryLoaded(
+          inventoryItems: inventoryItems,
+          units: units,
+          query: _query,
+        ),
+      );
     } catch (e) {
       debugPrint('Inventory load failed: $e');
       emit(const InventoryFailure());
@@ -45,6 +52,7 @@ class InventoryCubit extends Cubit<InventoryState> {
         InventoryLoaded(
           inventoryItems: [..._inventoryItems, created],
           units: _units,
+          query: _query,
         ),
       );
       return true;
@@ -60,7 +68,7 @@ class InventoryCubit extends Cubit<InventoryState> {
       final list = _inventoryItems
           .map((p) => p.id == updated.id ? updated : p)
           .toList();
-      emit(InventoryLoaded(inventoryItems: list, units: _units));
+      emit(InventoryLoaded(inventoryItems: list, units: _units, query: _query));
       return true;
     } catch (e) {
       debugPrint('InventoryItem update failed: $e');
@@ -75,6 +83,7 @@ class InventoryCubit extends Cubit<InventoryState> {
         InventoryLoaded(
           inventoryItems: _inventoryItems.where((p) => p.id != id).toList(),
           units: _units,
+          query: _query,
         ),
       );
       return true;
@@ -82,5 +91,23 @@ class InventoryCubit extends Cubit<InventoryState> {
       debugPrint('InventoryItem delete failed: $e');
       return false;
     }
+  }
+
+  void search(String query) {
+    final s = state;
+    _query = query;
+    if (s is InventoryLoaded) emit(s.copyWith(query: query));
+  }
+
+  List<InventoryItem> filtered(InventoryLoaded state) {
+    final q = state.query.trim().toLowerCase();
+    if (q.isEmpty) return state.inventoryItems;
+    return state.inventoryItems
+        .where(
+          (i) =>
+              (i.name ?? '').toLowerCase().contains(q) ||
+              (i.description ?? '').toLowerCase().contains(q),
+        )
+        .toList();
   }
 }

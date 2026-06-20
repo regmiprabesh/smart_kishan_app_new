@@ -78,7 +78,7 @@ class _BackButton extends StatelessWidget {
       color: colors.surface,
       shape: const CircleBorder(),
       elevation: 2,
-      shadowColor: Colors.black.withValues(alpha: 0.25),
+      shadowColor: context.colors.shadow,
       child: InkWell(
         customBorder: const CircleBorder(),
         onTap: onTap,

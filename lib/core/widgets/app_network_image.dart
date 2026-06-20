@@ -31,8 +31,9 @@ class AppNetworkImage extends StatelessWidget {
       child = CachedNetworkImage(
         imageUrl: url!,
         fit: fit,
-        placeholder: (_, __) => AppShimmer(child: Container(color: Colors.white)),
-        errorWidget: (_, __, ___) => _fallback(colors),
+        placeholder: (_, __) =>
+            AppShimmer(child: Container(color: Colors.white)),
+        errorWidget: (context, _, ___) => _fallback(colors),
       );
     }
 
@@ -42,9 +43,9 @@ class AppNetworkImage extends StatelessWidget {
   }
 
   Widget _fallback(dynamic colors) => Container(
-        color: colors.surfaceAlt,
-        child: Center(
-          child: Icon(fallbackIcon, color: colors.iconSecondary, size: 36),
-        ),
-      );
+    color: colors.surfaceAlt,
+    child: Center(
+      child: Icon(fallbackIcon, color: colors.iconSecondary, size: 36),
+    ),
+  );
 }

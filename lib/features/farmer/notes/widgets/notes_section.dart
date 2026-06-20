@@ -88,13 +88,10 @@ class NotesSection extends StatelessWidget {
                 builder: (context, state) {
                   return switch (state) {
                     NotesLoading() => NotesSectionSkeleton(),
-                    NotesLoaded(:final notes) =>
-                      notes.isEmpty
+                    NotesLoaded(:final topNotes) =>
+                      topNotes.isEmpty
                           ? _EmptyPreview(l10n: l10n, colors: colors)
-                          : _PreviewList(
-                              notes: notes.take(2).toList(),
-                              colors: colors,
-                            ),
+                          : _PreviewList(notes: topNotes, colors: colors),
                     _ => _EmptyPreview(l10n: l10n, colors: colors),
                   };
                 },

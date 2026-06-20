@@ -46,7 +46,9 @@ class FarmerHome extends StatelessWidget {
                     Container(
                       height: 110,
                       decoration: BoxDecoration(
-                        color: colors.primary,
+                        gradient: LinearGradient(
+                          colors: context.colors.headerGradient,
+                        ),
                         borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(40),
                           bottomRight: Radius.circular(40),
@@ -221,13 +223,14 @@ class _FixedHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colors;
     final topInset = MediaQuery.paddingOf(context).top;
 
     return Container(
       height: 80 + topInset,
       padding: EdgeInsets.only(top: topInset, left: 16, right: 16),
-      color: colors.primary,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(colors: context.colors.headerGradient),
+      ),
       child: Row(
         children: [
           // Drawer button (opens the shell's single drawer).

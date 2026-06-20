@@ -13,11 +13,25 @@ class InventoryLoading extends InventoryState {
 }
 
 class InventoryLoaded extends InventoryState {
-  const InventoryLoaded({required this.inventoryItems, required this.units});
+  const InventoryLoaded({
+    required this.inventoryItems,
+    required this.units,
+    this.query = '',
+  });
   final List<InventoryItem> inventoryItems;
   final List<Unit> units;
+  final String query;
+  InventoryLoaded copyWith({
+    List<InventoryItem>? inventoryItems,
+    List<Unit>? units,
+    String? query,
+  }) => InventoryLoaded(
+    inventoryItems: inventoryItems ?? this.inventoryItems,
+    units: units ?? this.units,
+    query: query ?? this.query,
+  );
   @override
-  List<Object?> get props => [inventoryItems, units];
+  List<Object?> get props => [inventoryItems, units, query];
 }
 
 class InventoryFailure extends InventoryState {

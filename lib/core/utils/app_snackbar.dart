@@ -8,8 +8,8 @@ final rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 /// The ONLY way to show feedback. RULE: pass ALREADY-LOCALIZED strings
 /// (l10n.xyz) — never raw literals; that's what broke multilinguality.
 abstract final class AppSnackbar {
-  static const _warningColor = Color(0xFFF59E0B);
-  static const _infoColor = Color(0xFF3B82F6);
+  static const _warningColor = AppColors.warning;
+  static const _infoColor = AppColors.info;
 
   static void success(String message) =>
       _show(message, AppColors.success, Icons.check_circle_outline);

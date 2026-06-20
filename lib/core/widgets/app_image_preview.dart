@@ -97,7 +97,7 @@ class _AppImagePreviewState extends State<AppImagePreview> {
                     placeholder: (_, __) => Center(
                       child: CircularProgressIndicator(color: colors.primary),
                     ),
-                    errorWidget: (_, __, ___) => Center(
+                    errorWidget: (context, _, __) => Center(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -166,10 +166,7 @@ class _AppImagePreviewState extends State<AppImagePreview> {
                   color: colors.surface,
                   shape: BoxShape.circle,
                   boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.15),
-                      blurRadius: 8,
-                    ),
+                    BoxShadow(color: context.colors.shadow, blurRadius: 8),
                   ],
                 ),
                 child: Icon(Icons.close, color: colors.textPrimary, size: 24),
@@ -220,7 +217,7 @@ class _MiniThumb extends StatelessWidget {
           child: CachedNetworkImage(
             imageUrl: url,
             fit: BoxFit.cover,
-            errorWidget: (_, __, ___) => Container(
+            errorWidget: (context, _, __) => Container(
               color: Colors.white12,
               child: const Icon(
                 Icons.broken_image_outlined,
@@ -268,11 +265,11 @@ class _SelectorThumb extends StatelessWidget {
             child: CachedNetworkImage(
               imageUrl: url,
               fit: BoxFit.cover,
-              errorWidget: (_, __, ___) => Container(
-                color: Colors.grey.shade200,
+              errorWidget: (context, _, __) => Container(
+                color: context.colors.surfaceAlt,
                 child: Icon(
                   Icons.broken_image_outlined,
-                  color: Colors.grey.shade400,
+                  color: context.colors.iconSecondary,
                   size: 18,
                 ),
               ),

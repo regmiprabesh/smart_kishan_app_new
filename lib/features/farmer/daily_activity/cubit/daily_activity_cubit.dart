@@ -15,6 +15,7 @@ class DailyActivityCubit extends Cubit<DailyActivityState> {
 
   final ActivityRepository _repository;
   final InventoryItemRepository _inventoryItemRepository;
+  String _query = '';
 
   List<Activity> get _activities => state is DailyActivityLoaded
       ? List.of((state as DailyActivityLoaded).activities)
@@ -25,10 +26,9 @@ class DailyActivityCubit extends Cubit<DailyActivityState> {
 
   Future<void> load() async {
     emit(const DailyActivityLoading());
+    await Future.delayed(Duration(seconds: 30));
     try {
       final activities = await _repository.fetchActivities();
-      // InventoryItems for the Buy/Sell dropdown. Failure here shouldn't block the
-      // list (Other-type activities don't need inventoryItems).
       var inventoryItems = _inventoryItems;
       try {
         inventoryItems = await _inventoryItemRepository
@@ -40,6 +40,7 @@ class DailyActivityCubit extends Cubit<DailyActivityState> {
         DailyActivityLoaded(
           activities: activities,
           inventoryItems: inventoryItems.cast(),
+          query: _query,
         ),
       );
     } catch (e) {
@@ -55,6 +56,7 @@ class DailyActivityCubit extends Cubit<DailyActivityState> {
         DailyActivityLoaded(
           activities: [created, ..._activities],
           inventoryItems: _inventoryItems.cast(),
+          query: _query,
         ),
       );
       return true;
@@ -74,6 +76,7 @@ class DailyActivityCubit extends Cubit<DailyActivityState> {
         DailyActivityLoaded(
           activities: list,
           inventoryItems: _inventoryItems.cast(),
+          query: _query,
         ),
       );
       return true;
@@ -90,6 +93,7 @@ class DailyActivityCubit extends Cubit<DailyActivityState> {
         DailyActivityLoaded(
           activities: _activities.where((a) => a.id != id).toList(),
           inventoryItems: _inventoryItems.cast(),
+          query: _query,
         ),
       );
       return true;
@@ -97,5 +101,23 @@ class DailyActivityCubit extends Cubit<DailyActivityState> {
       debugPrint('Activity delete failed: $e');
       return false;
     }
+  }
+
+  void search(String query) {
+    final s = state;
+    _query = query;
+    if (s is DailyActivityLoaded) emit(s.copyWith(query: query));
+  }
+
+  List<Activity> filtered(DailyActivityLoaded state) {
+    final q = state.query.trim().toLowerCase();
+    if (q.isEmpty) return state.activities;
+    return state.activities
+        .where(
+          (a) =>
+              (a.title ?? '').toLowerCase().contains(q) ||
+              (a.description ?? '').toLowerCase().contains(q),
+        )
+        .toList();
   }
 }

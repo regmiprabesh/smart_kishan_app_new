@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_kishan/app/theme/app_colors.dart';
 
 import '../data/service_center.dart';
 
@@ -9,7 +10,7 @@ import '../data/service_center.dart';
 abstract final class ServiceCenterTypeStyle {
   /// Parse a "#RRGGBB" (or "#AARRGGBB") hex string into a [Color].
   /// Falls back to the app green if null/unparseable.
-  static Color color(String? hex, {Color fallback = const Color(0xFF4CAF50)}) {
+  static Color color(String? hex, {Color fallback = AppColors.primary}) {
     if (hex == null || hex.isEmpty) return fallback;
     var h = hex.replaceFirst('#', '').trim();
     if (h.length == 6) h = 'FF$h'; // add full alpha

@@ -440,6 +440,12 @@ class AppLocalizationsNe extends AppLocalizations {
   String get commonEdit => 'सम्पादन गर्नुहोस्';
 
   @override
+  String get commonSearch => 'खोज्नुहोस्';
+
+  @override
+  String get commonNoResults => 'कुनै नतिजा भेटिएन';
+
+  @override
   String get income => 'आम्दानी';
 
   @override

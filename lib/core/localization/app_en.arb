@@ -183,6 +183,9 @@
 "commonCancel": "Cancel",
 "commonEdit": "Edit",
 
+"commonSearch": "Search",            
+"commonNoResults": "No results found", 
+
 "income": "Income", 
 "expense": "Expense",
 

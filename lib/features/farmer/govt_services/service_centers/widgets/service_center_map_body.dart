@@ -226,7 +226,7 @@ class _MapMarker extends StatelessWidget {
         border: Border.all(color: Colors.white, width: selected ? 3 : 2),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.3),
+            color: context.colors.shadow,
             blurRadius: selected ? 8 : 4,
             offset: const Offset(0, 2),
           ),

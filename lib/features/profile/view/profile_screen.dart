@@ -43,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
                   width: 36,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: Colors.black.withValues(alpha: 0.15),
+                    color: context.colors.shadow,
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),
@@ -123,7 +123,6 @@ class ProfileScreen extends StatelessWidget {
                 userPhone: user?.phone,
                 avatarUrl: user?.image,
                 colors: colors,
-                isDark: isDark,
               ),
 
               const SizedBox(height: 8),

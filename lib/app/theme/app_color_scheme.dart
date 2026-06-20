@@ -36,6 +36,7 @@ class AppColorScheme {
     required this.rating,
     required this.tileColors,
     required this.govServiceGradients,
+    required this.headerGradient,
   });
 
   // ── Brand ──────────────────────────────────────────────────────────────
@@ -90,6 +91,8 @@ class AppColorScheme {
   //Governemt Service Card Colors
   final List<List<Color>> govServiceGradients;
 
+  // Brand header gradient (profile wave header)
+  final List<Color> headerGradient;
   // ── Factories ──────────────────────────────────────────────────────────
 
   static const light = AppColorScheme._(
@@ -137,10 +140,11 @@ class AppColorScheme {
       AppColors.govRedOrangeL,
       AppColors.govPurpleIndigoL,
     ],
+    headerGradient: [AppColors.headerDark, AppColors.headerMid],
   );
 
   static const dark = AppColorScheme._(
-    primary: AppColors.primary,
+    primary: AppColors.primaryDark,
     primaryLight: AppColors.primaryDark, // inverted role in dark mode
     primaryDark: AppColors.primaryLight,
     secondary: AppColors.secondary,
@@ -185,5 +189,6 @@ class AppColorScheme {
       AppColors.govRedOrangeD,
       AppColors.govPurpleIndigoD,
     ],
+    headerGradient: [AppColors.headerDeep, AppColors.headerDark],
   );
 }

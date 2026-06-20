@@ -33,7 +33,7 @@ class _CardSkeleton extends StatelessWidget {
         border: Border.all(color: colors.border.withValues(alpha: 0.5)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
+            color: context.colors.shadow,
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),

@@ -49,7 +49,7 @@ class LedgerChartCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.04),
+                color: context.colors.shadow,
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),

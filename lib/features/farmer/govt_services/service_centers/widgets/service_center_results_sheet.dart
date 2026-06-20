@@ -44,7 +44,7 @@ class ServiceCenterNearbySheet extends StatelessWidget {
             borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.12),
+                color: context.colors.shadow,
                 blurRadius: 12,
                 offset: const Offset(0, -2),
               ),

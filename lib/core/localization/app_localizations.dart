@@ -902,6 +902,18 @@ abstract class AppLocalizations {
   /// **'Edit'**
   String get commonEdit;
 
+  /// No description provided for @commonSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get commonSearch;
+
+  /// No description provided for @commonNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No results found'**
+  String get commonNoResults;
+
   /// No description provided for @income.
   ///
   /// In en, this message translates to:

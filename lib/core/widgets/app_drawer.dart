@@ -154,7 +154,7 @@ class _Header extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [const Color(0xFF0E4F2F), colors.primary],
+          colors: context.colors.headerGradient,
         ),
       ),
       clipBehavior: Clip.hardEdge,

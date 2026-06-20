@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_kishan/app/theme/app_theme.dart';
 
 /// Curved gradient header with floating bubbles and an overlapping avatar ring,
 /// plus the user's name and phone. Used at the top of the profile screen.
@@ -7,7 +8,6 @@ class ProfileWaveHeader extends StatelessWidget {
     super.key,
     required this.userName,
     required this.colors,
-    required this.isDark,
     this.userPhone,
     this.avatarUrl,
   });
@@ -16,7 +16,6 @@ class ProfileWaveHeader extends StatelessWidget {
   final String? userPhone;
   final String? avatarUrl;
   final dynamic colors;
-  final bool isDark;
 
   static const double _waveHeight = 140.0;
   static const double _avatarRadius = 44.0;
@@ -52,9 +51,7 @@ class ProfileWaveHeader extends StatelessWidget {
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: isDark
-                        ? [const Color(0xFF062318), const Color(0xFF0E4F2F)]
-                        : [const Color(0xFF0E4F2F), const Color(0xFF1A7A4A)],
+                    colors: context.colors.headerGradient,
                   ),
                 ),
                 child: Stack(
@@ -157,7 +154,7 @@ class _AvatarRing extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.12),
+            color: context.colors.shadow,
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
