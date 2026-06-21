@@ -1,3 +1,4 @@
+import 'package:smart_kishan/core/constants/api_endpoints.dart';
 import 'package:smart_kishan/core/network/api_client.dart';
 
 import 'service_center.dart';
@@ -58,22 +59,19 @@ class ServiceCenterQuery {
   }
 }
 
+/// Service Center CRUD + ratings. Read-only from the farmer app (no
+/// add/update/delete here — those live in the admin/Filament backend).
 class ServiceCenterRepository {
-  ServiceCenterRepository({required this.api});
+  ServiceCenterRepository({required ApiClient api}) : _api = api;
 
-  final ApiClient api;
-
-  static const _base = '/service-centers';
+  final ApiClient _api;
 
   /// GET /service-centers/types
   Future<List<ServiceCenterType>> fetchTypes() async {
-    final res = await api.get('$_base/types');
-    final data = res.data as List? ?? const [];
-    return data
-        .map(
-          (e) =>
-              ServiceCenterType.fromJson(Map<String, dynamic>.from(e as Map)),
-        )
+    final res = await _api.get(ApiEndpoints.serviceCenterTypes);
+    final list = (res.data as List?) ?? const [];
+    return list
+        .map((e) => ServiceCenterType.fromJson(e as Map<String, dynamic>))
         .toList();
   }
 
@@ -81,37 +79,20 @@ class ServiceCenterRepository {
   Future<List<ServiceCenter>> fetchServiceCenters(
     ServiceCenterQuery query,
   ) async {
-    final res = await api.get(_base, query: query.toParams());
-    final data = res.data as List? ?? const [];
-    return data
-        .map((e) => ServiceCenter.fromJson(Map<String, dynamic>.from(e as Map)))
-        .toList();
-  }
-
-  /// GET /service-centers/nearby?latitude=&longitude=&radius=
-  Future<List<ServiceCenter>> fetchNearby({
-    required double latitude,
-    required double longitude,
-    double radius = 20,
-  }) async {
-    final res = await api.get(
-      '$_base/nearby',
-      query: {
-        'latitude': latitude.toString(),
-        'longitude': longitude.toString(),
-        'radius': radius.toString(),
-      },
+    final res = await _api.get(
+      ApiEndpoints.serviceCenters,
+      query: query.toParams(),
     );
-    final data = res.data as List? ?? const [];
-    return data
-        .map((e) => ServiceCenter.fromJson(Map<String, dynamic>.from(e as Map)))
+    final list = (res.data as List?) ?? const [];
+    return list
+        .map((e) => ServiceCenter.fromJson(e as Map<String, dynamic>))
         .toList();
   }
 
   /// GET /service-centers/{id}
   Future<ServiceCenter> fetchServiceCenter(int id) async {
-    final res = await api.get('$_base/$id');
-    return ServiceCenter.fromJson(Map<String, dynamic>.from(res.data as Map));
+    final res = await _api.get(ApiEndpoints.serviceCenter(id));
+    return ServiceCenter.fromJson(res.data as Map<String, dynamic>);
   }
 
   /// POST /service-centers/{id}/rate — returns the saved rating so the cubit
@@ -121,26 +102,24 @@ class ServiceCenterRepository {
     required int rating,
     String? review,
   }) async {
-    final res = await api.post(
-      '$_base/$serviceCenterId/rate',
+    final res = await _api.post(
+      ApiEndpoints.serviceCenterRate(serviceCenterId),
       body: {'rating': rating, 'review': review},
     );
-    return ServiceCenterRating.fromJson(
-      Map<String, dynamic>.from(res.data as Map),
-    );
+    return ServiceCenterRating.fromJson(res.data as Map<String, dynamic>);
   }
 
   /// GET /service-centers/{id}/my-rating
   Future<ServiceCenterRating?> fetchUserRating(int serviceCenterId) async {
-    final res = await api.get('$_base/$serviceCenterId/my-rating');
-    if (res.data == null) return null;
-    return ServiceCenterRating.fromJson(
-      Map<String, dynamic>.from(res.data as Map),
+    final res = await _api.get(
+      ApiEndpoints.serviceCenterMyRating(serviceCenterId),
     );
+    if (res.data == null) return null;
+    return ServiceCenterRating.fromJson(res.data as Map<String, dynamic>);
   }
 
   /// DELETE /service-centers/{id}/my-rating
-  Future<void> deleteRating(int serviceCenterId) async {
-    await api.delete('$_base/$serviceCenterId/my-rating');
+  Future<void> deleteRating(int serviceCenterId) {
+    return _api.delete(ApiEndpoints.serviceCenterMyRating(serviceCenterId));
   }
 }

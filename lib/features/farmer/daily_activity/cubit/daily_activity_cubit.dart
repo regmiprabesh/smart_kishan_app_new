@@ -26,7 +26,6 @@ class DailyActivityCubit extends Cubit<DailyActivityState> {
 
   Future<void> load() async {
     emit(const DailyActivityLoading());
-    await Future.delayed(Duration(seconds: 30));
     try {
       final activities = await _repository.fetchActivities();
       var inventoryItems = _inventoryItems;

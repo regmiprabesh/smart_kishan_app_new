@@ -1,4 +1,3 @@
-
 abstract final class ApiEndpoints {
   // OpenWeatherMap. Key is supplied separately via Env.owmApiKey.
   static const String owmBase = 'https://api.openweathermap.org/data/2.5';
@@ -43,4 +42,27 @@ abstract final class ApiEndpoints {
 
   //Crops Information
   static const String crops = '/cropInfo';
+
+  // Service Centers
+  static const String serviceCenters = '/service-centers';
+  static const String serviceCenterTypes = '/service-centers/types';
+  static String serviceCenter(int id) => '/service-centers/$id';
+  static String serviceCenterRate(int id) => '/service-centers/$id/rate';
+  static String serviceCenterMyRating(int id) =>
+      '/service-centers/$id/my-rating';
+
+  // Subsidies
+  static const String subsidies = '/farmer/subsidies';
+  static const String subsidyApplications = '/farmer/subsidy-applications';
+  static String subsidyApply(int id) => '/farmer/subsidies/$id/apply';
+  static String subsidyWithdraw(int id) => '/farmer/subsidies/$id/withdraw';
+  static String subsidyRate(int id) => '/farmer/subsidies/$id/rate';
+  static String subsidyRatings(int id) => '/farmer/subsidies/$id/ratings';
+  static String subsidyMyRating(int id) => '/farmer/subsidies/$id/my-rating';
+
+  // Subsidy requests
+  static const String subsidyRequests = '/subsidy-requests';
+  static const String mySubsidyRequests = '/subsidy-requests/my-requests';
+  static String subsidyRequest(int id) => '/subsidy-requests/$id';
+  static String cancelSubsidyRequest(int id) => '/subsidy-requests/$id/cancel';
 }

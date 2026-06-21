@@ -38,17 +38,18 @@ class _CropInfoListScreenState extends State<CropInfoListScreen> {
       value: widget.cubit,
       child: Scaffold(
         appBar: AppAppBar(title: l10n.cropInfoTitle),
-        body: Column(
-          children: [
-            AppSearchField(
-              hintText: l10n.cropInfoSearchHint,
-              controller: _searchController,
-              onChanged: widget.cubit.search,
-            ),
-            Expanded(
-              child: BlocBuilder<CropInfoCubit, CropInfoState>(
-                builder: (context, state) {
-                  return switch (state) {
+        body: BlocBuilder<CropInfoCubit, CropInfoState>(
+          builder: (context, state) {
+            return Column(
+              children: [
+                AppSearchField(
+                  hintText: l10n.cropInfoSearchHint,
+                  controller: _searchController,
+                  onChanged: widget.cubit.search,
+                  enabled: state is CropInfoLoaded,
+                ),
+                Expanded(
+                  child: switch (state) {
                     CropInfoLoading() => const CropGridSkeleton(),
                     CropInfoFailure() => AppEmptyState(
                       icon: Icons.error_outline,
@@ -61,11 +62,11 @@ class _CropInfoListScreenState extends State<CropInfoListScreen> {
                       state: state,
                       cubit: widget.cubit,
                     ),
-                  };
-                },
-              ),
-            ),
-          ],
+                  },
+                ),
+              ],
+            );
+          },
         ),
       ),
     );

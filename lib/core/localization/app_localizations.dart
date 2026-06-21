@@ -914,6 +914,18 @@ abstract class AppLocalizations {
   /// **'No results found'**
   String get commonNoResults;
 
+  /// No description provided for @commonDocument.
+  ///
+  /// In en, this message translates to:
+  /// **'Document'**
+  String get commonDocument;
+
+  /// No description provided for @commonPdfError.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load the document'**
+  String get commonPdfError;
+
   /// No description provided for @income.
   ///
   /// In en, this message translates to:
@@ -2293,6 +2305,438 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to reset password. Please try again.'**
   String get passwordResetFailed;
+
+  /// No description provided for @subsidyUntitled.
+  ///
+  /// In en, this message translates to:
+  /// **'Untitled'**
+  String get subsidyUntitled;
+
+  /// No description provided for @subsidyActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get subsidyActive;
+
+  /// No description provided for @subsidyApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Applied'**
+  String get subsidyApplied;
+
+  /// No description provided for @subsidyApplyNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Now'**
+  String get subsidyApplyNow;
+
+  /// No description provided for @subsidyAlreadyApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Already Applied'**
+  String get subsidyAlreadyApplied;
+
+  /// No description provided for @subsidyExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get subsidyExpired;
+
+  /// No description provided for @subsidyDeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Deadline'**
+  String get subsidyDeadline;
+
+  /// No description provided for @subsidyEligibility.
+  ///
+  /// In en, this message translates to:
+  /// **'Eligibility Criteria'**
+  String get subsidyEligibility;
+
+  /// No description provided for @subsidyTargetSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Target Crop/Sector'**
+  String get subsidyTargetSector;
+
+  /// No description provided for @subsidyLocationLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Location Level'**
+  String get subsidyLocationLevel;
+
+  /// No description provided for @subsidyNoInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'N/A'**
+  String get subsidyNoInfo;
+
+  /// No description provided for @subsidyMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get subsidyMore;
+
+  /// No description provided for @subsidyLess.
+  ///
+  /// In en, this message translates to:
+  /// **'Less'**
+  String get subsidyLess;
+
+  /// No description provided for @subsidyNoneAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No subsidies available at the moment'**
+  String get subsidyNoneAvailable;
+
+  /// No description provided for @subsidyMyApplications.
+  ///
+  /// In en, this message translates to:
+  /// **'My Applications'**
+  String get subsidyMyApplications;
+
+  /// No description provided for @subsidyRequestSubsidy.
+  ///
+  /// In en, this message translates to:
+  /// **'Request Subsidy'**
+  String get subsidyRequestSubsidy;
+
+  /// No description provided for @subsidyLocationRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Location Required'**
+  String get subsidyLocationRequired;
+
+  /// No description provided for @subsidyLocationRequiredDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'To see subsidies for your area, add your location in your profile first.'**
+  String get subsidyLocationRequiredDescription;
+
+  /// No description provided for @subsidyAddLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Location'**
+  String get subsidyAddLocation;
+
+  /// No description provided for @subsidyTypeFertilizer.
+  ///
+  /// In en, this message translates to:
+  /// **'Fertilizer'**
+  String get subsidyTypeFertilizer;
+
+  /// No description provided for @subsidyTypeEquipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Equipment'**
+  String get subsidyTypeEquipment;
+
+  /// No description provided for @subsidyTypeTraining.
+  ///
+  /// In en, this message translates to:
+  /// **'Training'**
+  String get subsidyTypeTraining;
+
+  /// No description provided for @subsidyTypeIrrigation.
+  ///
+  /// In en, this message translates to:
+  /// **'Irrigation'**
+  String get subsidyTypeIrrigation;
+
+  /// No description provided for @subsidyTypeLivestock.
+  ///
+  /// In en, this message translates to:
+  /// **'Livestock'**
+  String get subsidyTypeLivestock;
+
+  /// No description provided for @subsidyTypeSeeds.
+  ///
+  /// In en, this message translates to:
+  /// **'Seeds'**
+  String get subsidyTypeSeeds;
+
+  /// No description provided for @subsidyTypeInsurance.
+  ///
+  /// In en, this message translates to:
+  /// **'Insurance'**
+  String get subsidyTypeInsurance;
+
+  /// No description provided for @subsidyTypeLoan.
+  ///
+  /// In en, this message translates to:
+  /// **'Loan'**
+  String get subsidyTypeLoan;
+
+  /// No description provided for @subsidyTypeOrganic.
+  ///
+  /// In en, this message translates to:
+  /// **'Organic'**
+  String get subsidyTypeOrganic;
+
+  /// No description provided for @subsidyTypeGeneral.
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get subsidyTypeGeneral;
+
+  /// No description provided for @subsidyLevelCentral.
+  ///
+  /// In en, this message translates to:
+  /// **'Central'**
+  String get subsidyLevelCentral;
+
+  /// No description provided for @subsidyLevelProvince.
+  ///
+  /// In en, this message translates to:
+  /// **'Province'**
+  String get subsidyLevelProvince;
+
+  /// No description provided for @subsidyLevelDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'District'**
+  String get subsidyLevelDistrict;
+
+  /// No description provided for @subsidyLevelMunicipality.
+  ///
+  /// In en, this message translates to:
+  /// **'Municipality'**
+  String get subsidyLevelMunicipality;
+
+  /// No description provided for @subsidyLevelWard.
+  ///
+  /// In en, this message translates to:
+  /// **'Ward'**
+  String get subsidyLevelWard;
+
+  /// No description provided for @subsidyDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Subsidy Details'**
+  String get subsidyDetails;
+
+  /// No description provided for @subsidyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get subsidyDescription;
+
+  /// No description provided for @subsidyFiscalYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Fiscal Year'**
+  String get subsidyFiscalYear;
+
+  /// No description provided for @subsidyExpectedBeneficiaries.
+  ///
+  /// In en, this message translates to:
+  /// **'Expected Beneficiaries'**
+  String get subsidyExpectedBeneficiaries;
+
+  /// No description provided for @subsidyBudgetPerBeneficiary.
+  ///
+  /// In en, this message translates to:
+  /// **'Budget Per Beneficiary'**
+  String get subsidyBudgetPerBeneficiary;
+
+  /// No description provided for @subsidyTotalBudget.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Budget'**
+  String get subsidyTotalBudget;
+
+  /// No description provided for @subsidyRequiredDocuments.
+  ///
+  /// In en, this message translates to:
+  /// **'Required Documents'**
+  String get subsidyRequiredDocuments;
+
+  /// No description provided for @subsidyAdminDocuments.
+  ///
+  /// In en, this message translates to:
+  /// **'Related Documents'**
+  String get subsidyAdminDocuments;
+
+  /// No description provided for @subsidyLocationDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Location Details'**
+  String get subsidyLocationDetails;
+
+  /// No description provided for @subsidyProvince.
+  ///
+  /// In en, this message translates to:
+  /// **'Province'**
+  String get subsidyProvince;
+
+  /// No description provided for @subsidyDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'District'**
+  String get subsidyDistrict;
+
+  /// No description provided for @subsidyMunicipality.
+  ///
+  /// In en, this message translates to:
+  /// **'Municipality'**
+  String get subsidyMunicipality;
+
+  /// No description provided for @subsidyWard.
+  ///
+  /// In en, this message translates to:
+  /// **'Ward'**
+  String get subsidyWard;
+
+  /// No description provided for @subsidyDocRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Required'**
+  String get subsidyDocRequired;
+
+  /// No description provided for @subsidyDocOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional'**
+  String get subsidyDocOptional;
+
+  /// No description provided for @subsidyApplyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply for Subsidy'**
+  String get subsidyApplyTitle;
+
+  /// No description provided for @subsidyApplicationDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Application Details'**
+  String get subsidyApplicationDetails;
+
+  /// No description provided for @subsidyApplicationNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Additional Notes'**
+  String get subsidyApplicationNotes;
+
+  /// No description provided for @subsidyApplicationNotesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Anything else you\'d like to add (optional)'**
+  String get subsidyApplicationNotesHint;
+
+  /// No description provided for @subsidySubmitApplication.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Application'**
+  String get subsidySubmitApplication;
+
+  /// No description provided for @subsidyApplicationSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Application submitted successfully'**
+  String get subsidyApplicationSuccess;
+
+  /// No description provided for @subsidyDocumentMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Please upload all required documents'**
+  String get subsidyDocumentMissing;
+
+  /// No description provided for @subsidyInvalidFileType.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid file type'**
+  String get subsidyInvalidFileType;
+
+  /// No description provided for @subsidyFileTooLarge.
+  ///
+  /// In en, this message translates to:
+  /// **'File is too large'**
+  String get subsidyFileTooLarge;
+
+  /// No description provided for @subsidyFieldRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get subsidyFieldRequired;
+
+  /// No description provided for @subsidyInvalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email'**
+  String get subsidyInvalidEmail;
+
+  /// No description provided for @subsidyInvalidNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid number'**
+  String get subsidyInvalidNumber;
+
+  /// No description provided for @subsidyInvalidValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid value'**
+  String get subsidyInvalidValue;
+
+  /// No description provided for @subsidyApplyingFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Applying for'**
+  String get subsidyApplyingFor;
+
+  /// No description provided for @subsidyUploadFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload file'**
+  String get subsidyUploadFile;
+
+  /// No description provided for @subsidyChangeFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Change file'**
+  String get subsidyChangeFile;
+
+  /// No description provided for @subsidyApplyReviewNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Your application will be reviewed. Please make sure all details are correct.'**
+  String get subsidyApplyReviewNotice;
+
+  /// No description provided for @subsidyMaxSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Max'**
+  String get subsidyMaxSize;
+
+  /// No description provided for @subsidyPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview'**
+  String get subsidyPreview;
+
+  /// No description provided for @subsidyPreviewUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview isn\'t available for this file type'**
+  String get subsidyPreviewUnavailable;
+
+  /// No description provided for @subsidyPleaseEnter.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter {field}'**
+  String subsidyPleaseEnter(String field);
+
+  /// No description provided for @subsidyPleaseSelect.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select {field}'**
+  String subsidyPleaseSelect(String field);
+
+  /// No description provided for @subsidyFieldRequiredNamed.
+  ///
+  /// In en, this message translates to:
+  /// **'{field} is required'**
+  String subsidyFieldRequiredNamed(String field);
 }
 
 class _AppLocalizationsDelegate

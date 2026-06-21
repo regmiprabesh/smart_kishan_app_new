@@ -443,6 +443,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonNoResults => 'No results found';
 
   @override
+  String get commonDocument => 'Document';
+
+  @override
+  String get commonPdfError => 'Couldn\'t load the document';
+
+  @override
   String get income => 'Income';
 
   @override
@@ -1156,4 +1162,230 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get passwordResetFailed =>
       'Failed to reset password. Please try again.';
+
+  @override
+  String get subsidyUntitled => 'Untitled';
+
+  @override
+  String get subsidyActive => 'Active';
+
+  @override
+  String get subsidyApplied => 'Applied';
+
+  @override
+  String get subsidyApplyNow => 'Apply Now';
+
+  @override
+  String get subsidyAlreadyApplied => 'Already Applied';
+
+  @override
+  String get subsidyExpired => 'Expired';
+
+  @override
+  String get subsidyDeadline => 'Deadline';
+
+  @override
+  String get subsidyEligibility => 'Eligibility Criteria';
+
+  @override
+  String get subsidyTargetSector => 'Target Crop/Sector';
+
+  @override
+  String get subsidyLocationLevel => 'Location Level';
+
+  @override
+  String get subsidyNoInfo => 'N/A';
+
+  @override
+  String get subsidyMore => 'More';
+
+  @override
+  String get subsidyLess => 'Less';
+
+  @override
+  String get subsidyNoneAvailable => 'No subsidies available at the moment';
+
+  @override
+  String get subsidyMyApplications => 'My Applications';
+
+  @override
+  String get subsidyRequestSubsidy => 'Request Subsidy';
+
+  @override
+  String get subsidyLocationRequired => 'Location Required';
+
+  @override
+  String get subsidyLocationRequiredDescription =>
+      'To see subsidies for your area, add your location in your profile first.';
+
+  @override
+  String get subsidyAddLocation => 'Add Location';
+
+  @override
+  String get subsidyTypeFertilizer => 'Fertilizer';
+
+  @override
+  String get subsidyTypeEquipment => 'Equipment';
+
+  @override
+  String get subsidyTypeTraining => 'Training';
+
+  @override
+  String get subsidyTypeIrrigation => 'Irrigation';
+
+  @override
+  String get subsidyTypeLivestock => 'Livestock';
+
+  @override
+  String get subsidyTypeSeeds => 'Seeds';
+
+  @override
+  String get subsidyTypeInsurance => 'Insurance';
+
+  @override
+  String get subsidyTypeLoan => 'Loan';
+
+  @override
+  String get subsidyTypeOrganic => 'Organic';
+
+  @override
+  String get subsidyTypeGeneral => 'General';
+
+  @override
+  String get subsidyLevelCentral => 'Central';
+
+  @override
+  String get subsidyLevelProvince => 'Province';
+
+  @override
+  String get subsidyLevelDistrict => 'District';
+
+  @override
+  String get subsidyLevelMunicipality => 'Municipality';
+
+  @override
+  String get subsidyLevelWard => 'Ward';
+
+  @override
+  String get subsidyDetails => 'Subsidy Details';
+
+  @override
+  String get subsidyDescription => 'Description';
+
+  @override
+  String get subsidyFiscalYear => 'Fiscal Year';
+
+  @override
+  String get subsidyExpectedBeneficiaries => 'Expected Beneficiaries';
+
+  @override
+  String get subsidyBudgetPerBeneficiary => 'Budget Per Beneficiary';
+
+  @override
+  String get subsidyTotalBudget => 'Total Budget';
+
+  @override
+  String get subsidyRequiredDocuments => 'Required Documents';
+
+  @override
+  String get subsidyAdminDocuments => 'Related Documents';
+
+  @override
+  String get subsidyLocationDetails => 'Location Details';
+
+  @override
+  String get subsidyProvince => 'Province';
+
+  @override
+  String get subsidyDistrict => 'District';
+
+  @override
+  String get subsidyMunicipality => 'Municipality';
+
+  @override
+  String get subsidyWard => 'Ward';
+
+  @override
+  String get subsidyDocRequired => 'Required';
+
+  @override
+  String get subsidyDocOptional => 'Optional';
+
+  @override
+  String get subsidyApplyTitle => 'Apply for Subsidy';
+
+  @override
+  String get subsidyApplicationDetails => 'Application Details';
+
+  @override
+  String get subsidyApplicationNotes => 'Additional Notes';
+
+  @override
+  String get subsidyApplicationNotesHint =>
+      'Anything else you\'d like to add (optional)';
+
+  @override
+  String get subsidySubmitApplication => 'Submit Application';
+
+  @override
+  String get subsidyApplicationSuccess => 'Application submitted successfully';
+
+  @override
+  String get subsidyDocumentMissing => 'Please upload all required documents';
+
+  @override
+  String get subsidyInvalidFileType => 'Invalid file type';
+
+  @override
+  String get subsidyFileTooLarge => 'File is too large';
+
+  @override
+  String get subsidyFieldRequired => 'This field is required';
+
+  @override
+  String get subsidyInvalidEmail => 'Enter a valid email';
+
+  @override
+  String get subsidyInvalidNumber => 'Enter a valid number';
+
+  @override
+  String get subsidyInvalidValue => 'Invalid value';
+
+  @override
+  String get subsidyApplyingFor => 'Applying for';
+
+  @override
+  String get subsidyUploadFile => 'Upload file';
+
+  @override
+  String get subsidyChangeFile => 'Change file';
+
+  @override
+  String get subsidyApplyReviewNotice =>
+      'Your application will be reviewed. Please make sure all details are correct.';
+
+  @override
+  String get subsidyMaxSize => 'Max';
+
+  @override
+  String get subsidyPreview => 'Preview';
+
+  @override
+  String get subsidyPreviewUnavailable =>
+      'Preview isn\'t available for this file type';
+
+  @override
+  String subsidyPleaseEnter(String field) {
+    return 'Please enter $field';
+  }
+
+  @override
+  String subsidyPleaseSelect(String field) {
+    return 'Please select $field';
+  }
+
+  @override
+  String subsidyFieldRequiredNamed(String field) {
+    return '$field is required';
+  }
 }

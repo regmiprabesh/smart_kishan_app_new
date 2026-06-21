@@ -64,7 +64,13 @@ abstract final class AppRoutePath {
   //Government Services
   static const String serviceCenters = '/service-centers';
   static const String serviceCenterDetail = '/service-centers/detail';
+
   static const String subsidies = '/subsidies';
+  static const String subsidyDetail = '/subsidies/detail';
+  static const String subsidyApply = '/subsidies/apply';
+  static const String mySubsidyApplications = '/subsidies/my-applications';
+  static const String mySubsidyRequests = '/subsidies/my-requests';
+
   static const String complaints = '/complaints';
   static const String surveys = '/surveys';
   // Deep-linkable feature paths (Phase 3+ — registered as the features

@@ -50,32 +50,71 @@ class AppTextField extends StatelessWidget {
           ),
           const SizedBox(height: 8),
         ],
-        TextFormField(
-          controller: controller,
+        FormField<String>(
+          initialValue: controller.text,
           validator: validator,
           autovalidateMode: autovalidateMode,
-          keyboardType: keyboardType,
-          obscureText: obscureText,
-          textInputAction: textInputAction,
-          maxLength: maxLength,
-          maxLines: maxLines,
-          inputFormatters: inputFormatters,
-          decoration: InputDecoration(
-            hintText: hint,
-            counterText: '',
-            prefixIcon: prefixIcon,
-            prefixText: prefixText,
-            suffixIcon: suffixIcon,
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 14,
-              vertical: 14,
-            ),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: context.colors.border),
-            ),
-          ),
+          builder: (state) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextFormField(
+                  controller: controller,
+                  keyboardType: keyboardType,
+                  obscureText: obscureText,
+                  textInputAction: textInputAction,
+                  maxLength: maxLength,
+                  maxLines: maxLines,
+                  inputFormatters: inputFormatters,
+                  onChanged: (v) => state.didChange(v),
+                  decoration: InputDecoration(
+                    hintText: hint,
+                    counterText: '',
+                    prefixIcon: prefixIcon,
+                    prefixText: prefixText,
+                    suffixIcon: suffixIcon,
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 14,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: context.colors.border),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: context.colors.error),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(
+                        color: context.colors.error,
+                        width: 2,
+                      ),
+                    ),
+                    // Hide the built-in error text — rendered manually below.
+                    errorText: state.hasError ? '' : null,
+                    errorStyle: const TextStyle(height: 0, fontSize: 0),
+                  ),
+                ),
+                if (state.hasError)
+                  Padding(
+                    // Independent of contentPadding — set whatever you want here.
+                    padding: const EdgeInsets.only(left: 0, top: 6),
+                    child: Text(
+                      state.errorText!,
+                      style: TextStyle(
+                        color: context.colors.error,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+              ],
+            );
+          },
         ),
       ],
     );

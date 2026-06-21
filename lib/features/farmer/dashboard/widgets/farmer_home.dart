@@ -221,6 +221,15 @@ class _FixedHeader extends StatelessWidget {
   const _FixedHeader({required this.l10n});
   final AppLocalizations l10n;
 
+  String _initials(String name) {
+    final parts = name.trim().split(RegExp(r'\s+'));
+    if (parts.isEmpty || parts.first.isEmpty) return '';
+    if (parts.length >= 2) {
+      return '${parts.first[0]}${parts.last[0]}'.toUpperCase();
+    }
+    return name.substring(0, name.length.clamp(0, 2)).toUpperCase();
+  }
+
   @override
   Widget build(BuildContext context) {
     final topInset = MediaQuery.paddingOf(context).top;
@@ -286,31 +295,36 @@ class _FixedHeader extends StatelessWidget {
             child: BlocBuilder<SessionCubit, SessionState>(
               builder: (context, state) {
                 final img = state is Authenticated ? state.user.image : null;
+                final name = state is Authenticated ? state.user.name : '';
                 final hasImg = img != null && img.isNotEmpty;
                 return Container(
                   height: 44,
                   width: 44,
+                  padding: const EdgeInsets.all(1.5), // border thickness
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.15),
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.white.withValues(alpha: 0.2),
+                      color: Colors.white.withValues(alpha: 0.6),
                       width: 1.5,
                     ),
-                    image: hasImg
-                        ? DecorationImage(
-                            image: NetworkImage(img),
-                            fit: BoxFit.cover,
-                          )
-                        : null,
                   ),
-                  child: hasImg
-                      ? null
-                      : const Icon(
-                          Icons.person_2_rounded,
-                          size: 22,
-                          color: Colors.white,
-                        ),
+                  child: ClipOval(
+                    child: Container(
+                      color: Colors.white.withValues(alpha: 0.15),
+                      child: hasImg
+                          ? Image.network(img, fit: BoxFit.cover)
+                          : Center(
+                              child: Text(
+                                _initials(name ?? ''),
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                    ),
+                  ),
                 );
               },
             ),

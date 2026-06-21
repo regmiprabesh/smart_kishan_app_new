@@ -446,6 +446,12 @@ class AppLocalizationsNe extends AppLocalizations {
   String get commonNoResults => 'कुनै नतिजा भेटिएन';
 
   @override
+  String get commonDocument => 'कागजात';
+
+  @override
+  String get commonPdfError => 'कागजात लोड गर्न सकिएन';
+
+  @override
   String get income => 'आम्दानी';
 
   @override
@@ -1161,4 +1167,231 @@ class AppLocalizationsNe extends AppLocalizations {
   @override
   String get passwordResetFailed =>
       'पासवर्ड रिसेट गर्न असफल भयो। कृपया पुनः प्रयास गर्नुहोस्।';
+
+  @override
+  String get subsidyUntitled => 'शीर्षकविहीन';
+
+  @override
+  String get subsidyActive => 'सक्रिय';
+
+  @override
+  String get subsidyApplied => 'आवेदन दिइएको';
+
+  @override
+  String get subsidyApplyNow => 'आवेदन दिनुहोस्';
+
+  @override
+  String get subsidyAlreadyApplied => 'पहिले नै आवेदन दिइएको';
+
+  @override
+  String get subsidyExpired => 'म्याद सकियो';
+
+  @override
+  String get subsidyDeadline => 'अन्तिम मिति';
+
+  @override
+  String get subsidyEligibility => 'योग्यता मापदण्ड';
+
+  @override
+  String get subsidyTargetSector => 'लक्षित बाली/क्षेत्र';
+
+  @override
+  String get subsidyLocationLevel => 'स्तर';
+
+  @override
+  String get subsidyNoInfo => 'उपलब्ध छैन';
+
+  @override
+  String get subsidyMore => 'थप';
+
+  @override
+  String get subsidyLess => 'कम';
+
+  @override
+  String get subsidyNoneAvailable => 'हाल कुनै सब्सिडी उपलब्ध छैन';
+
+  @override
+  String get subsidyMyApplications => 'मेरा आवेदनहरू';
+
+  @override
+  String get subsidyRequestSubsidy => 'सब्सिडी अनुरोध';
+
+  @override
+  String get subsidyLocationRequired => 'स्थान आवश्यक';
+
+  @override
+  String get subsidyLocationRequiredDescription =>
+      'तपाईंको क्षेत्रका सब्सिडीहरू हेर्न, पहिले आफ्नो प्रोफाइलमा स्थान थप्नुहोस्।';
+
+  @override
+  String get subsidyAddLocation => 'स्थान थप्नुहोस्';
+
+  @override
+  String get subsidyTypeFertilizer => 'मल';
+
+  @override
+  String get subsidyTypeEquipment => 'उपकरण';
+
+  @override
+  String get subsidyTypeTraining => 'तालिम';
+
+  @override
+  String get subsidyTypeIrrigation => 'सिँचाइ';
+
+  @override
+  String get subsidyTypeLivestock => 'पशुपन्छी';
+
+  @override
+  String get subsidyTypeSeeds => 'बीउ';
+
+  @override
+  String get subsidyTypeInsurance => 'बीमा';
+
+  @override
+  String get subsidyTypeLoan => 'ऋण';
+
+  @override
+  String get subsidyTypeOrganic => 'जैविक';
+
+  @override
+  String get subsidyTypeGeneral => 'सामान्य';
+
+  @override
+  String get subsidyLevelCentral => 'केन्द्रीय';
+
+  @override
+  String get subsidyLevelProvince => 'प्रदेश';
+
+  @override
+  String get subsidyLevelDistrict => 'जिल्ला';
+
+  @override
+  String get subsidyLevelMunicipality => 'नगरपालिका';
+
+  @override
+  String get subsidyLevelWard => 'वडा';
+
+  @override
+  String get subsidyDetails => 'सब्सिडी विवरण';
+
+  @override
+  String get subsidyDescription => 'विवरण';
+
+  @override
+  String get subsidyFiscalYear => 'आर्थिक वर्ष';
+
+  @override
+  String get subsidyExpectedBeneficiaries => 'अपेक्षित लाभग्राही';
+
+  @override
+  String get subsidyBudgetPerBeneficiary => 'प्रति लाभग्राही बजेट';
+
+  @override
+  String get subsidyTotalBudget => 'कुल बजेट';
+
+  @override
+  String get subsidyRequiredDocuments => 'आवश्यक कागजातहरू';
+
+  @override
+  String get subsidyAdminDocuments => 'सम्बन्धित कागजातहरू';
+
+  @override
+  String get subsidyLocationDetails => 'स्थान विवरण';
+
+  @override
+  String get subsidyProvince => 'प्रदेश';
+
+  @override
+  String get subsidyDistrict => 'जिल्ला';
+
+  @override
+  String get subsidyMunicipality => 'नगरपालिका';
+
+  @override
+  String get subsidyWard => 'वडा';
+
+  @override
+  String get subsidyDocRequired => 'अनिवार्य';
+
+  @override
+  String get subsidyDocOptional => 'वैकल्पिक';
+
+  @override
+  String get subsidyApplyTitle => 'सब्सिडीको लागि आवेदन';
+
+  @override
+  String get subsidyApplicationDetails => 'आवेदन विवरण';
+
+  @override
+  String get subsidyApplicationNotes => 'थप टिप्पणी';
+
+  @override
+  String get subsidyApplicationNotesHint =>
+      'थप्न चाहनुभएको कुनै कुरा (वैकल्पिक)';
+
+  @override
+  String get subsidySubmitApplication => 'आवेदन पेश गर्नुहोस्';
+
+  @override
+  String get subsidyApplicationSuccess => 'आवेदन सफलतापूर्वक पेश गरियो';
+
+  @override
+  String get subsidyDocumentMissing =>
+      'कृपया सबै आवश्यक कागजातहरू अपलोड गर्नुहोस्';
+
+  @override
+  String get subsidyInvalidFileType => 'अमान्य फाइल प्रकार';
+
+  @override
+  String get subsidyFileTooLarge => 'फाइल धेरै ठूलो छ';
+
+  @override
+  String get subsidyFieldRequired => 'यो फिल्ड आवश्यक छ';
+
+  @override
+  String get subsidyInvalidEmail => 'मान्य इमेल प्रविष्ट गर्नुहोस्';
+
+  @override
+  String get subsidyInvalidNumber => 'मान्य संख्या प्रविष्ट गर्नुहोस्';
+
+  @override
+  String get subsidyInvalidValue => 'अमान्य मान';
+
+  @override
+  String get subsidyApplyingFor => 'यसको लागि आवेदन';
+
+  @override
+  String get subsidyUploadFile => 'फाइल अपलोड गर्नुहोस्';
+
+  @override
+  String get subsidyChangeFile => 'फाइल परिवर्तन गर्नुहोस्';
+
+  @override
+  String get subsidyApplyReviewNotice =>
+      'तपाईंको आवेदन समीक्षा गरिनेछ। कृपया सबै विवरण सही भएको सुनिश्चित गर्नुहोस्।';
+
+  @override
+  String get subsidyMaxSize => 'अधिकतम';
+
+  @override
+  String get subsidyPreview => 'पूर्वावलोकन';
+
+  @override
+  String get subsidyPreviewUnavailable =>
+      'यो फाइल प्रकारको पूर्वावलोकन उपलब्ध छैन';
+
+  @override
+  String subsidyPleaseEnter(String field) {
+    return '$field प्रविष्ट गर्नुहोस्';
+  }
+
+  @override
+  String subsidyPleaseSelect(String field) {
+    return '$field छान्नुहोस्';
+  }
+
+  @override
+  String subsidyFieldRequiredNamed(String field) {
+    return '$field आवश्यक छ';
+  }
 }

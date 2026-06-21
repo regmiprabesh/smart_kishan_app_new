@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
@@ -8,8 +10,8 @@ import 'package:smart_kishan/app/theme/app_theme.dart';
 /// truly centered); the close button, top faded strip, and bottom thumbnail
 /// selector float ON TOP as overlays (Stack), exactly like the reference.
 ///
-/// Single or multiple images. Reused by farmland (1) and products (many).
-/// Broken URLs degrade gracefully.
+/// Single or multiple images, each a network URL **or a local file path**.
+/// Reused by farmland, products, subsidy uploads. Broken sources degrade gracefully.
 class AppImagePreview extends StatefulWidget {
   const AppImagePreview({
     super.key,
@@ -91,13 +93,10 @@ class _AppImagePreviewState extends State<AppImagePreview> {
                 return PhotoViewGalleryPageOptions.customChild(
                   minScale: PhotoViewComputedScale.contained,
                   maxScale: PhotoViewComputedScale.covered * 3,
-                  child: CachedNetworkImage(
-                    imageUrl: widget.imageUrls[i],
+                  child: _PreviewImage(
+                    source: widget.imageUrls[i],
                     fit: BoxFit.contain,
-                    placeholder: (_, __) => Center(
-                      child: CircularProgressIndicator(color: colors.primary),
-                    ),
-                    errorWidget: (context, _, __) => Center(
+                    error: Center(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -214,10 +213,10 @@ class _MiniThumb extends StatelessWidget {
         child: SizedBox(
           width: 48,
           height: 48,
-          child: CachedNetworkImage(
-            imageUrl: url,
+          child: _PreviewImage(
+            source: url,
             fit: BoxFit.cover,
-            errorWidget: (context, _, __) => Container(
+            error: Container(
               color: Colors.white12,
               child: const Icon(
                 Icons.broken_image_outlined,
@@ -262,10 +261,10 @@ class _SelectorThumb extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           child: Padding(
             padding: const EdgeInsets.all(2),
-            child: CachedNetworkImage(
-              imageUrl: url,
+            child: _PreviewImage(
+              source: url,
               fit: BoxFit.cover,
-              errorWidget: (context, _, __) => Container(
+              error: Container(
                 color: context.colors.surfaceAlt,
                 child: Icon(
                   Icons.broken_image_outlined,
@@ -278,5 +277,37 @@ class _SelectorThumb extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+/// Renders an image from a network URL or a local file path (auto-detected),
+/// falling back to [error] when it can't be loaded.
+class _PreviewImage extends StatelessWidget {
+  const _PreviewImage({
+    required this.source,
+    required this.error,
+    this.fit = BoxFit.contain,
+  });
+
+  final String source;
+  final Widget error;
+  final BoxFit fit;
+
+  bool get _remote =>
+      source.startsWith('http://') || source.startsWith('https://');
+
+  @override
+  Widget build(BuildContext context) {
+    if (_remote) {
+      return CachedNetworkImage(
+        imageUrl: source,
+        fit: fit,
+        placeholder: (_, _) => Center(
+          child: CircularProgressIndicator(color: context.colors.primary),
+        ),
+        errorWidget: (_, _, _) => error,
+      );
+    }
+    return Image.file(File(source), fit: fit, errorBuilder: (_, _, _) => error);
   }
 }

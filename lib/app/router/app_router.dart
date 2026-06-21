@@ -42,6 +42,12 @@ import 'package:smart_kishan/features/farmer/govt_services/service_centers/cubit
 import 'package:smart_kishan/features/farmer/govt_services/service_centers/view/service_center_detail_args.dart';
 import 'package:smart_kishan/features/farmer/govt_services/service_centers/view/service_center_detail_screen.dart';
 import 'package:smart_kishan/features/farmer/govt_services/service_centers/view/service_center_list_screen.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/cubit/subsidy_apply_cubit.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/cubit/subsidy_list_cubit.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/view/subsidy_apply_screen.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/view/subsidy_detail_args.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/view/subsidy_detail_screen.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/view/subsidy_list_screen.dart';
 import 'package:smart_kishan/features/farmer/inventory/cubit/inventory_cubit.dart';
 import 'package:smart_kishan/features/farmer/inventory/view/add_inventory_item_screen.dart';
 import 'package:smart_kishan/features/farmer/inventory/view/inventory_item_args.dart';
@@ -303,7 +309,39 @@ GoRouter createRouter(SessionCubit sessionCubit) {
           );
         },
       ),
-
+      GoRoute(
+        path: AppRoutePath.subsidies,
+        builder: (context, state) => BlocProvider(
+          create: (_) => SubsidyListCubit(sl()),
+          child: const SubsidyListScreen(),
+        ),
+      ),
+      // stubs — replaced as each slice lands
+      GoRoute(
+        path: AppRoutePath.subsidyDetail,
+        builder: (_, state) {
+          final args = state.extra as SubsidyDetailArgs;
+          return SubsidyDetailScreen(subsidy: args.subsidy);
+        },
+      ),
+      GoRoute(
+        path: AppRoutePath.subsidyApply,
+        builder: (_, state) {
+          final args = state.extra as SubsidyDetailArgs;
+          return BlocProvider(
+            create: (_) => SubsidyApplyCubit(sl()),
+            child: SubsidyApplyScreen(subsidy: args.subsidy),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutePath.mySubsidyApplications,
+        builder: (_, __) => const ComingSoonScreen(title: 'My applications'),
+      ),
+      GoRoute(
+        path: AppRoutePath.mySubsidyRequests,
+        builder: (_, __) => const ComingSoonScreen(title: 'My requests'),
+      ),
       // // Phase 3 replaces these with the real dashboards.
       // GoRoute(
       //   path: AppRoutePath.farmerDashboard,
@@ -324,10 +362,6 @@ GoRouter createRouter(SessionCubit sessionCubit) {
       GoRoute(
         path: AppRoutePath.myUsers,
         builder: (_, __) => const ComingSoonScreen(title: 'Users'),
-      ),
-      GoRoute(
-        path: AppRoutePath.subsidies,
-        builder: (_, __) => const ComingSoonScreen(title: 'Subsidies'),
       ),
       GoRoute(
         path: AppRoutePath.chatbot,

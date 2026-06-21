@@ -15,6 +15,8 @@ import 'package:smart_kishan/features/farmer/crop_info/data/crop_info_repository
 import 'package:smart_kishan/features/farmer/daily_activity/data/activity_repository.dart';
 import 'package:smart_kishan/features/farmer/farmland/data/farmland_repository.dart';
 import 'package:smart_kishan/features/farmer/govt_services/service_centers/data/service_center_repository.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/data/subsidy.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/data/subsidy_repository.dart';
 import 'package:smart_kishan/features/farmer/inventory/data/inventory_item_repository.dart';
 import 'package:smart_kishan/features/farmer/market_price/data/market_price_repository.dart';
 import 'package:smart_kishan/features/farmer/notes/data/note_repository.dart';
@@ -74,6 +76,9 @@ Future<void> initDependencies() async {
   sl.registerLazySingleton<RoutingService>(() => RoutingService());
   sl.registerLazySingleton<ServiceCenterRepository>(
     () => ServiceCenterRepository(api: sl()),
+  );
+  sl.registerLazySingleton<SubsidyRepository>(
+    () => SubsidyRepository(api: sl()),
   );
 
   // ── Global cubits (app-lifetime; feature cubits are created per

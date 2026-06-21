@@ -37,36 +37,40 @@ class LedgerChartScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     return BlocProvider.value(
       value: cubit,
-      child: Scaffold(
-        appBar: AppAppBar(title: l10n.chartScreenTitle),
-        body: SingleChildScrollView(
-          physics: const ClampingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              LedgerChartCard(view: LedgerView.both, titleFor: _chartTitle),
-              // Legend
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
-                child: Row(
-                  children: [
-                    _LegendDot(label: l10n.income, isIncome: true),
-                    const SizedBox(width: 16),
-                    _LegendDot(label: l10n.expense, isIncome: false),
-                  ],
-                ),
+      child: Column(
+        children: [
+          AppAppBar(title: l10n.chartScreenTitle),
+          Expanded(
+            child: SingleChildScrollView(
+              physics: const ClampingScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  LedgerChartCard(view: LedgerView.both, titleFor: _chartTitle),
+                  // Legend
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+                    child: Row(
+                      children: [
+                        _LegendDot(label: l10n.income, isIncome: true),
+                        const SizedBox(width: 16),
+                        _LegendDot(label: l10n.expense, isIncome: false),
+                      ],
+                    ),
+                  ),
+                  BlocBuilder<LedgerCubit, LedgerState>(
+                    builder: (context, state) => LedgerActivityList(
+                      title: _listTitle(state.period, l10n),
+                      activities: context.read<LedgerCubit>().ledgerActivities,
+                      amountMode: LedgerAmount.auto,
+                      emptyTitle: l10n.financialRecordsEmpty,
+                    ),
+                  ),
+                ],
               ),
-              BlocBuilder<LedgerCubit, LedgerState>(
-                builder: (context, state) => LedgerActivityList(
-                  title: _listTitle(state.period, l10n),
-                  activities: context.read<LedgerCubit>().ledgerActivities,
-                  amountMode: LedgerAmount.auto,
-                  emptyTitle: l10n.financialRecordsEmpty,
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
