@@ -49,15 +49,24 @@ class _SubsidyListScreenState extends State<SubsidyListScreen> {
         u.wardId != null;
   }
 
+  /// Captures the cubit now so the deferred onApplied callback (fired when the
+  /// application succeeds, screens later) doesn't touch a stale context.
+  VoidCallback? _onApplied(Subsidy s) {
+    if (s.id == null) return null;
+    final cubit = context.read<SubsidyListCubit>();
+    final id = s.id!;
+    return () => cubit.markApplied(id);
+  }
+
   void _openDetail(Subsidy s) => context.push(
-        AppRoutePath.subsidyDetail,
-        extra: SubsidyDetailArgs(subsidy: s),
-      );
+    AppRoutePath.subsidyDetail,
+    extra: SubsidyDetailArgs(subsidy: s, onApplied: _onApplied(s)),
+  );
 
   void _openApply(Subsidy s) => context.push(
-        AppRoutePath.subsidyApply,
-        extra: SubsidyDetailArgs(subsidy: s),
-      );
+    AppRoutePath.subsidyApply,
+    extra: SubsidyDetailArgs(subsidy: s, onApplied: _onApplied(s)),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -71,8 +80,7 @@ class _SubsidyListScreenState extends State<SubsidyListScreen> {
             IconButton(
               icon: const Icon(Icons.history),
               tooltip: l10n.subsidyMyApplications,
-              onPressed: () =>
-                  context.push(AppRoutePath.mySubsidyApplications),
+              onPressed: () => context.push(AppRoutePath.mySubsidyApplications),
             ),
         ],
       ),
@@ -92,22 +100,28 @@ class _SubsidyListScreenState extends State<SubsidyListScreen> {
                 return switch (state) {
                   SubsidyListLoading() => const SubsidyListSkeleton(),
                   SubsidyListFailure() => AppEmptyState(
-                      icon: Icons.error_outline,
-                      title: l10n.errorGeneric,
-                      actionLabel: l10n.commonRefresh,
-                      actionIcon: Icons.refresh,
-                      onAction: () => context.read<SubsidyListCubit>().load(),
-                    ),
-                  SubsidyListLoaded(:final subsidies) =>
-                    _list(context, l10n, subsidies),
+                    icon: Icons.error_outline,
+                    title: l10n.errorGeneric,
+                    actionLabel: l10n.commonRefresh,
+                    actionIcon: Icons.refresh,
+                    onAction: () => context.read<SubsidyListCubit>().load(),
+                  ),
+                  SubsidyListLoaded(:final subsidies) => _list(
+                    context,
+                    l10n,
+                    subsidies,
+                  ),
                 };
               },
             ),
     );
   }
 
-  Widget _list(BuildContext context, AppLocalizations l10n,
-      List<Subsidy> subsidies) {
+  Widget _list(
+    BuildContext context,
+    AppLocalizations l10n,
+    List<Subsidy> subsidies,
+  ) {
     if (subsidies.isEmpty) {
       return AppEmptyState(
         icon: Icons.card_giftcard_outlined,

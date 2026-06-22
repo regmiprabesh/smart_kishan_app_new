@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:smart_kishan/app/router/app_routes.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/formatters.dart';
@@ -9,12 +7,16 @@ import 'package:smart_kishan/features/farmer/govt_services/subsidies/widgets/sub
 
 import '../data/subsidy.dart';
 import '../subsidy_labels.dart';
-import 'subsidy_detail_args.dart';
 
 class SubsidyDetailBody extends StatelessWidget {
-  const SubsidyDetailBody({super.key, required this.subsidy});
+  const SubsidyDetailBody({
+    super.key,
+    required this.subsidy,
+    required this.onApply,
+  });
 
   final Subsidy subsidy;
+  final VoidCallback onApply;
 
   @override
   Widget build(BuildContext context) {
@@ -290,12 +292,7 @@ class SubsidyDetailBody extends StatelessWidget {
       width: double.infinity,
       height: 50,
       child: ElevatedButton(
-        onPressed: disabled
-            ? null
-            : () => context.push(
-                AppRoutePath.subsidyApply,
-                extra: SubsidyDetailArgs(subsidy: s),
-              ),
+        onPressed: disabled ? null : onApply,
         style: ElevatedButton.styleFrom(
           backgroundColor: colors.primary,
           foregroundColor: Colors.white,

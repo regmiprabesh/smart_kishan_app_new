@@ -1394,4 +1394,12 @@ class AppLocalizationsNe extends AppLocalizations {
   String subsidyFieldRequiredNamed(String field) {
     return '$field आवश्यक छ';
   }
+
+  @override
+  String subsidyUploadingPercent(String percent) {
+    return 'अपलोड हुँदै $percent%';
+  }
+
+  @override
+  String get subsidyUploadingPleaseWait => 'अपलोड तयार गर्दै…';
 }

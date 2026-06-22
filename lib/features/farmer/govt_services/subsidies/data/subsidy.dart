@@ -42,6 +42,44 @@ class Subsidy {
     this.application,
   });
 
+  Subsidy copyWith({
+    bool? hasApplied,
+    double? averageRating,
+    int? totalRatings,
+    int? userRating,
+    SubsidyApplicationInfo? application,
+  }) {
+    return Subsidy(
+      id: id,
+      title: title,
+      description: description,
+      subsidyType: subsidyType,
+      targetCropOrSector: targetCropOrSector,
+      fiscalYear: fiscalYear,
+      expectedBeneficiaries: expectedBeneficiaries,
+      eligibilityCriteria: eligibilityCriteria,
+      deadline: deadline,
+      deadlineNepali: deadlineNepali,
+      budgetPerBeneficiary: budgetPerBeneficiary,
+      totalBudget: totalBudget,
+      locationLevel: locationLevel,
+      status: status,
+      notes: notes,
+      province: province,
+      district: district,
+      municipality: municipality,
+      ward: ward,
+      hasApplied: hasApplied ?? this.hasApplied,
+      averageRating: averageRating ?? this.averageRating,
+      totalRatings: totalRatings ?? this.totalRatings,
+      userRating: userRating ?? this.userRating,
+      requiredDocuments: requiredDocuments,
+      documents: documents,
+      applicationFormFields: applicationFormFields,
+      application: application ?? this.application,
+    );
+  }
+
   final int? id;
   final MultilingualField? title;
   final MultilingualField? description;
@@ -95,12 +133,14 @@ class Subsidy {
       title: MultilingualField.fromJson(json['title']),
       description: MultilingualField.fromJson(json['description']),
       subsidyType: json['subsidy_type'],
-      targetCropOrSector:
-          MultilingualField.fromJson(json['target_crop_or_sector']),
+      targetCropOrSector: MultilingualField.fromJson(
+        json['target_crop_or_sector'],
+      ),
       fiscalYear: json['fiscal_year'],
       expectedBeneficiaries: json['expected_beneficiaries'],
-      eligibilityCriteria:
-          MultilingualField.fromJson(json['eligibility_criteria']),
+      eligibilityCriteria: MultilingualField.fromJson(
+        json['eligibility_criteria'],
+      ),
       deadline: json['deadline'],
       deadlineNepali: json['deadline_nepali'],
       budgetPerBeneficiary: json['budget_per_beneficiary']?.toString(),
@@ -108,10 +148,12 @@ class Subsidy {
       locationLevel: json['location_level'],
       status: json['status'],
       notes: MultilingualField.fromJson(json['notes']),
-      province:
-          json['province'] != null ? Province.fromJson(json['province']) : null,
-      district:
-          json['district'] != null ? District.fromJson(json['district']) : null,
+      province: json['province'] != null
+          ? Province.fromJson(json['province'])
+          : null,
+      district: json['district'] != null
+          ? District.fromJson(json['district'])
+          : null,
       municipality: json['municipality'] != null
           ? Municipality.fromJson(json['municipality'])
           : null,
@@ -122,14 +164,19 @@ class Subsidy {
       userRating: json['user_rating'] != null
           ? int.tryParse('${json['user_rating']}')
           : null,
-      requiredDocuments:
-          _mapList(json['required_documents'], RequiredDocument.fromJson),
+      requiredDocuments: _mapList(
+        json['required_documents'],
+        RequiredDocument.fromJson,
+      ),
       documents: _mapList(json['documents'], SubsidyDocument.fromJson),
       applicationFormFields: _mapList(
-          json['application_form_fields'], ApplicationFormField.fromJson),
+        json['application_form_fields'],
+        ApplicationFormField.fromJson,
+      ),
       application: json['pivot'] is Map
           ? SubsidyApplicationInfo.fromPivot(
-              Map<String, dynamic>.from(json['pivot'] as Map))
+              Map<String, dynamic>.from(json['pivot'] as Map),
+            )
           : null,
     );
   }
@@ -199,4 +246,3 @@ Map<String, dynamic> _decodeMap(dynamic value) {
   }
   return const {};
 }
-

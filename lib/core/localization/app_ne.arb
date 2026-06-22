@@ -605,6 +605,11 @@
 "subsidyPleaseSelect": "{field} छान्नुहोस्",
 "@subsidyPleaseSelect": { "placeholders": { "field": { "type": "String" } } },
 "subsidyFieldRequiredNamed": "{field} आवश्यक छ",
-"@subsidyFieldRequiredNamed": { "placeholders": { "field": { "type": "String" } } }
+"@subsidyFieldRequiredNamed": { "placeholders": { "field": { "type": "String" } } },
 
+"subsidyUploadingPercent": "अपलोड हुँदै {percent}%",
+"@subsidyUploadingPercent": {
+  "placeholders": { "percent": { "type": "String" } }
+},
+"subsidyUploadingPleaseWait": "अपलोड तयार गर्दै…"
 }

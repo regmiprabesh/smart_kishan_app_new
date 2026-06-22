@@ -2737,6 +2737,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{field} is required'**
   String subsidyFieldRequiredNamed(String field);
+
+  /// No description provided for @subsidyUploadingPercent.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploading {percent}%'**
+  String subsidyUploadingPercent(String percent);
+
+  /// No description provided for @subsidyUploadingPleaseWait.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing upload…'**
+  String get subsidyUploadingPleaseWait;
 }
 
 class _AppLocalizationsDelegate

@@ -11,7 +11,14 @@ class SubsidyApplyIdle extends SubsidyApplyState {
 }
 
 class SubsidyApplySubmitting extends SubsidyApplyState {
-  const SubsidyApplySubmitting();
+  const SubsidyApplySubmitting({this.progress = 0});
+
+  /// Upload fraction 0.0–1.0. Reaches 1.0 when bytes finish uploading; the
+  /// server is then still processing (show an indeterminate 'finalizing').
+  final double progress;
+
+  @override
+  List<Object?> get props => [progress];
 }
 
 class SubsidyApplySuccess extends SubsidyApplyState {

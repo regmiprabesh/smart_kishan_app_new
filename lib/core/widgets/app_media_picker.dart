@@ -36,6 +36,9 @@ class AppMediaPicker {
     bool allowImagesOnly = true,
     List<String>? allowedExtensions, // for Files (e.g. ['pdf','jpg'])
   }) async {
+    await Future<void>.delayed(Duration.zero);
+    if (!context.mounted) return null;
+
     final source = await showModalBottomSheet<MediaSource>(
       context: context,
       backgroundColor: Colors.transparent,

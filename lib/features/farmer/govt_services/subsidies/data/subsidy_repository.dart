@@ -33,11 +33,10 @@ class SubsidyRepository {
     required int subsidyId,
     required int rating,
     String? review,
-  }) =>
-      api.post(
-        ApiEndpoints.subsidyRate(subsidyId),
-        body: {'rating': rating, 'review': review},
-      );
+  }) => api.post(
+    ApiEndpoints.subsidyRate(subsidyId),
+    body: {'rating': rating, 'review': review},
+  );
 
   /// GET /farmer/subsidies/{id}/ratings
   Future<List<SubsidyRating>> fetchRatings(int subsidyId) async {
@@ -71,6 +70,7 @@ class SubsidyRepository {
     required String notes,
     required Map<String, String> formData,
     required List<ApplyDocument> documents,
+    void Function(int sent, int total)? onSendProgress,
   }) {
     final fields = <String, String>{'application_notes': notes};
     formData.forEach((k, v) => fields['form_data[$k]'] = v);
@@ -83,6 +83,7 @@ class SubsidyRepository {
       ApiEndpoints.subsidyApply(subsidyId),
       fields: fields,
       files: files,
+      onSendProgress: onSendProgress,
     );
   }
 

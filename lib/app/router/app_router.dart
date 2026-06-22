@@ -321,7 +321,7 @@ GoRouter createRouter(SessionCubit sessionCubit) {
         path: AppRoutePath.subsidyDetail,
         builder: (_, state) {
           final args = state.extra as SubsidyDetailArgs;
-          return SubsidyDetailScreen(subsidy: args.subsidy);
+          return SubsidyDetailScreen(args: args);
         },
       ),
       GoRoute(
@@ -330,7 +330,7 @@ GoRouter createRouter(SessionCubit sessionCubit) {
           final args = state.extra as SubsidyDetailArgs;
           return BlocProvider(
             create: (_) => SubsidyApplyCubit(sl()),
-            child: SubsidyApplyScreen(subsidy: args.subsidy),
+            child: SubsidyApplyScreen(args: args),
           );
         },
       ),

@@ -22,11 +22,18 @@ class SubsidyApplyCubit extends Cubit<SubsidyApplyState> {
         notes: notes,
         formData: formData,
         documents: documents,
+        onSendProgress: (sent, total) {
+          if (isClosed || total <= 0) return;
+          emit(SubsidyApplySubmitting(progress: sent / total));
+        },
       );
+      if (isClosed) return;
       emit(const SubsidyApplySuccess());
     } on ApiException catch (e) {
+      if (isClosed) return;
       emit(SubsidyApplyFailure(e.message));
     } catch (_) {
+      if (isClosed) return;
       emit(const SubsidyApplyFailure(''));
     }
   }

@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:smart_kishan/app/router/app_routes.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/app_snackbar.dart';
+import 'package:smart_kishan/core/utils/formatters.dart';
 import 'package:smart_kishan/core/widgets/app_bar.dart';
 import 'package:smart_kishan/core/widgets/app_image_preview.dart';
 import 'package:smart_kishan/core/widgets/app_pdf_preview.dart';
@@ -27,11 +27,12 @@ import '../data/subsidy_repository.dart';
 import '../subsidy_labels.dart';
 import '../widgets/subsidy_document_upload.dart';
 import '../widgets/subsidy_form_field.dart';
+import 'subsidy_detail_args.dart';
 
 class SubsidyApplyScreen extends StatefulWidget {
-  const SubsidyApplyScreen({super.key, required this.subsidy});
+  const SubsidyApplyScreen({super.key, required this.args});
 
-  final Subsidy subsidy;
+  final SubsidyDetailArgs args;
 
   @override
   State<SubsidyApplyScreen> createState() => _SubsidyApplyScreenState();
@@ -44,8 +45,8 @@ class _SubsidyApplyScreenState extends State<SubsidyApplyScreen> {
   final _uploads = <int, PickedMedia>{}; // required-doc index -> picked file
   final _notes = TextEditingController();
   bool _attempted = false;
-
-  Subsidy get _subsidy => widget.subsidy;
+  static const _imageExtensions = {'jpg', 'jpeg', 'png', 'gif', 'webp'};
+  Subsidy get _subsidy => widget.args.subsidy;
 
   @override
   void initState() {
@@ -120,14 +121,26 @@ class _SubsidyApplyScreenState extends State<SubsidyApplyScreen> {
 
   Future<void> _pickDocument(int index, RequiredDocument doc) async {
     final l10n = AppLocalizations.of(context)!;
+
+    // Check if any of the accepted formats are image types
+    final acceptedLower = doc.acceptedFormats
+        .map((e) => e.toLowerCase())
+        .toSet();
+    final allowsImages = acceptedLower.any(_imageExtensions.contains);
+
+    final sources = allowsImages
+        ? const {MediaSource.camera, MediaSource.gallery, MediaSource.files}
+        : const {MediaSource.files};
+
     final media = await AppMediaPicker.pick(
       context,
+      sources: sources,
       allowImagesOnly: false,
       allowedExtensions: doc.acceptedFormats,
     );
     if (media == null) return;
     final ext = (media.name ?? media.path).split('.').last.toLowerCase();
-    if (!doc.acceptedFormats.map((e) => e.toLowerCase()).contains(ext)) {
+    if (!acceptedLower.contains(ext)) {
       AppSnackbar.error(l10n.subsidyInvalidFileType);
       return;
     }
@@ -196,7 +209,8 @@ class _SubsidyApplyScreenState extends State<SubsidyApplyScreen> {
       listener: (context, state) {
         if (state is SubsidyApplySuccess) {
           AppSnackbar.success(l10n.subsidyApplicationSuccess);
-          context.go(AppRoutePath.subsidies);
+          widget.args.onApplied?.call();
+          context.pop(true);
         } else if (state is SubsidyApplyFailure) {
           AppSnackbar.error(
             state.message.isEmpty ? l10n.errorGeneric : state.message,
@@ -205,62 +219,101 @@ class _SubsidyApplyScreenState extends State<SubsidyApplyScreen> {
       },
       builder: (context, state) {
         final submitting = state is SubsidyApplySubmitting;
-        return Scaffold(
-          appBar: AppAppBar(title: l10n.subsidyApplyTitle),
-          body: AbsorbPointer(
-            absorbing: submitting,
-            child: Form(
-              key: _formKey,
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    _infoCard(context, l10n),
-                    const SizedBox(height: 20),
-                    if (_subsidy.applicationFormFields.isNotEmpty) ...[
-                      SubsidySectionTitle(
-                        title: l10n.subsidyApplicationDetails,
-                      ),
-                      const SizedBox(height: 10),
-                      ..._subsidy.applicationFormFields.map(_buildField),
-                    ],
-                    if (_subsidy.requiredDocuments.isNotEmpty) ...[
-                      SubsidySectionTitle(title: l10n.subsidyRequiredDocuments),
-                      const SizedBox(height: 10),
-                      ..._subsidy.requiredDocuments.asMap().entries.map((e) {
-                        final media = _uploads[e.key];
-                        return SubsidyDocumentUpload(
-                          doc: e.value,
-                          fileName: media?.name ?? media?.path.split('/').last,
-                          onPick: () => _pickDocument(e.key, e.value),
-                          onRemove: () =>
-                              setState(() => _uploads.remove(e.key)),
-                          onPreview: () => _preview(e.key),
-                          showError: _attempted,
-                        );
-                      }),
-                      const SizedBox(height: 8),
-                    ],
-                    AppTextField(
-                      controller: _notes,
-                      label: l10n.subsidyApplicationNotes,
-                      hint: l10n.subsidyApplicationNotesHint,
-                      maxLines: 4,
-                      textInputAction: TextInputAction.newline,
+        return PopScope(
+          canPop: !submitting,
+          child: Scaffold(
+            appBar: AppAppBar(
+              title: l10n.subsidyApplyTitle,
+              onBack: submitting ? () {} : null,
+            ),
+            body: Column(
+              children: [
+                if (submitting) ...[
+                  _uploadProgressBar(context, state.progress),
+                  const SizedBox(height: 12),
+                ],
+                Expanded(
+                  child: Form(
+                    key: _formKey,
+                    child: Stack(
+                      children: [
+                        SingleChildScrollView(
+                          padding: const EdgeInsets.all(16),
+                          child: AbsorbPointer(
+                            absorbing: submitting,
+                            child: AnimatedOpacity(
+                              opacity: submitting ? 0.5 : 1.0,
+                              duration: Duration(milliseconds: 200),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  _infoCard(context, l10n),
+                                  const SizedBox(height: 20),
+                                  if (_subsidy
+                                      .applicationFormFields
+                                      .isNotEmpty) ...[
+                                    SubsidySectionTitle(
+                                      title: l10n.subsidyApplicationDetails,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    ..._subsidy.applicationFormFields.map(
+                                      _buildField,
+                                    ),
+                                  ],
+                                  if (_subsidy
+                                      .requiredDocuments
+                                      .isNotEmpty) ...[
+                                    SubsidySectionTitle(
+                                      title: l10n.subsidyRequiredDocuments,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    ..._subsidy.requiredDocuments
+                                        .asMap()
+                                        .entries
+                                        .map((e) {
+                                          final media = _uploads[e.key];
+                                          return SubsidyDocumentUpload(
+                                            doc: e.value,
+                                            fileName:
+                                                media?.name ??
+                                                media?.path.split('/').last,
+                                            onPick: () =>
+                                                _pickDocument(e.key, e.value),
+                                            onRemove: () => setState(
+                                              () => _uploads.remove(e.key),
+                                            ),
+                                            onPreview: () => _preview(e.key),
+                                            showError: _attempted,
+                                          );
+                                        }),
+                                    const SizedBox(height: 8),
+                                  ],
+                                  AppTextField(
+                                    controller: _notes,
+                                    label: l10n.subsidyApplicationNotes,
+                                    hint: l10n.subsidyApplicationNotesHint,
+                                    maxLines: 4,
+                                    textInputAction: TextInputAction.newline,
+                                  ),
+                                  const SizedBox(height: 20),
+                                  _reviewNotice(context, l10n),
+                                  const SizedBox(height: 16),
+                                  AppPrimaryButton(
+                                    label: l10n.subsidySubmitApplication,
+                                    isLoading: submitting,
+                                    onPressed: _submit,
+                                  ),
+                                  const SizedBox(height: 12),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 20),
-                    _reviewNotice(context, l10n),
-                    const SizedBox(height: 16),
-                    AppPrimaryButton(
-                      label: l10n.subsidySubmitApplication,
-                      isLoading: submitting,
-                      onPressed: _submit,
-                    ),
-                    const SizedBox(height: 12),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
         );
@@ -338,6 +391,42 @@ class _SubsidyApplyScreenState extends State<SubsidyApplyScreen> {
             style: TextStyle(fontSize: 13, color: colors.primary),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _uploadProgressBar(BuildContext context, double? progress) {
+    final colors = context.colors;
+    final l10n = AppLocalizations.of(context)!;
+    return ColoredBox(
+      color: colors.surface, // gives it its own background separate from appbar
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: LinearProgressIndicator(
+                value: progress,
+                minHeight: 6,
+                backgroundColor: colors.border.withValues(alpha: 0.3),
+                valueColor: AlwaysStoppedAnimation(colors.primary),
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              progress != null
+                  ? context.ld(
+                      l10n.subsidyUploadingPercent(
+                        (progress * 100).toStringAsFixed(0),
+                      ),
+                    )
+                  : l10n.subsidyUploadingPleaseWait,
+              style: TextStyle(fontSize: 12, color: colors.textSecondary),
+            ),
+          ],
+        ),
       ),
     );
   }

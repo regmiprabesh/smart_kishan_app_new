@@ -605,6 +605,12 @@
 "subsidyPleaseSelect": "Please select {field}",
 "@subsidyPleaseSelect": { "placeholders": { "field": { "type": "String" } } },
 "subsidyFieldRequiredNamed": "{field} is required",
-"@subsidyFieldRequiredNamed": { "placeholders": { "field": { "type": "String" } } }
+"@subsidyFieldRequiredNamed": { "placeholders": { "field": { "type": "String" } } },
+
+"subsidyUploadingPercent": "Uploading {percent}%",
+"@subsidyUploadingPercent": {
+  "placeholders": { "percent": { "type": "String" } }
+},
+"subsidyUploadingPleaseWait": "Preparing upload…"
 
 }

@@ -1388,4 +1388,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String subsidyFieldRequiredNamed(String field) {
     return '$field is required';
   }
+
+  @override
+  String subsidyUploadingPercent(String percent) {
+    return 'Uploading $percent%';
+  }
+
+  @override
+  String get subsidyUploadingPleaseWait => 'Preparing upload…';
 }

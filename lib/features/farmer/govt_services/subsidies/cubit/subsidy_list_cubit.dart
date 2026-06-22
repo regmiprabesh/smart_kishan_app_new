@@ -21,4 +21,17 @@ class SubsidyListCubit extends Cubit<SubsidyListState> {
       emit(const SubsidyListFailure());
     }
   }
+
+  /// Mark one subsidy as applied in place — no network refetch. Called after a
+  /// successful application so the card/badge reflect it immediately.
+  void markApplied(int id) {
+    final current = state;
+    if (current is! SubsidyListLoaded) return;
+    emit(
+      SubsidyListLoaded([
+        for (final s in current.subsidies)
+          s.id == id ? s.copyWith(hasApplied: true) : s,
+      ]),
+    );
+  }
 }
