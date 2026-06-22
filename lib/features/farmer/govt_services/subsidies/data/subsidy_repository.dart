@@ -2,6 +2,7 @@ import 'package:smart_kishan/core/constants/api_endpoints.dart';
 import 'package:smart_kishan/core/network/api_client.dart';
 
 import 'subsidy.dart';
+import 'subsidy_request.dart';
 import 'subsidy_rating.dart';
 
 /// Remote data source for the subsidies feature (list, applications, ratings,
@@ -14,14 +15,14 @@ class SubsidyRepository {
   /// GET /farmer/subsidies — available subsidies for the farmer's location.
   Future<List<Subsidy>> fetchSubsidies() async {
     final res = await api.get(ApiEndpoints.subsidies);
-    return _subsidyList(res.data);
+    return _list(res.data, Subsidy.fromJson);
   }
 
   /// GET /farmer/subsidy-applications — subsidies the farmer applied to
   /// (each carries pivot `application` data).
   Future<List<Subsidy>> fetchMyApplications() async {
     final res = await api.get(ApiEndpoints.subsidyApplications);
-    return _subsidyList(res.data);
+    return _list(res.data, Subsidy.fromJson);
   }
 
   /// DELETE /farmer/subsidies/{id}/withdraw
@@ -41,10 +42,7 @@ class SubsidyRepository {
   /// GET /farmer/subsidies/{id}/ratings
   Future<List<SubsidyRating>> fetchRatings(int subsidyId) async {
     final res = await api.get(ApiEndpoints.subsidyRatings(subsidyId));
-    final list = (res.data as List?) ?? const [];
-    return list
-        .map((e) => SubsidyRating.fromJson(Map<String, dynamic>.from(e as Map)))
-        .toList();
+    return _list(res.data, SubsidyRating.fromJson);
   }
 
   /// GET /farmer/subsidies/{id}/my-rating — null when the farmer hasn't rated.
@@ -87,10 +85,46 @@ class SubsidyRepository {
     );
   }
 
-  List<Subsidy> _subsidyList(dynamic data) {
+  /// GET /subsidy-requests/my-requests
+  Future<List<SubsidyRequest>> fetchMyRequests() async {
+    final res = await api.get(ApiEndpoints.mySubsidyRequests);
+    return _list(res.data, SubsidyRequest.fromJson);
+  }
+
+  /// POST /subsidy-requests — primary text is sent as the required `_en`
+  /// fields (backend stores them as the request's multilingual values).
+  Future<void> createSubsidyRequest({
+    required String title,
+    required String description,
+    required String subsidyType,
+    required String justification,
+    required String requestedToLevel,
+    String? targetCropOrSector,
+  }) {
+    final crop = targetCropOrSector?.trim() ?? '';
+    return api.post(
+      ApiEndpoints.subsidyRequests,
+      body: {
+        'title_en': title,
+        'description_en': description,
+        'subsidy_type': subsidyType,
+        'justification_en': justification,
+        'requested_to_level': requestedToLevel,
+        if (crop.isNotEmpty) 'target_crop_or_sector_en': crop,
+      },
+    );
+  }
+
+  /// DELETE /subsidy-requests/{id}/cancel
+  Future<void> cancelSubsidyRequest(int id) =>
+      api.delete(ApiEndpoints.cancelSubsidyRequest(id));
+
+  /// Decodes a `{ data: [...] }` list response into models. Shared by every
+  /// list endpoint so they all parse the same way.
+  List<T> _list<T>(dynamic data, T Function(Map<String, dynamic>) fromJson) {
     final list = (data as List?) ?? const [];
     return list
-        .map((e) => Subsidy.fromJson(Map<String, dynamic>.from(e as Map)))
+        .map((e) => fromJson(Map<String, dynamic>.from(e as Map)))
         .toList();
   }
 }

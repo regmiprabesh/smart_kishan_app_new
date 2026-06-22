@@ -2749,6 +2749,270 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Preparing upload…'**
   String get subsidyUploadingPleaseWait;
+
+  /// No description provided for @commonYes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get commonYes;
+
+  /// No description provided for @commonNo.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get commonNo;
+
+  /// No description provided for @subsidyApplicationDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Application Details'**
+  String get subsidyApplicationDetailsTitle;
+
+  /// No description provided for @subsidyApplicationTimeline.
+  ///
+  /// In en, this message translates to:
+  /// **'Application Timeline'**
+  String get subsidyApplicationTimeline;
+
+  /// No description provided for @subsidyApplicationsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No applications yet'**
+  String get subsidyApplicationsEmptyTitle;
+
+  /// No description provided for @subsidyApplicationsEmptyDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Subsidies you apply for will appear here so you can track their status.'**
+  String get subsidyApplicationsEmptyDesc;
+
+  /// No description provided for @subsidyAppliedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Applied on {date}'**
+  String subsidyAppliedOn(String date);
+
+  /// No description provided for @subsidyStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get subsidyStatusPending;
+
+  /// No description provided for @subsidyStatusUnderReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Under Review'**
+  String get subsidyStatusUnderReview;
+
+  /// No description provided for @subsidyStatusApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get subsidyStatusApproved;
+
+  /// No description provided for @subsidyStatusRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get subsidyStatusRejected;
+
+  /// No description provided for @subsidySubmittedDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted Details'**
+  String get subsidySubmittedDetails;
+
+  /// No description provided for @subsidySubmittedDocuments.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted Documents'**
+  String get subsidySubmittedDocuments;
+
+  /// No description provided for @subsidyTimelineSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted'**
+  String get subsidyTimelineSubmitted;
+
+  /// No description provided for @subsidyTimelineUnderReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Under Review'**
+  String get subsidyTimelineUnderReview;
+
+  /// No description provided for @subsidyTimelinePendingReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting review'**
+  String get subsidyTimelinePendingReview;
+
+  /// No description provided for @subsidyTimelineAwaitingDecision.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting decision'**
+  String get subsidyTimelineAwaitingDecision;
+
+  /// No description provided for @subsidyWithdraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw Application'**
+  String get subsidyWithdraw;
+
+  /// No description provided for @subsidyWithdrawConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw application?'**
+  String get subsidyWithdrawConfirmTitle;
+
+  /// No description provided for @subsidyWithdrawConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This will cancel your application. You can apply again later if the subsidy is still open.'**
+  String get subsidyWithdrawConfirmMessage;
+
+  /// No description provided for @subsidyWithdrawSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Application withdrawn'**
+  String get subsidyWithdrawSuccess;
+
+  /// No description provided for @subsidyType.
+  ///
+  /// In en, this message translates to:
+  /// **'Subsidy Type'**
+  String get subsidyType;
+
+  /// No description provided for @subsidyJustification.
+  ///
+  /// In en, this message translates to:
+  /// **'Justification'**
+  String get subsidyJustification;
+
+  /// No description provided for @subsidyTargetCropSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Target Crop / Sector'**
+  String get subsidyTargetCropSector;
+
+  /// No description provided for @subsidyStatusConverted.
+  ///
+  /// In en, this message translates to:
+  /// **'Converted'**
+  String get subsidyStatusConverted;
+
+  /// No description provided for @subsidyMyRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'My Requests'**
+  String get subsidyMyRequests;
+
+  /// No description provided for @subsidyRequestNew.
+  ///
+  /// In en, this message translates to:
+  /// **'Request New Subsidy'**
+  String get subsidyRequestNew;
+
+  /// No description provided for @subsidyRequestIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggest a subsidy your area needs. An officer will review your request.'**
+  String get subsidyRequestIntro;
+
+  /// No description provided for @subsidyRequestFieldTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Subsidy Title'**
+  String get subsidyRequestFieldTitle;
+
+  /// No description provided for @subsidyRequestLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Requested To'**
+  String get subsidyRequestLevel;
+
+  /// No description provided for @subsidyRequestSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Request'**
+  String get subsidyRequestSubmit;
+
+  /// No description provided for @subsidyRequestSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Request submitted successfully'**
+  String get subsidyRequestSuccess;
+
+  /// No description provided for @subsidyRequestsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No requests yet'**
+  String get subsidyRequestsEmptyTitle;
+
+  /// No description provided for @subsidyRequestsEmptyDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Subsidies you request will appear here while officials review them.'**
+  String get subsidyRequestsEmptyDesc;
+
+  /// No description provided for @subsidyRequestDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Request Details'**
+  String get subsidyRequestDetailsTitle;
+
+  /// No description provided for @subsidyRequestInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Request Information'**
+  String get subsidyRequestInformation;
+
+  /// No description provided for @subsidyRequestedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Requested on {date}'**
+  String subsidyRequestedOn(String date);
+
+  /// No description provided for @subsidyRequestedOnLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Requested On'**
+  String get subsidyRequestedOnLabel;
+
+  /// No description provided for @subsidyAdminNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Officer\'s Notes'**
+  String get subsidyAdminNotes;
+
+  /// No description provided for @subsidyRequestConvertedNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Your request has become an available subsidy you can now apply for.'**
+  String get subsidyRequestConvertedNotice;
+
+  /// No description provided for @subsidyCancelRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel Request'**
+  String get subsidyCancelRequest;
+
+  /// No description provided for @subsidyCancelConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel request?'**
+  String get subsidyCancelConfirmTitle;
+
+  /// No description provided for @subsidyCancelConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This permanently removes your request and can\'t be undone.'**
+  String get subsidyCancelConfirmMessage;
+
+  /// No description provided for @subsidyCancelSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Request cancelled'**
+  String get subsidyCancelSuccess;
 }
 
 class _AppLocalizationsDelegate

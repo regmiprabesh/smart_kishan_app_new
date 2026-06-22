@@ -1396,4 +1396,146 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get subsidyUploadingPleaseWait => 'Preparing upload…';
+
+  @override
+  String get commonYes => 'Yes';
+
+  @override
+  String get commonNo => 'No';
+
+  @override
+  String get subsidyApplicationDetailsTitle => 'Application Details';
+
+  @override
+  String get subsidyApplicationTimeline => 'Application Timeline';
+
+  @override
+  String get subsidyApplicationsEmptyTitle => 'No applications yet';
+
+  @override
+  String get subsidyApplicationsEmptyDesc =>
+      'Subsidies you apply for will appear here so you can track their status.';
+
+  @override
+  String subsidyAppliedOn(String date) {
+    return 'Applied on $date';
+  }
+
+  @override
+  String get subsidyStatusPending => 'Pending';
+
+  @override
+  String get subsidyStatusUnderReview => 'Under Review';
+
+  @override
+  String get subsidyStatusApproved => 'Approved';
+
+  @override
+  String get subsidyStatusRejected => 'Rejected';
+
+  @override
+  String get subsidySubmittedDetails => 'Submitted Details';
+
+  @override
+  String get subsidySubmittedDocuments => 'Submitted Documents';
+
+  @override
+  String get subsidyTimelineSubmitted => 'Submitted';
+
+  @override
+  String get subsidyTimelineUnderReview => 'Under Review';
+
+  @override
+  String get subsidyTimelinePendingReview => 'Awaiting review';
+
+  @override
+  String get subsidyTimelineAwaitingDecision => 'Awaiting decision';
+
+  @override
+  String get subsidyWithdraw => 'Withdraw Application';
+
+  @override
+  String get subsidyWithdrawConfirmTitle => 'Withdraw application?';
+
+  @override
+  String get subsidyWithdrawConfirmMessage =>
+      'This will cancel your application. You can apply again later if the subsidy is still open.';
+
+  @override
+  String get subsidyWithdrawSuccess => 'Application withdrawn';
+
+  @override
+  String get subsidyType => 'Subsidy Type';
+
+  @override
+  String get subsidyJustification => 'Justification';
+
+  @override
+  String get subsidyTargetCropSector => 'Target Crop / Sector';
+
+  @override
+  String get subsidyStatusConverted => 'Converted';
+
+  @override
+  String get subsidyMyRequests => 'My Requests';
+
+  @override
+  String get subsidyRequestNew => 'Request New Subsidy';
+
+  @override
+  String get subsidyRequestIntro =>
+      'Suggest a subsidy your area needs. An officer will review your request.';
+
+  @override
+  String get subsidyRequestFieldTitle => 'Subsidy Title';
+
+  @override
+  String get subsidyRequestLevel => 'Requested To';
+
+  @override
+  String get subsidyRequestSubmit => 'Submit Request';
+
+  @override
+  String get subsidyRequestSuccess => 'Request submitted successfully';
+
+  @override
+  String get subsidyRequestsEmptyTitle => 'No requests yet';
+
+  @override
+  String get subsidyRequestsEmptyDesc =>
+      'Subsidies you request will appear here while officials review them.';
+
+  @override
+  String get subsidyRequestDetailsTitle => 'Request Details';
+
+  @override
+  String get subsidyRequestInformation => 'Request Information';
+
+  @override
+  String subsidyRequestedOn(String date) {
+    return 'Requested on $date';
+  }
+
+  @override
+  String get subsidyRequestedOnLabel => 'Requested On';
+
+  @override
+  String get subsidyAdminNotes => 'Officer\'s Notes';
+
+  @override
+  String get subsidyRequestConvertedNotice =>
+      'Your request has become an available subsidy you can now apply for.';
+
+  @override
+  String get subsidyCancelRequest => 'Cancel Request';
+
+  @override
+  String get subsidyCancelConfirmTitle => 'Cancel request?';
+
+  @override
+  String get subsidyCancelConfirmMessage =>
+      'This permanently removes your request and can\'t be undone.';
+
+  @override
+  String get subsidyCancelSuccess => 'Request cancelled';
 }

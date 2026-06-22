@@ -611,6 +611,64 @@
 "@subsidyUploadingPercent": {
   "placeholders": { "percent": { "type": "String" } }
 },
-"subsidyUploadingPleaseWait": "Preparing upload…"
+"subsidyUploadingPleaseWait": "Preparing upload…",
+"commonYes": "Yes",
+"commonNo": "No",
+"subsidyApplicationDetailsTitle": "Application Details",
+"subsidyApplicationTimeline": "Application Timeline",
+"subsidyApplicationsEmptyTitle": "No applications yet",
+"subsidyApplicationsEmptyDesc": "Subsidies you apply for will appear here so you can track their status.",
+"subsidyAppliedOn": "Applied on {date}",
+"@subsidyAppliedOn": {
+"placeholders": {
+    "date": {
+    "type": "String"
+    }
+}
+},
+"subsidyStatusPending": "Pending",
+"subsidyStatusUnderReview": "Under Review",
+"subsidyStatusApproved": "Approved",
+"subsidyStatusRejected": "Rejected",
+"subsidySubmittedDetails": "Submitted Details",
+"subsidySubmittedDocuments": "Submitted Documents",
+"subsidyTimelineSubmitted": "Submitted",
+"subsidyTimelineUnderReview": "Under Review",
+"subsidyTimelinePendingReview": "Awaiting review",
+"subsidyTimelineAwaitingDecision": "Awaiting decision",
+"subsidyWithdraw": "Withdraw Application",
+"subsidyWithdrawConfirmTitle": "Withdraw application?",
+"subsidyWithdrawConfirmMessage": "This will cancel your application. You can apply again later if the subsidy is still open.",
+"subsidyWithdrawSuccess": "Application withdrawn",
+"subsidyType": "Subsidy Type",
+"subsidyJustification": "Justification",
+"subsidyTargetCropSector": "Target Crop / Sector",
+"subsidyStatusConverted": "Converted",
+"subsidyMyRequests": "My Requests",
+"subsidyRequestNew": "Request New Subsidy",
+"subsidyRequestIntro": "Suggest a subsidy your area needs. An officer will review your request.",
+"subsidyRequestFieldTitle": "Subsidy Title",
+"subsidyRequestLevel": "Requested To",
+"subsidyRequestSubmit": "Submit Request",
+"subsidyRequestSuccess": "Request submitted successfully",
+"subsidyRequestsEmptyTitle": "No requests yet",
+"subsidyRequestsEmptyDesc": "Subsidies you request will appear here while officials review them.",
+"subsidyRequestDetailsTitle": "Request Details",
+"subsidyRequestInformation": "Request Information",
+"subsidyRequestedOn": "Requested on {date}",
+"@subsidyRequestedOn": {
+"placeholders": {
+    "date": {
+    "type": "String"
+    }
+}
+},
+"subsidyRequestedOnLabel": "Requested On",
+"subsidyAdminNotes": "Officer's Notes",
+"subsidyRequestConvertedNotice": "Your request has become an available subsidy you can now apply for.",
+"subsidyCancelRequest": "Cancel Request",
+"subsidyCancelConfirmTitle": "Cancel request?",
+"subsidyCancelConfirmMessage": "This permanently removes your request and can't be undone.",
+"subsidyCancelSuccess": "Request cancelled"
 
 }

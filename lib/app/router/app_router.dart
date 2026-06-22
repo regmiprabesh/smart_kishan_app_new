@@ -42,8 +42,20 @@ import 'package:smart_kishan/features/farmer/govt_services/service_centers/cubit
 import 'package:smart_kishan/features/farmer/govt_services/service_centers/view/service_center_detail_args.dart';
 import 'package:smart_kishan/features/farmer/govt_services/service_centers/view/service_center_detail_screen.dart';
 import 'package:smart_kishan/features/farmer/govt_services/service_centers/view/service_center_list_screen.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/cubit/application_withdraw_cubit.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/cubit/my_applications_cubit.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/cubit/my_requests_cubit.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/cubit/request_cancel_cubit.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/cubit/request_subsidy_cubit.dart';
 import 'package:smart_kishan/features/farmer/govt_services/subsidies/cubit/subsidy_apply_cubit.dart';
 import 'package:smart_kishan/features/farmer/govt_services/subsidies/cubit/subsidy_list_cubit.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/view/application_detail_args.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/view/application_detail_screen.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/view/my_applications_screen.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/view/my_requests_screen.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/view/request_detail_args.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/view/request_detail_screen.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/view/request_subsidy_screen.dart';
 import 'package:smart_kishan/features/farmer/govt_services/subsidies/view/subsidy_apply_screen.dart';
 import 'package:smart_kishan/features/farmer/govt_services/subsidies/view/subsidy_detail_args.dart';
 import 'package:smart_kishan/features/farmer/govt_services/subsidies/view/subsidy_detail_screen.dart';
@@ -336,12 +348,46 @@ GoRouter createRouter(SessionCubit sessionCubit) {
       ),
       GoRoute(
         path: AppRoutePath.mySubsidyApplications,
-        builder: (_, __) => const ComingSoonScreen(title: 'My applications'),
+        builder: (_, __) => BlocProvider(
+          create: (_) => MyApplicationsCubit(sl())..load(),
+          child: const MyApplicationsScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutePath.subsidyApplicationDetail,
+        builder: (_, state) {
+          final args = state.extra as ApplicationDetailArgs;
+          return BlocProvider(
+            create: (_) => ApplicationWithdrawCubit(sl()),
+            child: ApplicationDetailScreen(args: args),
+          );
+        },
       ),
       GoRoute(
         path: AppRoutePath.mySubsidyRequests,
-        builder: (_, __) => const ComingSoonScreen(title: 'My requests'),
+        builder: (_, __) => BlocProvider(
+          create: (_) => MyRequestsCubit(sl())..load(),
+          child: const MyRequestsScreen(),
+        ),
       ),
+      GoRoute(
+        path: AppRoutePath.requestSubsidy,
+        builder: (_, __) => BlocProvider(
+          create: (_) => RequestSubsidyCubit(sl()),
+          child: const RequestSubsidyScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutePath.subsidyRequestDetail,
+        builder: (_, state) {
+          final args = state.extra as RequestDetailArgs;
+          return BlocProvider(
+            create: (_) => RequestCancelCubit(sl()),
+            child: RequestDetailScreen(args: args),
+          );
+        },
+      ),
+
       // // Phase 3 replaces these with the real dashboards.
       // GoRoute(
       //   path: AppRoutePath.farmerDashboard,

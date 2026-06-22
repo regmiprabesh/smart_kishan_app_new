@@ -69,6 +69,10 @@ abstract final class AppRoutePath {
   static const String subsidyDetail = '/subsidies/detail';
   static const String subsidyApply = '/subsidies/apply';
   static const String mySubsidyApplications = '/subsidies/my-applications';
+  static const String subsidyApplicationDetail =
+      '/subsidies/application-detail';
+  static const String requestSubsidy = '/subsidies/request';
+  static const String subsidyRequestDetail = '/subsidies/request-detail';
   static const String mySubsidyRequests = '/subsidies/my-requests';
 
   static const String complaints = '/complaints';

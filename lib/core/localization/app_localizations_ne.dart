@@ -1402,4 +1402,146 @@ class AppLocalizationsNe extends AppLocalizations {
 
   @override
   String get subsidyUploadingPleaseWait => 'अपलोड तयार गर्दै…';
+
+  @override
+  String get commonYes => 'हो';
+
+  @override
+  String get commonNo => 'होइन';
+
+  @override
+  String get subsidyApplicationDetailsTitle => 'आवेदन विवरण';
+
+  @override
+  String get subsidyApplicationTimeline => 'आवेदनको प्रगति';
+
+  @override
+  String get subsidyApplicationsEmptyTitle => 'अहिलेसम्म कुनै आवेदन छैन';
+
+  @override
+  String get subsidyApplicationsEmptyDesc =>
+      'तपाईंले आवेदन दिएका अनुदानहरू यहाँ देखिनेछन्, जसले गर्दा तपाईं तिनको स्थिति हेर्न सक्नुहुन्छ।';
+
+  @override
+  String subsidyAppliedOn(String date) {
+    return '$date मा आवेदन दिइयो';
+  }
+
+  @override
+  String get subsidyStatusPending => 'विचाराधीन';
+
+  @override
+  String get subsidyStatusUnderReview => 'समीक्षामा';
+
+  @override
+  String get subsidyStatusApproved => 'स्वीकृत';
+
+  @override
+  String get subsidyStatusRejected => 'अस्वीकृत';
+
+  @override
+  String get subsidySubmittedDetails => 'पेश गरिएको विवरण';
+
+  @override
+  String get subsidySubmittedDocuments => 'पेश गरिएका कागजातहरू';
+
+  @override
+  String get subsidyTimelineSubmitted => 'पेश गरियो';
+
+  @override
+  String get subsidyTimelineUnderReview => 'समीक्षामा';
+
+  @override
+  String get subsidyTimelinePendingReview => 'समीक्षाको प्रतीक्षामा';
+
+  @override
+  String get subsidyTimelineAwaitingDecision => 'निर्णयको प्रतीक्षामा';
+
+  @override
+  String get subsidyWithdraw => 'आवेदन फिर्ता लिनुहोस्';
+
+  @override
+  String get subsidyWithdrawConfirmTitle => 'आवेदन फिर्ता लिने?';
+
+  @override
+  String get subsidyWithdrawConfirmMessage =>
+      'यसले तपाईंको आवेदन रद्द गर्नेछ। अनुदान अझै खुला छ भने तपाईं पछि फेरि आवेदन दिन सक्नुहुन्छ।';
+
+  @override
+  String get subsidyWithdrawSuccess => 'आवेदन फिर्ता लियो';
+
+  @override
+  String get subsidyType => 'अनुदानको प्रकार';
+
+  @override
+  String get subsidyJustification => 'औचित्य';
+
+  @override
+  String get subsidyTargetCropSector => 'लक्षित बाली / क्षेत्र';
+
+  @override
+  String get subsidyStatusConverted => 'परिणत';
+
+  @override
+  String get subsidyMyRequests => 'मेरा अनुरोधहरू';
+
+  @override
+  String get subsidyRequestNew => 'नयाँ अनुदान अनुरोध';
+
+  @override
+  String get subsidyRequestIntro =>
+      'तपाईंको क्षेत्रलाई चाहिने अनुदान सुझाव दिनुहोस्। अधिकारीले तपाईंको अनुरोध समीक्षा गर्नेछन्।';
+
+  @override
+  String get subsidyRequestFieldTitle => 'अनुदानको शीर्षक';
+
+  @override
+  String get subsidyRequestLevel => 'अनुरोध गरिएको तह';
+
+  @override
+  String get subsidyRequestSubmit => 'अनुरोध पेश गर्नुहोस्';
+
+  @override
+  String get subsidyRequestSuccess => 'अनुरोध सफलतापूर्वक पेश गरियो';
+
+  @override
+  String get subsidyRequestsEmptyTitle => 'अहिलेसम्म कुनै अनुरोध छैन';
+
+  @override
+  String get subsidyRequestsEmptyDesc =>
+      'तपाईंले अनुरोध गरेका अनुदानहरू समीक्षा भइरहँदा यहाँ देखिनेछन्।';
+
+  @override
+  String get subsidyRequestDetailsTitle => 'अनुरोध विवरण';
+
+  @override
+  String get subsidyRequestInformation => 'अनुरोध जानकारी';
+
+  @override
+  String subsidyRequestedOn(String date) {
+    return '$date मा अनुरोध गरियो';
+  }
+
+  @override
+  String get subsidyRequestedOnLabel => 'अनुरोध मिति';
+
+  @override
+  String get subsidyAdminNotes => 'अधिकारीको टिप्पणी';
+
+  @override
+  String get subsidyRequestConvertedNotice =>
+      'तपाईंको अनुरोध अब उपलब्ध अनुदानमा परिणत भएको छ, जसमा तपाईं आवेदन दिन सक्नुहुन्छ।';
+
+  @override
+  String get subsidyCancelRequest => 'अनुरोध रद्द गर्नुहोस्';
+
+  @override
+  String get subsidyCancelConfirmTitle => 'अनुरोध रद्द गर्ने?';
+
+  @override
+  String get subsidyCancelConfirmMessage =>
+      'यसले तपाईंको अनुरोध स्थायी रूपमा हटाउँछ र फिर्ता गर्न सकिँदैन।';
+
+  @override
+  String get subsidyCancelSuccess => 'अनुरोध रद्द गरियो';
 }

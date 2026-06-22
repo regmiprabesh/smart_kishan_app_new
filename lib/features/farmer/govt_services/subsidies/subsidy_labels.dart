@@ -43,3 +43,19 @@ String subsidyLevelLabel(AppLocalizations l10n, String? level) {
       return level ?? '';
   }
 }
+
+/// Maps backend `application_status` to a localized label.
+String subsidyStatusLabel(AppLocalizations l10n, String? status) {
+  switch (status?.toLowerCase()) {
+    case 'pending':
+      return l10n.subsidyStatusPending;
+    case 'under_review':
+      return l10n.subsidyStatusUnderReview;
+    case 'approved':
+      return l10n.subsidyStatusApproved;
+    case 'rejected':
+      return l10n.subsidyStatusRejected;
+    default:
+      return status ?? '';
+  }
+}
