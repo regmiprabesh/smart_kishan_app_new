@@ -2273,8 +2273,8 @@ abstract class AppLocalizations {
   /// No description provided for @helpOthersRate.
   ///
   /// In en, this message translates to:
-  /// **'Help others by rating this service center'**
-  String get helpOthersRate;
+  /// **'Help others by rating this {name}'**
+  String helpOthersRate(Object name);
 
   /// No description provided for @addYourRating.
   ///
@@ -3235,6 +3235,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No ratings yet'**
   String get subsidyNoRatingsYet;
+
+  /// No description provided for @serviceCenterTagHelpfulStaff.
+  ///
+  /// In en, this message translates to:
+  /// **'Helpful staff'**
+  String get serviceCenterTagHelpfulStaff;
+
+  /// No description provided for @serviceCenterTagKnowledgeable.
+  ///
+  /// In en, this message translates to:
+  /// **'Knowledgeable'**
+  String get serviceCenterTagKnowledgeable;
+
+  /// No description provided for @serviceCenterTagFairPrices.
+  ///
+  /// In en, this message translates to:
+  /// **'Fair prices'**
+  String get serviceCenterTagFairPrices;
+
+  /// No description provided for @serviceCenterTagWellStocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Well stocked'**
+  String get serviceCenterTagWellStocked;
+
+  /// No description provided for @serviceCenterTagLongWait.
+  ///
+  /// In en, this message translates to:
+  /// **'Long wait'**
+  String get serviceCenterTagLongWait;
+
+  /// No description provided for @serviceCenterTagLimitedStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Limited stock'**
+  String get serviceCenterTagLimitedStock;
 }
 
 class _AppLocalizationsDelegate

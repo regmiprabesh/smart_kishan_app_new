@@ -1143,7 +1143,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get yourRating => 'Your Rating';
 
   @override
-  String get helpOthersRate => 'Help others by rating this service center';
+  String helpOthersRate(Object name) {
+    return 'Help others by rating this $name';
+  }
 
   @override
   String get addYourRating => 'Add Your Rating';
@@ -1649,4 +1651,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get subsidyNoRatingsYet => 'No ratings yet';
+
+  @override
+  String get serviceCenterTagHelpfulStaff => 'Helpful staff';
+
+  @override
+  String get serviceCenterTagKnowledgeable => 'Knowledgeable';
+
+  @override
+  String get serviceCenterTagFairPrices => 'Fair prices';
+
+  @override
+  String get serviceCenterTagWellStocked => 'Well stocked';
+
+  @override
+  String get serviceCenterTagLongWait => 'Long wait';
+
+  @override
+  String get serviceCenterTagLimitedStock => 'Limited stock';
 }

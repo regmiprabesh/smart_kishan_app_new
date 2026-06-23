@@ -5,8 +5,8 @@ import 'package:smart_kishan/core/utils/formatters.dart';
 
 import 'star_rating.dart';
 
-/// The aggregate header: big average, stars, and the rating count. Shared by
-/// the inline section and the reviews page.
+/// The aggregate header: big average, stars, and the rating count.
+/// Shared by the inline section and the reviews page.
 class RatingSummaryHeader extends StatelessWidget {
   const RatingSummaryHeader({
     super.key,
@@ -24,35 +24,52 @@ class RatingSummaryHeader extends StatelessWidget {
     final hasRatings = total > 0;
 
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.fromLTRB(0, 0, 0, 4),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: colors.rating.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: colors.rating.withValues(alpha: 0.25)),
       ),
       child: Row(
         children: [
-          Text(
-            context.ld(average.toStringAsFixed(1)),
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.w800,
-              color: colors.textPrimary,
-            ),
-          ),
-          const SizedBox(width: 16),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              StarRating(rating: average.round(), size: 18),
-              const SizedBox(height: 4),
               Text(
-                hasRatings
-                    ? '${context.ld(total.toString())} ${total == 1 ? l10n.ratingSingular : l10n.ratingPlural}'
-                    : l10n.subsidyNoRatingsYet,
-                style: TextStyle(fontSize: 13, color: colors.textSecondary),
+                context.ld(average.toStringAsFixed(1)),
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.w800,
+                  color: colors.textPrimary,
+                ),
               ),
+              StarRating(rating: average.round(), size: 16),
             ],
+          ),
+          const SizedBox(width: 20),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  hasRatings
+                      ? '${context.ld(total.toString())} ${total == 1 ? l10n.ratingSingular : l10n.ratingPlural}'
+                      : l10n.subsidyNoRatingsYet,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: colors.textPrimary,
+                  ),
+                ),
+                if (hasRatings) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    l10n.basedOnUserReviews,
+                    style: TextStyle(fontSize: 13, color: colors.textSecondary),
+                  ),
+                ],
+              ],
+            ),
           ),
         ],
       ),

@@ -11,6 +11,7 @@ import 'package:flutter/widgets.dart';
 class RatingsConfig {
   const RatingsConfig({
     required this.rateTitle,
+    required this.targetType,
     this.suggestedTags = const [],
     this.title,
     this.description,
@@ -19,8 +20,8 @@ class RatingsConfig {
   });
 
   final String rateTitle;
+  final String targetType;
   final List<String> suggestedTags;
-
   final String? title;
   final String? description;
   final String? imageUrl;

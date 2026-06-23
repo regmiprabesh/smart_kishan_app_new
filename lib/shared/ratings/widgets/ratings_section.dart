@@ -5,6 +5,7 @@ import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/app_snackbar.dart';
 import 'package:smart_kishan/core/widgets/app_confirm_dialog.dart';
 import 'package:smart_kishan/core/widgets/app_outlined_button.dart';
+import 'package:smart_kishan/shared/ratings/widgets/rating_section_card.dart';
 
 import '../cubit/ratings_cubit.dart';
 import '../cubit/ratings_state.dart';
@@ -72,29 +73,8 @@ class RatingsSection extends StatelessWidget {
         const SizedBox(height: 16),
         _yourRating(context, l10n, state),
         if (shown.isNotEmpty) ...[
-          const SizedBox(height: 20),
-          Text(
-            l10n.recentReviews,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
-              color: colors.textPrimary,
-            ),
-          ),
-          const SizedBox(height: 4),
-          for (var i = 0; i < shown.length; i++) ...[
-            ReviewTile(review: shown[i]),
-            if (i != shown.length - 1)
-              Divider(height: 1, color: colors.divider),
-          ],
-          if (state.total > shown.length || state.reviews.length > shown.length)
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: TextButton(
-                onPressed: () => _openReviews(context),
-                child: Text(l10n.ratingSeeAllReviews),
-              ),
-            ),
+          const SizedBox(height: 16),
+          _recentReviews(context, l10n, state, shown),
         ],
       ],
     );
@@ -108,64 +88,91 @@ class RatingsSection extends StatelessWidget {
     final colors = context.colors;
     final mine = state.myReview;
 
-    if (mine == null) {
-      return AppOutlinedButton(
-        label: l10n.addYourRating,
-        icon: Icons.star_outline,
-        height: 46,
-        fontSize: 15,
-        iconSize: 20,
-        isLoading: state.submitting,
-        onPressed: () => _openRate(context, null),
-      );
-    }
-
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: colors.surfaceAlt,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: colors.border.withValues(alpha: 0.5)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Text(
-                l10n.yourRating,
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w700,
-                  color: colors.textPrimary,
+    return RatingsSectionCard(
+      title: l10n.yourRating,
+      trailing: mine == null
+          ? null
+          : Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _IconChip(
+                  icon: Icons.edit_outlined,
+                  color: colors.primary,
+                  onTap: () => _openRate(context, mine),
                 ),
-              ),
-              const Spacer(),
-              _IconChip(
-                icon: Icons.edit_outlined,
-                color: colors.primary,
-                onTap: () => _openRate(context, mine),
-              ),
-              const SizedBox(width: 8),
-              _IconChip(
-                icon: Icons.delete_outline,
-                color: colors.error,
-                onTap: () => _confirmDelete(context),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          StarRating(rating: mine.rating, size: 22),
-          if (mine.text?.trim().isNotEmpty == true) ...[
-            const SizedBox(height: 10),
-            Text(
-              mine.text!,
-              style: TextStyle(
-                fontSize: 13,
-                height: 1.5,
-                color: colors.textSecondary,
-              ),
+                const SizedBox(width: 8),
+                _IconChip(
+                  icon: Icons.delete_outline,
+                  color: colors.error,
+                  onTap: () => _confirmDelete(context),
+                ),
+              ],
+            ),
+      child: mine == null
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.helpOthersRate(config.targetType),
+                  style: TextStyle(color: colors.textSecondary, fontSize: 13),
+                ),
+                const SizedBox(height: 12),
+                AppOutlinedButton(
+                  label: l10n.addYourRating,
+                  icon: Icons.star_outline,
+                  height: 46,
+                  fontSize: 15,
+                  iconSize: 20,
+                  isLoading: state.submitting,
+                  onPressed: () => _openRate(context, null),
+                ),
+              ],
+            )
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                StarRating(rating: mine.rating, size: 22),
+                if (mine.text?.trim().isNotEmpty == true) ...[
+                  const SizedBox(height: 12),
+                  Text(
+                    mine.text!,
+                    style: TextStyle(
+                      fontSize: 13,
+                      height: 1.5,
+                      color: colors.textSecondary,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+    );
+  }
+
+  Widget _recentReviews(
+    BuildContext context,
+    AppLocalizations l10n,
+    RatingsState state,
+    List<Review> shown,
+  ) {
+    return RatingsSectionCard(
+      title: l10n.recentReviews,
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+      child: Column(
+        children: [
+          for (var i = 0; i < shown.length; i++) ...[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: ReviewTile(review: shown[i]),
+            ),
+            if (i != shown.length - 1)
+              Divider(height: 1, color: context.colors.divider),
+          ],
+          if (state.total > shown.length ||
+              state.reviews.length > shown.length) ...[
+            Divider(height: 1, color: context.colors.divider),
+            TextButton(
+              onPressed: () => _openReviews(context),
+              child: Text(l10n.ratingSeeAllReviews),
             ),
           ],
         ],

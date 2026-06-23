@@ -514,7 +514,7 @@
 "recentReviews": "Recent Reviews",
 "yourRating": "Your Rating",
 
-"helpOthersRate": "Help others by rating this service center",
+"helpOthersRate": "Help others by rating this {name}",
 "addYourRating": "Add Your Rating",
 
 "editRating": "Edit",
@@ -710,6 +710,12 @@
 "ratingLabel5": "Excellent",
 "subsidyRatingsReviews": "Ratings & Reviews",
 "subsidyRateThis": "Rate Subsidy",
-"subsidyNoRatingsYet": "No ratings yet"
+"subsidyNoRatingsYet": "No ratings yet",
 
+"serviceCenterTagHelpfulStaff": "Helpful staff",       
+"serviceCenterTagKnowledgeable": "Knowledgeable",      
+"serviceCenterTagFairPrices": "Fair prices",            
+"serviceCenterTagWellStocked": "Well stocked",         
+"serviceCenterTagLongWait": "Long wait",                
+"serviceCenterTagLimitedStock": "Limited stock"        
 }

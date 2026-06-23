@@ -5,6 +5,7 @@ import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/app_snackbar.dart';
 import 'package:smart_kishan/core/widgets/app_bar.dart';
 import 'package:smart_kishan/core/widgets/app_primary_button.dart';
+import 'package:smart_kishan/core/widgets/app_text_field.dart';
 
 import '../cubit/ratings_cubit.dart';
 import '../ratings_config.dart';
@@ -141,28 +142,11 @@ class _RatePageState extends State<RatePage> {
             ),
           ],
           const SizedBox(height: 24),
-          Text(
-            l10n.writeReviewOptional,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-              color: colors.textPrimary,
-            ),
-          ),
-          const SizedBox(height: 8),
-          TextField(
+          AppTextField(
             controller: _textController,
             maxLines: 5,
             maxLength: 500,
-            decoration: InputDecoration(
-              hintText: l10n.shareYourExperienceHint,
-              filled: true,
-              fillColor: colors.surfaceAlt,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide.none,
-              ),
-            ),
+            label: l10n.writeReviewOptional,
           ),
         ],
       ),

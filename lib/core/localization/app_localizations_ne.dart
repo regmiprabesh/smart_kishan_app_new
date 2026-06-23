@@ -1148,8 +1148,9 @@ class AppLocalizationsNe extends AppLocalizations {
   String get yourRating => 'तपाईंको रेटिङ';
 
   @override
-  String get helpOthersRate =>
-      'यो सेवा केन्द्रलाई रेटिङ दिएर अरूलाई सहयोग गर्नुहोस्';
+  String helpOthersRate(Object name) {
+    return 'यो $nameलाई रेटिङ दिएर अरूलाई सहयोग गर्नुहोस्';
+  }
 
   @override
   String get addYourRating => 'रेटिङ थप्नुहोस्';
@@ -1655,4 +1656,22 @@ class AppLocalizationsNe extends AppLocalizations {
 
   @override
   String get subsidyNoRatingsYet => 'अहिलेसम्म कुनै मूल्याङ्कन छैन';
+
+  @override
+  String get serviceCenterTagHelpfulStaff => 'सहयोगी कर्मचारी';
+
+  @override
+  String get serviceCenterTagKnowledgeable => 'जानकार';
+
+  @override
+  String get serviceCenterTagFairPrices => 'उचित मूल्य';
+
+  @override
+  String get serviceCenterTagWellStocked => 'पर्याप्त स्टक';
+
+  @override
+  String get serviceCenterTagLongWait => 'लामो प्रतीक्षा';
+
+  @override
+  String get serviceCenterTagLimitedStock => 'सीमित स्टक';
 }

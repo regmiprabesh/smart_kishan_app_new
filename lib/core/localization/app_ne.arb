@@ -514,7 +514,7 @@
 "recentReviews": "हालका समीक्षाहरू",
 "yourRating": "तपाईंको रेटिङ",
 
-"helpOthersRate": "यो सेवा केन्द्रलाई रेटिङ दिएर अरूलाई सहयोग गर्नुहोस्",
+"helpOthersRate": "यो {name}लाई रेटिङ दिएर अरूलाई सहयोग गर्नुहोस्",
 "addYourRating": "रेटिङ थप्नुहोस्",
 
 "editRating": "सम्पादन",
@@ -696,5 +696,14 @@
 "ratingLabel5": "उत्कृष्ट",
 "subsidyRatingsReviews": "मूल्याङ्कन र समीक्षा",
 "subsidyRateThis": "अनुदान मूल्याङ्कन गर्नुहोस्",
-"subsidyNoRatingsYet": "अहिलेसम्म कुनै मूल्याङ्कन छैन"
+"subsidyNoRatingsYet": "अहिलेसम्म कुनै मूल्याङ्कन छैन",
+
+"serviceCenterTagHelpfulStaff": "सहयोगी कर्मचारी",
+"serviceCenterTagKnowledgeable": "जानकार",
+"serviceCenterTagFairPrices": "उचित मूल्य",
+"serviceCenterTagWellStocked": "पर्याप्त स्टक",
+"serviceCenterTagLongWait": "लामो प्रतीक्षा",
+"serviceCenterTagLimitedStock": "सीमित स्टक"
+
+
 }

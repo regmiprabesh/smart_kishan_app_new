@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
@@ -81,6 +83,7 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final images = center.images;
+    final l10n = AppLocalizations.of(context)!;
     return ListView(
       padding: const EdgeInsets.only(bottom: 32),
       children: [
@@ -94,6 +97,7 @@ class _Body extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
           child: RatingsSection(
             config: RatingsConfig(
+              targetType: l10n.homeServiceCentersBadge,
               rateTitle: AppLocalizations.of(context)!.rateServiceCenter,
               title: center.name?.of(context),
               description: center.address?.of(context),
@@ -101,6 +105,14 @@ class _Body extends StatelessWidget {
                   ? images.first
                   : null,
               fallbackIcon: Icons.storefront_outlined,
+              suggestedTags: [
+                l10n.serviceCenterTagHelpfulStaff,
+                l10n.serviceCenterTagKnowledgeable,
+                l10n.serviceCenterTagFairPrices,
+                l10n.serviceCenterTagWellStocked,
+                l10n.serviceCenterTagLongWait,
+                l10n.serviceCenterTagLimitedStock,
+              ],
             ),
           ),
         ),

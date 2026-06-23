@@ -97,6 +97,7 @@ class SubsidyDetailBody extends StatelessWidget {
                 const SizedBox(height: 28),
                 RatingsSection(
                   config: RatingsConfig(
+                    targetType: l10n.homeSubsidiesBadge,
                     rateTitle: l10n.subsidyRateThis,
                     title: s.title?.of(context),
                     description: s.description?.of(context),
