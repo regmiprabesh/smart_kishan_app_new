@@ -20,26 +20,10 @@ class ServiceCenterDetailFailure extends ServiceCenterDetailState {
 }
 
 class ServiceCenterDetailLoaded extends ServiceCenterDetailState {
-  const ServiceCenterDetailLoaded({
-    required this.center,
-    this.submittingRating = false,
-  });
+  const ServiceCenterDetailLoaded({required this.center});
 
   final ServiceCenter center;
 
-  /// True while a rate / delete request is in flight (disables the dialog button).
-  final bool submittingRating;
-
-  ServiceCenterDetailLoaded copyWith({
-    ServiceCenter? center,
-    bool? submittingRating,
-  }) {
-    return ServiceCenterDetailLoaded(
-      center: center ?? this.center,
-      submittingRating: submittingRating ?? this.submittingRating,
-    );
-  }
-
   @override
-  List<Object?> get props => [center, submittingRating];
+  List<Object?> get props => [center];
 }

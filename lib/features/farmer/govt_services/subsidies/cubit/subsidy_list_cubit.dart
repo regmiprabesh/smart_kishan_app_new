@@ -22,6 +22,20 @@ class SubsidyListCubit extends Cubit<SubsidyListState> {
     }
   }
 
+  /// Refetch without a loading flash: keeps the current list on screen and
+  /// swaps it once new data arrives. Called when returning from detail so a
+  /// rating/aggregate change there is reflected on the cards.
+  Future<void> refresh() async {
+    try {
+      final subsidies = await _repo.fetchSubsidies();
+      emit(SubsidyListLoaded(subsidies));
+    } catch (e) {
+      debugPrint('Subsidies refresh failed: $e');
+      if (state is! SubsidyListLoaded) emit(const SubsidyListFailure());
+      // else keep the existing list visible rather than flashing an error.
+    }
+  }
+
   /// Mark one subsidy as applied in place — no network refetch. Called after a
   /// successful application so the card/badge reflect it immediately.
   void markApplied(int id) {

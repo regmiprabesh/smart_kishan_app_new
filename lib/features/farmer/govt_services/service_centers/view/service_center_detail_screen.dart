@@ -6,6 +6,7 @@ import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/di/injector.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/shared/ratings/cubit/ratings_cubit.dart';
+import 'package:smart_kishan/shared/ratings/cubit/ratings_state.dart';
 import 'package:smart_kishan/shared/ratings/ratings_config.dart';
 import 'package:smart_kishan/shared/ratings/widgets/ratings_section.dart';
 import 'package:smart_kishan/core/widgets/app_bar.dart';
@@ -13,6 +14,7 @@ import 'package:smart_kishan/core/widgets/app_bar.dart';
 import '../cubit/service_center_detail_cubit.dart';
 import '../cubit/service_center_detail_state.dart';
 import '../data/service_center.dart';
+import 'service_center_detail_args.dart';
 import '../data/service_center_ratings_repository.dart';
 import '../data/service_center_repository.dart';
 import '../widgets/service_center_contact_info.dart';
@@ -26,7 +28,9 @@ import '../widgets/service_center_detail_skeleton.dart';
 /// hours), contact rows, location, services, and the shared ratings & reviews
 /// section (rate page + sortable reviews page) — the same module subsidies use.
 class ServiceCenterDetailScreen extends StatelessWidget {
-  const ServiceCenterDetailScreen({super.key});
+  const ServiceCenterDetailScreen({super.key, required this.args});
+
+  final ServiceCenterDetailArgs args;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +71,12 @@ class ServiceCenterDetailScreen extends StatelessWidget {
                         center.userRating!,
                       ),
               ),
-              child: _Body(center: center),
+              child: BlocListener<RatingsCubit, RatingsState>(
+                listenWhen: (p, c) =>
+                    p.average != c.average || p.total != c.total,
+                listener: (_, s) => args.onRated?.call(s.average, s.total),
+                child: _Body(center: center),
+              ),
             ),
           };
         },

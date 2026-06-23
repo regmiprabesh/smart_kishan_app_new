@@ -7,9 +7,10 @@ import '../review_sort.dart';
 import 'ratings_state.dart';
 
 /// Feature-agnostic ratings controller. The headline average/total are seeded
-/// from the entity snapshot the caller already has, then kept current with
-/// optimistic delta math on write; the reviews list + the user's own review are
-/// (re)fetched from the [RatingsRepository] so their content is authoritative.
+/// from the entity snapshot the caller already has, then replaced with the
+/// authoritative aggregate the server returns on every write; the reviews list
+/// + the user's own review are (re)fetched from the [RatingsRepository] so
+/// their content is authoritative too.
 class RatingsCubit extends Cubit<RatingsState> {
   RatingsCubit(
     this._repo, {
@@ -62,31 +63,29 @@ class RatingsCubit extends Cubit<RatingsState> {
     List<String> tags = const [],
   }) async {
     if (state.submitting) return RatingMutationResult.failed;
-    final old = state.myReview;
-    final wasRated = old != null;
+    final wasRated = state.myReview != null;
 
     emit(state.copyWith(submitting: true));
     try {
-      await _repo.submitReview(rating: rating, text: text, tags: tags);
+      // The write returns the authoritative aggregate; the list + the user's
+      // own review are refetched for content. No local average math — the
+      // server is the source of truth, so the headline can't drift.
+      final aggregate = await _repo.submitReview(
+        rating: rating,
+        text: text,
+        tags: tags,
+      );
       final reviews = await _repo.fetchReviews();
       final mine = await _repo.fetchMyReview();
       if (isClosed) return RatingMutationResult.failed;
-
-      final total = wasRated ? state.total : state.total + 1;
-      final average = wasRated
-          ? (state.total == 0
-                ? rating.toDouble()
-                : ((state.average * state.total) - old.rating + rating) /
-                      state.total)
-          : ((state.average * state.total) + rating) / (state.total + 1);
 
       emit(
         state.copyWith(
           submitting: false,
           reviews: sortReviews(reviews, state.sort),
           myReview: mine,
-          average: average,
-          total: total,
+          average: aggregate.average,
+          total: aggregate.total,
         ),
       );
       return wasRated
@@ -101,27 +100,21 @@ class RatingsCubit extends Cubit<RatingsState> {
   }
 
   Future<RatingMutationResult> delete() async {
-    final old = state.myReview;
-    if (old == null) return RatingMutationResult.failed;
+    if (state.myReview == null) return RatingMutationResult.failed;
 
     emit(state.copyWith(submitting: true));
     try {
-      await _repo.deleteMyReview();
+      final aggregate = await _repo.deleteMyReview();
       final reviews = await _repo.fetchReviews();
       if (isClosed) return RatingMutationResult.failed;
-
-      final total = (state.total - 1).clamp(0, 1 << 31);
-      final average = total == 0
-          ? 0.0
-          : ((state.average * state.total) - old.rating) / total;
 
       emit(
         state.copyWith(
           submitting: false,
           reviews: sortReviews(reviews, state.sort),
           clearMyReview: true,
-          average: average,
-          total: total,
+          average: aggregate.average,
+          total: aggregate.total,
         ),
       );
       return RatingMutationResult.deleted;

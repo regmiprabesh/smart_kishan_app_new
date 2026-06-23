@@ -1,3 +1,4 @@
+import 'package:smart_kishan/shared/ratings/rating_aggregate.dart';
 import 'package:smart_kishan/shared/ratings/ratings_repository.dart';
 import 'package:smart_kishan/shared/ratings/review.dart';
 
@@ -25,7 +26,7 @@ class SubsidyRatingsRepository implements RatingsRepository {
   }
 
   @override
-  Future<void> submitReview({
+  Future<RatingAggregate> submitReview({
     required int rating,
     String? text,
     required List<String> tags,
@@ -37,7 +38,7 @@ class SubsidyRatingsRepository implements RatingsRepository {
   );
 
   @override
-  Future<void> deleteMyReview() => _repo.deleteRating(subsidyId);
+  Future<RatingAggregate> deleteMyReview() => _repo.deleteRating(subsidyId);
 
   Review _toReview(SubsidyRating r) => Review(
     id: r.id,

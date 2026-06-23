@@ -167,14 +167,14 @@ class RatingsSection extends StatelessWidget {
             if (i != shown.length - 1)
               Divider(height: 1, color: context.colors.divider),
           ],
-          if (state.total > shown.length ||
-              state.reviews.length > shown.length) ...[
-            Divider(height: 1, color: context.colors.divider),
-            TextButton(
-              onPressed: () => _openReviews(context),
-              child: Text(l10n.ratingSeeAllReviews),
-            ),
-          ],
+          // if (state.total > shown.length ||
+          //     state.reviews.length > shown.length) ...[
+          Divider(height: 1, color: context.colors.divider),
+          TextButton(
+            onPressed: () => _openReviews(context),
+            child: Text(l10n.ratingSeeAllReviews),
+          ),
+          // ],
         ],
       ),
     );

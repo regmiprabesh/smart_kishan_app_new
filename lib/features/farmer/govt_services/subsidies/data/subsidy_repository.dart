@@ -1,5 +1,6 @@
 import 'package:smart_kishan/core/constants/api_endpoints.dart';
 import 'package:smart_kishan/core/network/api_client.dart';
+import 'package:smart_kishan/shared/ratings/rating_aggregate.dart';
 
 import 'subsidy.dart';
 import 'subsidy_request.dart';
@@ -29,30 +30,40 @@ class SubsidyRepository {
   Future<void> withdrawApplication(int subsidyId) =>
       api.delete(ApiEndpoints.subsidyWithdraw(subsidyId));
 
-  /// POST /farmer/subsidies/{id}/rate
-  Future<void> rateSubsidy({
+  /// POST /farmer/subsidies/{id}/rate — returns the server's recomputed
+  /// aggregate so the cubit can adopt the authoritative average/total.
+  Future<RatingAggregate> rateSubsidy({
     required int subsidyId,
     required int rating,
     String? review,
     List<String> tags = const [],
-  }) => api.post(
-    ApiEndpoints.subsidyRate(subsidyId),
-    body: {
-      'rating': rating,
-      'review': review,
-      if (tags.isNotEmpty) 'tags': tags,
-    },
-  );
+  }) async {
+    final res = await api.post(
+      ApiEndpoints.subsidyRating(subsidyId),
+      body: {
+        'rating': rating,
+        'review': review,
+        if (tags.isNotEmpty) 'tags': tags,
+      },
+    );
+    return RatingAggregate.fromJson(res.data as Map<String, dynamic>);
+  }
 
   /// GET /farmer/subsidies/{id}/ratings
   Future<List<SubsidyRating>> fetchRatings(int subsidyId) async {
-    final res = await api.get(ApiEndpoints.subsidyRatings(subsidyId));
-    return _list(res.data, SubsidyRating.fromJson);
+    final res = await api.get(ApiEndpoints.subsidyReviews(subsidyId));
+    // The reviews endpoint paginates, so the array is nested under
+    // data.ratings.data (Laravel paginator); fall back to a bare list/`data`
+    // key in case the shape is ever flattened.
+    final payload = res.data;
+    final ratings = payload is Map ? payload['ratings'] : payload;
+    final items = ratings is Map ? ratings['data'] : ratings;
+    return _list(items, SubsidyRating.fromJson);
   }
 
   /// GET /farmer/subsidies/{id}/my-rating — null when the farmer hasn't rated.
   Future<SubsidyRating?> fetchMyRating(int subsidyId) async {
-    final res = await api.get(ApiEndpoints.subsidyMyRating(subsidyId));
+    final res = await api.get(ApiEndpoints.subsidyRating(subsidyId));
     final data = res.data;
     if (data is Map && data.isNotEmpty) {
       return SubsidyRating.fromJson(Map<String, dynamic>.from(data));
@@ -60,9 +71,11 @@ class SubsidyRepository {
     return null;
   }
 
-  /// DELETE /farmer/subsidies/{id}/my-rating
-  Future<void> deleteRating(int subsidyId) =>
-      api.delete(ApiEndpoints.subsidyMyRating(subsidyId));
+  /// DELETE /farmer/subsidies/{id}/my-rating — returns the recomputed aggregate.
+  Future<RatingAggregate> deleteRating(int subsidyId) async {
+    final res = await api.delete(ApiEndpoints.subsidyRating(subsidyId));
+    return RatingAggregate.fromJson(res.data as Map<String, dynamic>);
+  }
 
   /// POST /farmer/subsidies/{id}/apply (multipart).
   ///

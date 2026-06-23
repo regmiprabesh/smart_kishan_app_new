@@ -326,7 +326,7 @@ GoRouter createRouter(SessionCubit sessionCubit) {
           final args = state.extra as ServiceCenterDetailArgs;
           return BlocProvider(
             create: (_) => ServiceCenterDetailCubit(sl(), args.id)..load(),
-            child: const ServiceCenterDetailScreen(),
+            child: ServiceCenterDetailScreen(args: args),
           );
         },
       ),

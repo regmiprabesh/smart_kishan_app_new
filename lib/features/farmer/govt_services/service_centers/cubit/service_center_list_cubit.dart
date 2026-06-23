@@ -69,6 +69,24 @@ class ServiceCenterListCubit extends Cubit<ServiceCenterListState> {
     }
   }
 
+  /// Patch one center's rating aggregate in place — no refetch. Called when a
+  /// rating made on the detail screen reports the new server aggregate, so the
+  /// card reflects it immediately.
+  void updateAggregate(int id, double average, int total) {
+    final s = state;
+    if (s is! ServiceCenterListLoaded) return;
+    emit(
+      s.copyWith(
+        centers: [
+          for (final c in s.centers)
+            c.id == id
+                ? c.copyWith(averageRating: average, totalRatings: total)
+                : c,
+        ],
+      ),
+    );
+  }
+
   ///Refresh
   Future<void> refresh() async {
     final s = state;

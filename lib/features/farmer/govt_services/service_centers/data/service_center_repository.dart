@@ -1,5 +1,6 @@
 import 'package:smart_kishan/core/constants/api_endpoints.dart';
 import 'package:smart_kishan/core/network/api_client.dart';
+import 'package:smart_kishan/shared/ratings/rating_aggregate.dart';
 
 import 'service_center.dart';
 
@@ -95,31 +96,56 @@ class ServiceCenterRepository {
     return ServiceCenter.fromJson(res.data as Map<String, dynamic>);
   }
 
-  /// POST /service-centers/{id}/rate — returns the saved rating so the cubit
-  /// can update local state without refetching the whole center.
-  Future<ServiceCenterRating> rate({
+  /// POST /service-centers/{id}/rate — returns the server's recomputed
+  /// aggregate so the cubit can adopt the authoritative average/total.
+  Future<RatingAggregate> rate({
     required int serviceCenterId,
     required int rating,
     String? review,
   }) async {
     final res = await _api.post(
-      ApiEndpoints.serviceCenterRate(serviceCenterId),
+      ApiEndpoints.serviceCenterRating(serviceCenterId),
       body: {'rating': rating, 'review': review},
     );
-    return ServiceCenterRating.fromJson(res.data as Map<String, dynamic>);
+    return RatingAggregate.fromJson(res.data as Map<String, dynamic>);
+  }
+
+  /// GET /service-centers/{id}/reviews — the full paginated list (mirrors the
+  /// subsidy reviews endpoint). The detail screen seeds a capped preview from
+  /// `show`; the "See all" page calls this fresh.
+  Future<List<ServiceCenterRating>> fetchReviews(
+    int serviceCenterId, {
+    int page = 1,
+  }) async {
+    final res = await _api.get(
+      ApiEndpoints.serviceCenterReviews(serviceCenterId),
+      query: {'page': '$page'},
+    );
+    // List is nested under data.ratings.data (Laravel paginator); fall back to
+    // a bare list in case the shape is ever flattened.
+    final payload = res.data;
+    final ratings = payload is Map ? payload['ratings'] : payload;
+    final items = ratings is Map ? ratings['data'] : ratings;
+    final list = (items as List?) ?? const [];
+    return list
+        .map((e) => ServiceCenterRating.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 
   /// GET /service-centers/{id}/my-rating
   Future<ServiceCenterRating?> fetchUserRating(int serviceCenterId) async {
     final res = await _api.get(
-      ApiEndpoints.serviceCenterMyRating(serviceCenterId),
+      ApiEndpoints.serviceCenterRating(serviceCenterId),
     );
     if (res.data == null) return null;
     return ServiceCenterRating.fromJson(res.data as Map<String, dynamic>);
   }
 
-  /// DELETE /service-centers/{id}/my-rating
-  Future<void> deleteRating(int serviceCenterId) {
-    return _api.delete(ApiEndpoints.serviceCenterMyRating(serviceCenterId));
+  /// DELETE /service-centers/{id}/my-rating — returns the recomputed aggregate.
+  Future<RatingAggregate> deleteRating(int serviceCenterId) async {
+    final res = await _api.delete(
+      ApiEndpoints.serviceCenterRating(serviceCenterId),
+    );
+    return RatingAggregate.fromJson(res.data as Map<String, dynamic>);
   }
 }

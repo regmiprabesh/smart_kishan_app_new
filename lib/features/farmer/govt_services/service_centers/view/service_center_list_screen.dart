@@ -39,9 +39,14 @@ class _ServiceCenterListScreenState extends State<ServiceCenterListScreen> {
   }
 
   void _openDetail(ServiceCenter center) {
+    final cubit = context.read<ServiceCenterListCubit>();
     context.push(
       AppRoutePath.serviceCenterDetail,
-      extra: ServiceCenterDetailArgs(id: center.id),
+      extra: ServiceCenterDetailArgs(
+        id: center.id,
+        onRated: (average, total) =>
+            cubit.updateAggregate(center.id, average, total),
+      ),
     );
   }
 

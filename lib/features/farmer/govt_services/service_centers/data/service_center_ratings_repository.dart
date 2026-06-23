@@ -1,3 +1,4 @@
+import 'package:smart_kishan/shared/ratings/rating_aggregate.dart';
 import 'package:smart_kishan/shared/ratings/ratings_repository.dart';
 import 'package:smart_kishan/shared/ratings/review.dart';
 
@@ -7,9 +8,10 @@ import 'service_center_repository.dart';
 /// Adapts the service-centers API to the shared [RatingsRepository] so service
 /// centers reuse the core ratings section / reviews page / rate page.
 ///
-/// Reviews are embedded in the center detail, so the screen seeds the cubit
-/// from the already-loaded center (no fetch on open); these methods are used
-/// to refresh after a write. Service-center ratings have no tags.
+/// The detail screen seeds the cubit with a capped preview embedded in `show`
+/// (no fetch on open). [fetchReviews] pulls the full paginated list from the
+/// dedicated reviews endpoint — used by the "See all" page and to refresh after
+/// a write. Service-center ratings have no tags.
 class ServiceCenterRatingsRepository implements RatingsRepository {
   ServiceCenterRatingsRepository(this._repo, this.serviceCenterId);
 
@@ -18,8 +20,8 @@ class ServiceCenterRatingsRepository implements RatingsRepository {
 
   @override
   Future<List<Review>> fetchReviews() async {
-    final center = await _repo.fetchServiceCenter(serviceCenterId);
-    return (center.ratings ?? const []).map(toReview).toList();
+    final ratings = await _repo.fetchReviews(serviceCenterId);
+    return ratings.map(toReview).toList();
   }
 
   @override
@@ -29,7 +31,7 @@ class ServiceCenterRatingsRepository implements RatingsRepository {
   }
 
   @override
-  Future<void> submitReview({
+  Future<RatingAggregate> submitReview({
     required int rating,
     String? text,
     required List<String> tags,
@@ -40,7 +42,8 @@ class ServiceCenterRatingsRepository implements RatingsRepository {
   );
 
   @override
-  Future<void> deleteMyReview() => _repo.deleteRating(serviceCenterId);
+  Future<RatingAggregate> deleteMyReview() =>
+      _repo.deleteRating(serviceCenterId);
 
   /// Maps a service-center rating onto the generic [Review]. Static so the
   /// detail screen can seed the cubit from the loaded center.

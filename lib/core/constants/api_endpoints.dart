@@ -56,18 +56,16 @@ abstract final class ApiEndpoints {
   static const String serviceCenters = '/service-centers';
   static const String serviceCenterTypes = '/service-centers/types';
   static String serviceCenter(int id) => '/service-centers/$id';
-  static String serviceCenterRate(int id) => '/service-centers/$id/rate';
-  static String serviceCenterMyRating(int id) =>
-      '/service-centers/$id/my-rating';
+  static String serviceCenterRating(int id) => '/service-centers/$id/rating';
+  static String serviceCenterReviews(int id) => '/service-centers/$id/reviews';
 
   // Subsidies
   static const String subsidies = '/farmer/subsidies';
   static const String subsidyApplications = '/farmer/subsidy-applications';
   static String subsidyApply(int id) => '/farmer/subsidies/$id/apply';
   static String subsidyWithdraw(int id) => '/farmer/subsidies/$id/withdraw';
-  static String subsidyRate(int id) => '/farmer/subsidies/$id/rate';
-  static String subsidyRatings(int id) => '/farmer/subsidies/$id/ratings';
-  static String subsidyMyRating(int id) => '/farmer/subsidies/$id/my-rating';
+  static String subsidyRating(int id) => '/farmer/subsidies/$id/rating';
+  static String subsidyReviews(int id) => '/farmer/subsidies/$id/reviews';
 
   // Subsidy requests
   static const String subsidyRequests = '/subsidy-requests';

@@ -46,10 +46,15 @@ class _SubsidyListScreenState extends State<SubsidyListScreen> {
     return () => cubit.markApplied(id);
   }
 
-  void _openDetail(Subsidy s) => context.push(
-    AppRoutePath.subsidyDetail,
-    extra: SubsidyDetailArgs(subsidy: s, onApplied: _onApplied(s)),
-  );
+  void _openDetail(Subsidy s) async {
+    final cubit = context.read<SubsidyListCubit>();
+    await context.push(
+      AppRoutePath.subsidyDetail,
+      extra: SubsidyDetailArgs(subsidy: s, onApplied: _onApplied(s)),
+    );
+    // Reflect any rating made on the detail screen (separate route) on return.
+    await cubit.refresh();
+  }
 
   /// Apply gate: browsing needs no location, applying does. Without one we
   /// prompt the user to add it. On success the session updates, which the
