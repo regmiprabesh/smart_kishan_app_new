@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/formatters.dart';
+import 'package:smart_kishan/shared/ratings/widgets/star_rating.dart';
 
 import '../data/service_center.dart';
 import 'service_center_type_style.dart';
-import 'star_rating.dart';
 
 /// The card shown when a map marker is tapped (image 4): type icon, name,
 /// address, "X.X km away", a route-status pill, a close (×) button, the rating,

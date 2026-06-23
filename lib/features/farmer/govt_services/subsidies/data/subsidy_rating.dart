@@ -7,6 +7,7 @@ class SubsidyRating {
     this.rating = 0,
     this.review,
     this.createdAt,
+    this.tags = const [],
   });
 
   final int? id;
@@ -14,16 +15,21 @@ class SubsidyRating {
   final int rating;
   final String? review;
   final String? createdAt;
+  final List<String> tags;
 
   factory SubsidyRating.fromJson(Map<String, dynamic> json) {
     final user = json['user'];
+    final rawTags = json['tags'];
     return SubsidyRating(
       id: json['id'],
-      userName: json['user_name'] ??
-          (user is Map ? user['name'] as String? : null),
+      userName:
+          json['user_name'] ?? (user is Map ? user['name'] as String? : null),
       rating: int.tryParse('${json['rating'] ?? 0}') ?? 0,
       review: json['review'],
       createdAt: json['created_at'],
+      tags: rawTags is List
+          ? rawTags.map((e) => e.toString()).toList()
+          : const [],
     );
   }
 }

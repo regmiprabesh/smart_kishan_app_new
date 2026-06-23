@@ -76,6 +76,8 @@ import 'package:smart_kishan/features/farmer/notes/view/notes_list_screen.dart';
 import 'package:smart_kishan/features/farmer/weather/cubit/weather_cubit.dart';
 import 'package:smart_kishan/features/language/language_selection_screen.dart';
 import 'package:smart_kishan/features/onboarding/introduction_screen.dart';
+import 'package:smart_kishan/features/profile/cubit/update_location_cubit.dart';
+import 'package:smart_kishan/features/profile/view/update_location_screen.dart';
 import 'package:smart_kishan/features/startup/splash_screen.dart';
 
 import 'app_routes.dart';
@@ -135,6 +137,13 @@ GoRouter createRouter(SessionCubit sessionCubit) {
           create: (_) =>
               PhoneEntryCubit(sl(), purpose: OtpPurpose.passwordReset),
           child: const ForgotPasswordPhoneScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutePath.updateLocation,
+        builder: (_, __) => BlocProvider(
+          create: (_) => UpdateLocationCubit(sl(), sl())..init(),
+          child: const UpdateLocationScreen(),
         ),
       ),
 

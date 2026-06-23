@@ -147,6 +147,18 @@
 "profileChangePassword": "Change Password",
 "profileUpdateLocation": "Update Location",
 
+"@location": {},
+"locationProvince": "Province",
+"locationDistrict": "District",
+"locationMunicipality": "Municipality",
+"locationWard": "Ward",
+"locationSelectProvince": "Select province",
+"locationSelectDistrict": "Select district",
+"locationSelectMunicipality": "Select municipality",
+"locationSelectWard": "Select ward",
+"locationUpdatedSuccessfully": "Location updated successfully.",
+"locationUpdateFailed": "Failed to update location.",
+
 "confirmLogout": "Confirm Logout",
 "confirmLogoutMessage": "Are you sure you want to logout?",
 
@@ -478,6 +490,24 @@
 
 "basedOnUserReviews": "Based on user reviews",
 
+"ratingsAndReviews": "Ratings & Reviews",
+"ratingSeeAllReviews": "See all reviews",
+"ratingReviewsTitle": "Reviews",
+"ratingSortBy": "Sort by",
+"ratingSortNewest": "Newest",
+"ratingSortOldest": "Oldest",
+"ratingSortHighest": "Highest rated",
+"ratingSortLowest": "Lowest rated",
+"ratingHowWasExperience": "How was your experience?",
+"ratingTagsPrompt": "What stood out? (optional)",
+"ratingSubmitButton": "Submit Rating",
+"subsidyTagFastApproval": "Fast approval",
+"subsidyTagHelpfulStaff": "Helpful staff",
+"subsidyTagClearProcess": "Clear process",
+"subsidyTagWellOrganized": "Well organized",
+"subsidyTagTooMuchPaperwork": "Too much paperwork",
+"subsidyTagSlowResponse": "Slow response",
+
 "ratingSingular": "rating",
 "ratingPlural": "ratings",
 
@@ -669,6 +699,17 @@
 "subsidyCancelRequest": "Cancel Request",
 "subsidyCancelConfirmTitle": "Cancel request?",
 "subsidyCancelConfirmMessage": "This permanently removes your request and can't be undone.",
-"subsidyCancelSuccess": "Request cancelled"
+"subsidyCancelSuccess": "Request cancelled",
+
+"locationAddress": "Address",
+"locationAddressHint": "Enter address (optional)",
+"ratingLabel1": "Poor",
+"ratingLabel2": "Fair",
+"ratingLabel3": "Good",
+"ratingLabel4": "Very Good",
+"ratingLabel5": "Excellent",
+"subsidyRatingsReviews": "Ratings & Reviews",
+"subsidyRateThis": "Rate Subsidy",
+"subsidyNoRatingsYet": "No ratings yet"
 
 }

@@ -146,6 +146,18 @@
 "profileChangePassword": "पासवर्ड परिवर्तन गर्नुहोस्",
 "profileUpdateLocation": "स्थान अद्यावधिक गर्नुहोस्",
 
+"@location": {},
+"locationProvince": "प्रदेश",
+"locationDistrict": "जिल्ला",
+"locationMunicipality": "नगरपालिका",
+"locationWard": "वडा",
+"locationSelectProvince": "प्रदेश छान्नुहोस्",
+"locationSelectDistrict": "जिल्ला छान्नुहोस्",
+"locationSelectMunicipality": "नगरपालिका छान्नुहोस्",
+"locationSelectWard": "वडा छान्नुहोस्",
+"locationUpdatedSuccessfully": "स्थान सफलतापूर्वक अद्यावधिक भयो।",
+"locationUpdateFailed": "स्थान अद्यावधिक गर्न असफल भयो।",
+
 "confirmLogout": "लगआउट पुष्टि गर्नुहोस्",
 "confirmLogoutMessage": "के तपाईं निश्चित रूपमा लगआउट गर्न चाहनुहुन्छ?",
 
@@ -478,6 +490,24 @@
 
 "basedOnUserReviews": "प्रयोगकर्ता समीक्षामा आधारित",
 
+"ratingsAndReviews": "मूल्याङ्कन र समीक्षा",
+"ratingSeeAllReviews": "सबै समीक्षा हेर्नुहोस्",
+"ratingReviewsTitle": "समीक्षाहरू",
+"ratingSortBy": "क्रमबद्ध गर्नुहोस्",
+"ratingSortNewest": "नयाँ",
+"ratingSortOldest": "पुरानो",
+"ratingSortHighest": "उच्च मूल्याङ्कन",
+"ratingSortLowest": "न्यून मूल्याङ्कन",
+"ratingHowWasExperience": "तपाईंको अनुभव कस्तो रह्यो?",
+"ratingTagsPrompt": "के कुरा राम्रो लाग्यो? (वैकल्पिक)",
+"ratingSubmitButton": "मूल्याङ्कन पेश गर्नुहोस्",
+"subsidyTagFastApproval": "छिटो स्वीकृति",
+"subsidyTagHelpfulStaff": "सहयोगी कर्मचारी",
+"subsidyTagClearProcess": "स्पष्ट प्रक्रिया",
+"subsidyTagWellOrganized": "राम्रोसँग व्यवस्थित",
+"subsidyTagTooMuchPaperwork": "धेरै कागजी काम",
+"subsidyTagSlowResponse": "ढिलो प्रतिक्रिया",
+
 "ratingSingular": "रेटिङ",
 "ratingPlural": "रेटिङहरू",
 
@@ -655,6 +685,16 @@
 "subsidyCancelRequest": "अनुरोध रद्द गर्नुहोस्",
 "subsidyCancelConfirmTitle": "अनुरोध रद्द गर्ने?",
 "subsidyCancelConfirmMessage": "यसले तपाईंको अनुरोध स्थायी रूपमा हटाउँछ र फिर्ता गर्न सकिँदैन।",
-"subsidyCancelSuccess": "अनुरोध रद्द गरियो"
+"subsidyCancelSuccess": "अनुरोध रद्द गरियो",
 
+"locationAddress": "ठेगाना",
+"locationAddressHint": "ठेगाना लेख्नुहोस् (वैकल्पिक)",
+"ratingLabel1": "कमजोर",
+"ratingLabel2": "ठीकै",
+"ratingLabel3": "राम्रो",
+"ratingLabel4": "धेरै राम्रो",
+"ratingLabel5": "उत्कृष्ट",
+"subsidyRatingsReviews": "मूल्याङ्कन र समीक्षा",
+"subsidyRateThis": "अनुदान मूल्याङ्कन गर्नुहोस्",
+"subsidyNoRatingsYet": "अहिलेसम्म कुनै मूल्याङ्कन छैन"
 }

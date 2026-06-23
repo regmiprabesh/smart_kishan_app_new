@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
 
-/// A row of 1–5 stars. When [onChanged] is provided it's interactive (tap to
-/// set); otherwise it's a read-only display of [rating]. Used by the rating
-/// dialog (interactive) and review items / overview (read-only).
+/// A row of 1–5 stars. Interactive when [onChanged] is given (tap to set),
+/// otherwise a read-only display. Shared across every rating surface.
 class StarRating extends StatelessWidget {
   const StarRating({
     super.key,
@@ -32,9 +31,10 @@ class StarRating extends StatelessWidget {
         );
         if (onChanged == null) return star;
         return GestureDetector(
+          behavior: HitTestBehavior.opaque,
           onTap: () => onChanged!(i + 1),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 2),
+            padding: const EdgeInsets.symmetric(horizontal: 3),
             child: star,
           ),
         );

@@ -746,6 +746,66 @@ abstract class AppLocalizations {
   /// **'Update Location'**
   String get profileUpdateLocation;
 
+  /// No description provided for @locationProvince.
+  ///
+  /// In en, this message translates to:
+  /// **'Province'**
+  String get locationProvince;
+
+  /// No description provided for @locationDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'District'**
+  String get locationDistrict;
+
+  /// No description provided for @locationMunicipality.
+  ///
+  /// In en, this message translates to:
+  /// **'Municipality'**
+  String get locationMunicipality;
+
+  /// No description provided for @locationWard.
+  ///
+  /// In en, this message translates to:
+  /// **'Ward'**
+  String get locationWard;
+
+  /// No description provided for @locationSelectProvince.
+  ///
+  /// In en, this message translates to:
+  /// **'Select province'**
+  String get locationSelectProvince;
+
+  /// No description provided for @locationSelectDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'Select district'**
+  String get locationSelectDistrict;
+
+  /// No description provided for @locationSelectMunicipality.
+  ///
+  /// In en, this message translates to:
+  /// **'Select municipality'**
+  String get locationSelectMunicipality;
+
+  /// No description provided for @locationSelectWard.
+  ///
+  /// In en, this message translates to:
+  /// **'Select ward'**
+  String get locationSelectWard;
+
+  /// No description provided for @locationUpdatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Location updated successfully.'**
+  String get locationUpdatedSuccessfully;
+
+  /// No description provided for @locationUpdateFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to update location.'**
+  String get locationUpdateFailed;
+
   /// No description provided for @confirmLogout.
   ///
   /// In en, this message translates to:
@@ -2084,6 +2144,108 @@ abstract class AppLocalizations {
   /// **'Based on user reviews'**
   String get basedOnUserReviews;
 
+  /// No description provided for @ratingsAndReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Ratings & Reviews'**
+  String get ratingsAndReviews;
+
+  /// No description provided for @ratingSeeAllReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'See all reviews'**
+  String get ratingSeeAllReviews;
+
+  /// No description provided for @ratingReviewsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get ratingReviewsTitle;
+
+  /// No description provided for @ratingSortBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort by'**
+  String get ratingSortBy;
+
+  /// No description provided for @ratingSortNewest.
+  ///
+  /// In en, this message translates to:
+  /// **'Newest'**
+  String get ratingSortNewest;
+
+  /// No description provided for @ratingSortOldest.
+  ///
+  /// In en, this message translates to:
+  /// **'Oldest'**
+  String get ratingSortOldest;
+
+  /// No description provided for @ratingSortHighest.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest rated'**
+  String get ratingSortHighest;
+
+  /// No description provided for @ratingSortLowest.
+  ///
+  /// In en, this message translates to:
+  /// **'Lowest rated'**
+  String get ratingSortLowest;
+
+  /// No description provided for @ratingHowWasExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'How was your experience?'**
+  String get ratingHowWasExperience;
+
+  /// No description provided for @ratingTagsPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'What stood out? (optional)'**
+  String get ratingTagsPrompt;
+
+  /// No description provided for @ratingSubmitButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Rating'**
+  String get ratingSubmitButton;
+
+  /// No description provided for @subsidyTagFastApproval.
+  ///
+  /// In en, this message translates to:
+  /// **'Fast approval'**
+  String get subsidyTagFastApproval;
+
+  /// No description provided for @subsidyTagHelpfulStaff.
+  ///
+  /// In en, this message translates to:
+  /// **'Helpful staff'**
+  String get subsidyTagHelpfulStaff;
+
+  /// No description provided for @subsidyTagClearProcess.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear process'**
+  String get subsidyTagClearProcess;
+
+  /// No description provided for @subsidyTagWellOrganized.
+  ///
+  /// In en, this message translates to:
+  /// **'Well organized'**
+  String get subsidyTagWellOrganized;
+
+  /// No description provided for @subsidyTagTooMuchPaperwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Too much paperwork'**
+  String get subsidyTagTooMuchPaperwork;
+
+  /// No description provided for @subsidyTagSlowResponse.
+  ///
+  /// In en, this message translates to:
+  /// **'Slow response'**
+  String get subsidyTagSlowResponse;
+
   /// No description provided for @ratingSingular.
   ///
   /// In en, this message translates to:
@@ -3013,6 +3175,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Request cancelled'**
   String get subsidyCancelSuccess;
+
+  /// No description provided for @locationAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get locationAddress;
+
+  /// No description provided for @locationAddressHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter address (optional)'**
+  String get locationAddressHint;
+
+  /// No description provided for @ratingLabel1.
+  ///
+  /// In en, this message translates to:
+  /// **'Poor'**
+  String get ratingLabel1;
+
+  /// No description provided for @ratingLabel2.
+  ///
+  /// In en, this message translates to:
+  /// **'Fair'**
+  String get ratingLabel2;
+
+  /// No description provided for @ratingLabel3.
+  ///
+  /// In en, this message translates to:
+  /// **'Good'**
+  String get ratingLabel3;
+
+  /// No description provided for @ratingLabel4.
+  ///
+  /// In en, this message translates to:
+  /// **'Very Good'**
+  String get ratingLabel4;
+
+  /// No description provided for @ratingLabel5.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent'**
+  String get ratingLabel5;
+
+  /// No description provided for @subsidyRatingsReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Ratings & Reviews'**
+  String get subsidyRatingsReviews;
+
+  /// No description provided for @subsidyRateThis.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate Subsidy'**
+  String get subsidyRateThis;
+
+  /// No description provided for @subsidyNoRatingsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No ratings yet'**
+  String get subsidyNoRatingsYet;
 }
 
 class _AppLocalizationsDelegate

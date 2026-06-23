@@ -359,6 +359,36 @@ class AppLocalizationsNe extends AppLocalizations {
   String get profileUpdateLocation => 'स्थान अद्यावधिक गर्नुहोस्';
 
   @override
+  String get locationProvince => 'प्रदेश';
+
+  @override
+  String get locationDistrict => 'जिल्ला';
+
+  @override
+  String get locationMunicipality => 'नगरपालिका';
+
+  @override
+  String get locationWard => 'वडा';
+
+  @override
+  String get locationSelectProvince => 'प्रदेश छान्नुहोस्';
+
+  @override
+  String get locationSelectDistrict => 'जिल्ला छान्नुहोस्';
+
+  @override
+  String get locationSelectMunicipality => 'नगरपालिका छान्नुहोस्';
+
+  @override
+  String get locationSelectWard => 'वडा छान्नुहोस्';
+
+  @override
+  String get locationUpdatedSuccessfully => 'स्थान सफलतापूर्वक अद्यावधिक भयो।';
+
+  @override
+  String get locationUpdateFailed => 'स्थान अद्यावधिक गर्न असफल भयो।';
+
+  @override
   String get confirmLogout => 'लगआउट पुष्टि गर्नुहोस्';
 
   @override
@@ -1055,6 +1085,57 @@ class AppLocalizationsNe extends AppLocalizations {
   String get basedOnUserReviews => 'प्रयोगकर्ता समीक्षामा आधारित';
 
   @override
+  String get ratingsAndReviews => 'मूल्याङ्कन र समीक्षा';
+
+  @override
+  String get ratingSeeAllReviews => 'सबै समीक्षा हेर्नुहोस्';
+
+  @override
+  String get ratingReviewsTitle => 'समीक्षाहरू';
+
+  @override
+  String get ratingSortBy => 'क्रमबद्ध गर्नुहोस्';
+
+  @override
+  String get ratingSortNewest => 'नयाँ';
+
+  @override
+  String get ratingSortOldest => 'पुरानो';
+
+  @override
+  String get ratingSortHighest => 'उच्च मूल्याङ्कन';
+
+  @override
+  String get ratingSortLowest => 'न्यून मूल्याङ्कन';
+
+  @override
+  String get ratingHowWasExperience => 'तपाईंको अनुभव कस्तो रह्यो?';
+
+  @override
+  String get ratingTagsPrompt => 'के कुरा राम्रो लाग्यो? (वैकल्पिक)';
+
+  @override
+  String get ratingSubmitButton => 'मूल्याङ्कन पेश गर्नुहोस्';
+
+  @override
+  String get subsidyTagFastApproval => 'छिटो स्वीकृति';
+
+  @override
+  String get subsidyTagHelpfulStaff => 'सहयोगी कर्मचारी';
+
+  @override
+  String get subsidyTagClearProcess => 'स्पष्ट प्रक्रिया';
+
+  @override
+  String get subsidyTagWellOrganized => 'राम्रोसँग व्यवस्थित';
+
+  @override
+  String get subsidyTagTooMuchPaperwork => 'धेरै कागजी काम';
+
+  @override
+  String get subsidyTagSlowResponse => 'ढिलो प्रतिक्रिया';
+
+  @override
   String get ratingSingular => 'रेटिङ';
 
   @override
@@ -1544,4 +1625,34 @@ class AppLocalizationsNe extends AppLocalizations {
 
   @override
   String get subsidyCancelSuccess => 'अनुरोध रद्द गरियो';
+
+  @override
+  String get locationAddress => 'ठेगाना';
+
+  @override
+  String get locationAddressHint => 'ठेगाना लेख्नुहोस् (वैकल्पिक)';
+
+  @override
+  String get ratingLabel1 => 'कमजोर';
+
+  @override
+  String get ratingLabel2 => 'ठीकै';
+
+  @override
+  String get ratingLabel3 => 'राम्रो';
+
+  @override
+  String get ratingLabel4 => 'धेरै राम्रो';
+
+  @override
+  String get ratingLabel5 => 'उत्कृष्ट';
+
+  @override
+  String get subsidyRatingsReviews => 'मूल्याङ्कन र समीक्षा';
+
+  @override
+  String get subsidyRateThis => 'अनुदान मूल्याङ्कन गर्नुहोस्';
+
+  @override
+  String get subsidyNoRatingsYet => 'अहिलेसम्म कुनै मूल्याङ्कन छैन';
 }

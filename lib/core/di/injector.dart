@@ -15,13 +15,13 @@ import 'package:smart_kishan/features/farmer/crop_info/data/crop_info_repository
 import 'package:smart_kishan/features/farmer/daily_activity/data/activity_repository.dart';
 import 'package:smart_kishan/features/farmer/farmland/data/farmland_repository.dart';
 import 'package:smart_kishan/features/farmer/govt_services/service_centers/data/service_center_repository.dart';
-import 'package:smart_kishan/features/farmer/govt_services/subsidies/data/subsidy.dart';
 import 'package:smart_kishan/features/farmer/govt_services/subsidies/data/subsidy_repository.dart';
 import 'package:smart_kishan/features/farmer/inventory/data/inventory_item_repository.dart';
 import 'package:smart_kishan/features/farmer/market_price/data/market_price_repository.dart';
 import 'package:smart_kishan/features/farmer/notes/data/note_repository.dart';
 import 'package:smart_kishan/features/farmer/weather/data/weather_repository.dart';
 import 'package:smart_kishan/features/language/cubit/locale_cubit.dart';
+import 'package:smart_kishan/features/profile/data/location_repository.dart';
 import 'package:smart_kishan/shared/data/unit_repository.dart';
 
 /// Global service locator. Registration happens here and ONLY here —
@@ -56,6 +56,9 @@ Future<void> initDependencies() async {
   //   () => ProfileRepository(api: sl(), storage: sl()),
   // );
   sl.registerLazySingleton<WeatherRepository>(() => WeatherRepository());
+  sl.registerLazySingleton<LocationRepository>(
+    () => LocationRepository(api: sl(), storage: sl()),
+  );
   sl.registerLazySingleton<NoteRepository>(() => NoteRepository(api: sl()));
   sl.registerLazySingleton<UnitRepository>(() => UnitRepository(api: sl()));
   sl.registerLazySingleton<InventoryItemRepository>(

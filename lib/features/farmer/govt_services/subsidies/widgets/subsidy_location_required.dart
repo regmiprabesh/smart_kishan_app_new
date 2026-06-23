@@ -1,72 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:smart_kishan/app/theme/app_theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:smart_kishan/app/router/app_routes.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
+import 'package:smart_kishan/core/widgets/app_confirm_dialog.dart';
+import 'package:smart_kishan/features/auth/cubit/session_cubit.dart';
+import 'package:smart_kishan/features/auth/cubit/session_state.dart';
 
-/// Shown on the subsidies list when the user has no province/district/
-/// municipality/ward set — subsidies are location-scoped, so we gate on it.
-class SubsidyLocationRequired extends StatelessWidget {
-  const SubsidyLocationRequired({super.key, required this.onAddLocation});
-  final VoidCallback onAddLocation;
+/// True when the session user has a complete administrative location
+/// (province → district → municipality → ward). Subsidies are location-scoped,
+/// so this gates the apply flow (browsing is always allowed).
+bool userHasSubsidyLocation(SessionState state) {
+  if (state is! Authenticated) return false;
+  final u = state.user;
+  return u.provinceId != null &&
+      u.districtId != null &&
+      u.municipalityId != null &&
+      u.wardId != null;
+}
 
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    final l10n = AppLocalizations.of(context)!;
+/// Apply-time location gate. A farmer can browse every subsidy without a
+/// location set, but *applying* needs one (the application is filed against the
+/// farmer's province/district/municipality/ward).
+///
+/// - Location already set → returns `true` immediately.
+/// - Otherwise → explains that a location must be added to the profile and, if
+///   the user agrees, sends them to the Update Location screen. That screen
+///   refreshes the global session on success, so on return we re-read the
+///   session and report whether a location is now present.
+///
+/// Returns `true` only when the caller may proceed to apply.
+Future<bool> ensureSubsidyLocation(BuildContext context) async {
+  if (userHasSubsidyLocation(context.read<SessionCubit>().state)) return true;
 
-    return Center(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(32),
-              decoration: BoxDecoration(
-                color: colors.primary.withValues(alpha: 0.1),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(Icons.location_on_outlined,
-                  size: 72, color: colors.primary),
-            ),
-            const SizedBox(height: 28),
-            Text(
-              l10n.subsidyLocationRequired,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: colors.textPrimary,
-              ),
-            ),
-            const SizedBox(height: 12),
-            Text(
-              l10n.subsidyLocationRequiredDescription,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 14,
-                height: 1.5,
-                color: colors.textSecondary,
-              ),
-            ),
-            const SizedBox(height: 28),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton.icon(
-                onPressed: onAddLocation,
-                icon: const Icon(Icons.edit_location_alt_outlined),
-                label: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  child: Text(l10n.subsidyAddLocation),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: colors.primary,
-                  foregroundColor: Colors.white,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  final l10n = AppLocalizations.of(context)!;
+  final goAdd = await AppConfirmDialog.show(
+    context,
+    title: l10n.subsidyLocationRequired,
+    message: l10n.subsidyLocationRequiredDescription,
+    confirmLabel: l10n.subsidyAddLocation,
+    cancelLabel: l10n.commonCancel,
+  );
+  if (!goAdd || !context.mounted) return false;
+
+  await context.push<bool>(AppRoutePath.updateLocation);
+  if (!context.mounted) return false;
+
+  return userHasSubsidyLocation(context.read<SessionCubit>().state);
 }

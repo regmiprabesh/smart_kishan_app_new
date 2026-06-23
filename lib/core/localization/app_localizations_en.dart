@@ -357,6 +357,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileUpdateLocation => 'Update Location';
 
   @override
+  String get locationProvince => 'Province';
+
+  @override
+  String get locationDistrict => 'District';
+
+  @override
+  String get locationMunicipality => 'Municipality';
+
+  @override
+  String get locationWard => 'Ward';
+
+  @override
+  String get locationSelectProvince => 'Select province';
+
+  @override
+  String get locationSelectDistrict => 'Select district';
+
+  @override
+  String get locationSelectMunicipality => 'Select municipality';
+
+  @override
+  String get locationSelectWard => 'Select ward';
+
+  @override
+  String get locationUpdatedSuccessfully => 'Location updated successfully.';
+
+  @override
+  String get locationUpdateFailed => 'Failed to update location.';
+
+  @override
   String get confirmLogout => 'Confirm Logout';
 
   @override
@@ -1050,6 +1080,57 @@ class AppLocalizationsEn extends AppLocalizations {
   String get basedOnUserReviews => 'Based on user reviews';
 
   @override
+  String get ratingsAndReviews => 'Ratings & Reviews';
+
+  @override
+  String get ratingSeeAllReviews => 'See all reviews';
+
+  @override
+  String get ratingReviewsTitle => 'Reviews';
+
+  @override
+  String get ratingSortBy => 'Sort by';
+
+  @override
+  String get ratingSortNewest => 'Newest';
+
+  @override
+  String get ratingSortOldest => 'Oldest';
+
+  @override
+  String get ratingSortHighest => 'Highest rated';
+
+  @override
+  String get ratingSortLowest => 'Lowest rated';
+
+  @override
+  String get ratingHowWasExperience => 'How was your experience?';
+
+  @override
+  String get ratingTagsPrompt => 'What stood out? (optional)';
+
+  @override
+  String get ratingSubmitButton => 'Submit Rating';
+
+  @override
+  String get subsidyTagFastApproval => 'Fast approval';
+
+  @override
+  String get subsidyTagHelpfulStaff => 'Helpful staff';
+
+  @override
+  String get subsidyTagClearProcess => 'Clear process';
+
+  @override
+  String get subsidyTagWellOrganized => 'Well organized';
+
+  @override
+  String get subsidyTagTooMuchPaperwork => 'Too much paperwork';
+
+  @override
+  String get subsidyTagSlowResponse => 'Slow response';
+
+  @override
   String get ratingSingular => 'rating';
 
   @override
@@ -1538,4 +1619,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get subsidyCancelSuccess => 'Request cancelled';
+
+  @override
+  String get locationAddress => 'Address';
+
+  @override
+  String get locationAddressHint => 'Enter address (optional)';
+
+  @override
+  String get ratingLabel1 => 'Poor';
+
+  @override
+  String get ratingLabel2 => 'Fair';
+
+  @override
+  String get ratingLabel3 => 'Good';
+
+  @override
+  String get ratingLabel4 => 'Very Good';
+
+  @override
+  String get ratingLabel5 => 'Excellent';
+
+  @override
+  String get subsidyRatingsReviews => 'Ratings & Reviews';
+
+  @override
+  String get subsidyRateThis => 'Rate Subsidy';
+
+  @override
+  String get subsidyNoRatingsYet => 'No ratings yet';
 }

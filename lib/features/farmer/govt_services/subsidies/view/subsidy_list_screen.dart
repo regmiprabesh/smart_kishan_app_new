@@ -7,7 +7,6 @@ import 'package:smart_kishan/core/widgets/app_bar.dart';
 import 'package:smart_kishan/core/widgets/app_empty_state.dart';
 import 'package:smart_kishan/features/auth/cubit/session_cubit.dart';
 import 'package:smart_kishan/features/auth/cubit/session_state.dart';
-import 'package:smart_kishan/shared/models/user.dart';
 
 import '../cubit/subsidy_list_cubit.dart';
 import '../cubit/subsidy_list_state.dart';
@@ -28,26 +27,15 @@ class _SubsidyListScreenState extends State<SubsidyListScreen> {
   @override
   void initState() {
     super.initState();
-    if (_hasLocation) {
-      WidgetsBinding.instance.addPostFrameCallback(
-        (_) => context.read<SubsidyListCubit>().load(),
-      );
-    }
+    // The list always loads — the backend returns every approved subsidy when
+    // the user has no location, and the location-scoped set once they do.
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => context.read<SubsidyListCubit>().load(),
+    );
   }
 
-  User? get _user {
-    final s = context.read<SessionCubit>().state;
-    return s is Authenticated ? s.user : null;
-  }
-
-  bool get _hasLocation {
-    final u = _user;
-    return u != null &&
-        u.provinceId != null &&
-        u.districtId != null &&
-        u.municipalityId != null &&
-        u.wardId != null;
-  }
+  bool get _hasLocation =>
+      userHasSubsidyLocation(context.read<SessionCubit>().state);
 
   /// Captures the cubit now so the deferred onApplied callback (fired when the
   /// application succeeds, screens later) doesn't touch a stale context.
@@ -63,10 +51,22 @@ class _SubsidyListScreenState extends State<SubsidyListScreen> {
     extra: SubsidyDetailArgs(subsidy: s, onApplied: _onApplied(s)),
   );
 
-  void _openApply(Subsidy s) => context.push(
-    AppRoutePath.subsidyApply,
-    extra: SubsidyDetailArgs(subsidy: s, onApplied: _onApplied(s)),
-  );
+  /// Apply gate: browsing needs no location, applying does. Without one we
+  /// prompt the user to add it. On success the session updates, which the
+  /// BlocListener below catches to reload the now location-scoped list — the
+  /// user lands back here with the irrelevant subsidies gone, then re-taps
+  /// Apply on a relevant one.
+  Future<void> _openApply(Subsidy s) async {
+    if (!_hasLocation) {
+      await ensureSubsidyLocation(context);
+      return;
+    }
+    if (!mounted) return;
+    context.push(
+      AppRoutePath.subsidyApply,
+      extra: SubsidyDetailArgs(subsidy: s, onApplied: _onApplied(s)),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,44 +76,48 @@ class _SubsidyListScreenState extends State<SubsidyListScreen> {
       appBar: AppAppBar(
         title: l10n.subsidies,
         actions: [
-          if (_hasLocation)
-            IconButton(
-              icon: const Icon(Icons.history),
-              tooltip: l10n.subsidyMyApplications,
-              onPressed: () => context.push(AppRoutePath.mySubsidyApplications),
-            ),
+          IconButton(
+            icon: const Icon(Icons.history),
+            tooltip: l10n.subsidyMyApplications,
+            onPressed: () => context.push(AppRoutePath.mySubsidyApplications),
+          ),
         ],
       ),
-      floatingActionButton: _hasLocation
-          ? FloatingActionButton.extended(
-              onPressed: () => context.push(AppRoutePath.mySubsidyRequests),
-              icon: const Icon(Icons.add),
-              label: Text(l10n.subsidyRequestSubsidy),
-            )
-          : null,
-      body: !_hasLocation
-          ? SubsidyLocationRequired(
-              onAddLocation: () => context.push(AppRoutePath.editProfile),
-            )
-          : BlocBuilder<SubsidyListCubit, SubsidyListState>(
-              builder: (context, state) {
-                return switch (state) {
-                  SubsidyListLoading() => const SubsidyListSkeleton(),
-                  SubsidyListFailure() => AppEmptyState(
-                    icon: Icons.error_outline,
-                    title: l10n.errorGeneric,
-                    actionLabel: l10n.commonRefresh,
-                    actionIcon: Icons.refresh,
-                    onAction: () => context.read<SubsidyListCubit>().load(),
-                  ),
-                  SubsidyListLoaded(:final subsidies) => _list(
-                    context,
-                    l10n,
-                    subsidies,
-                  ),
-                };
-              },
-            ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => context.push(AppRoutePath.mySubsidyRequests),
+        icon: const Icon(Icons.add),
+        label: Text(l10n.subsidyRequestSubsidy),
+      ),
+      body: BlocListener<SessionCubit, SessionState>(
+        // When a location is added (e.g. from the apply gate), the user returns
+        // to a freshly filtered list with irrelevant subsidies removed.
+        listenWhen: (prev, curr) =>
+            userHasSubsidyLocation(prev) != userHasSubsidyLocation(curr),
+        listener: (context, state) {
+          if (userHasSubsidyLocation(state)) {
+            context.read<SubsidyListCubit>().load();
+          }
+        },
+        child: BlocBuilder<SubsidyListCubit, SubsidyListState>(
+          builder: (context, state) {
+            return switch (state) {
+              SubsidyListLoading() => const SubsidyListSkeleton(),
+              SubsidyListFailure() => AppEmptyState(
+                icon: Icons.error_outline,
+                title: l10n.errorGeneric,
+                actionLabel: l10n.commonRefresh,
+                actionIcon: Icons.refresh,
+                onAction: () => context.read<SubsidyListCubit>().load(),
+              ),
+              SubsidyListLoaded(:final subsidies) => _list(
+                context,
+                l10n,
+                subsidies,
+              ),
+            };
+          },
+        ),
+      ),
     );
   }
 

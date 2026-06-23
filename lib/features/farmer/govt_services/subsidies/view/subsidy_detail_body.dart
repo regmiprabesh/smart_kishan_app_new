@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
+import 'package:smart_kishan/shared/ratings/ratings_config.dart';
+import 'package:smart_kishan/shared/ratings/widgets/ratings_section.dart';
 import 'package:smart_kishan/core/utils/formatters.dart';
 import 'package:smart_kishan/features/farmer/govt_services/subsidies/widgets/subsidy_document_tile.dart';
 import 'package:smart_kishan/features/farmer/govt_services/subsidies/widgets/subsidy_section_header.dart';
@@ -92,6 +94,23 @@ class SubsidyDetailBody extends StatelessWidget {
                   const SizedBox(height: 8),
                   _locationCard(context, l10n, s),
                 ],
+                const SizedBox(height: 28),
+                RatingsSection(
+                  config: RatingsConfig(
+                    rateTitle: l10n.subsidyRateThis,
+                    title: s.title?.of(context),
+                    description: s.description?.of(context),
+                    fallbackIcon: Icons.volunteer_activism_outlined,
+                    suggestedTags: [
+                      l10n.subsidyTagFastApproval,
+                      l10n.subsidyTagHelpfulStaff,
+                      l10n.subsidyTagClearProcess,
+                      l10n.subsidyTagWellOrganized,
+                      l10n.subsidyTagTooMuchPaperwork,
+                      l10n.subsidyTagSlowResponse,
+                    ],
+                  ),
+                ),
                 const SizedBox(height: 28),
                 _applyButton(context, l10n, s),
                 const SizedBox(height: 12),

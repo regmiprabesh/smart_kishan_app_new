@@ -43,7 +43,7 @@ class SmartKishanApp extends StatelessWidget {
                 // different metrics made the lerp look like resizing).
                 theme: AppTheme.light(),
                 darkTheme: AppTheme.dark(),
-                themeMode: themeMode,
+                themeMode: ThemeMode.light,
                 themeAnimationDuration: Duration.zero,
 
                 routerConfig: sl<GoRouter>(),

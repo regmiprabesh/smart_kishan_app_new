@@ -16,6 +16,15 @@ abstract final class ApiEndpoints {
   static const String uploadProfileImage = '/users/upload-profile-image';
   static const String changePassword = '/users/change-password';
   static const String updateLocation = '/users/update-location';
+  // Administrative-location lookups (public). Backend returns the list under a
+  // top-level key (provinces/districts/municipalities/wards), not `data`.
+  static const String provinces = '/locations/provinces';
+  static String districts(int provinceId) =>
+      '/locations/provinces/$provinceId/districts';
+  static String municipalities(int districtId) =>
+      '/locations/districts/$districtId/municipalities';
+  static String wards(int municipalityId) =>
+      '/locations/municipalities/$municipalityId/wards';
 
   // Notes
   static const String notes = '/notes';

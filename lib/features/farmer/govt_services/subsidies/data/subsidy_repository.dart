@@ -34,9 +34,14 @@ class SubsidyRepository {
     required int subsidyId,
     required int rating,
     String? review,
+    List<String> tags = const [],
   }) => api.post(
     ApiEndpoints.subsidyRate(subsidyId),
-    body: {'rating': rating, 'review': review},
+    body: {
+      'rating': rating,
+      'review': review,
+      if (tags.isNotEmpty) 'tags': tags,
+    },
   );
 
   /// GET /farmer/subsidies/{id}/ratings
