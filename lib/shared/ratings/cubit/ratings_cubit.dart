@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../ratings_repository.dart';
-import '../review.dart';
-import '../review_sort.dart';
+import '../data/ratings_repository.dart';
+import '../data/review.dart';
+import '../data/review_sort.dart';
 import 'ratings_state.dart';
 
 /// Feature-agnostic ratings controller. The headline average/total are seeded
@@ -41,6 +41,7 @@ class RatingsCubit extends Cubit<RatingsState> {
       emit(
         state.copyWith(
           loading: false,
+          loaded: true,
           reviews: sortReviews(reviews, state.sort),
           myReview: mine,
           clearMyReview: mine == null,

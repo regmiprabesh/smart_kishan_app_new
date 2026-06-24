@@ -1,4 +1,3 @@
-
 import 'package:smart_kishan/shared/models/location.dart';
 import 'package:smart_kishan/shared/models/multilingual_field.dart';
 
@@ -246,6 +245,7 @@ class ServiceCenterRating {
     this.review,
     this.createdAt,
     this.userName,
+    this.tags = const [],
   });
 
   final int id;
@@ -255,8 +255,10 @@ class ServiceCenterRating {
   final String? review;
   final DateTime? createdAt;
   final String? userName;
+  final List<String> tags;
 
   factory ServiceCenterRating.fromJson(Map<String, dynamic> json) {
+    final rawTags = json['tags'];
     return ServiceCenterRating(
       id: json['id'] as int? ?? 0,
       serviceCenterId: json['service_center_id'] as int? ?? 0,
@@ -269,6 +271,7 @@ class ServiceCenterRating {
       userName: json['user'] != null && json['user'] is Map
           ? (json['user']['name'] as String?)
           : null,
+      tags: rawTags is List ? rawTags.map((e) => '$e').toList() : const [],
     );
   }
 }

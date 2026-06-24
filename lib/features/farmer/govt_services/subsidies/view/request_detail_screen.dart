@@ -10,7 +10,7 @@ import 'package:smart_kishan/core/widgets/app_bar.dart';
 import '../cubit/request_cancel_cubit.dart';
 import '../cubit/request_cancel_state.dart';
 import '../data/subsidy_request.dart';
-import '../subsidy_labels.dart';
+import '../data/subsidy_labels.dart';
 import '../widgets/application_status.dart';
 import '../widgets/application_timeline.dart';
 import '../widgets/subsidy_section_header.dart';
@@ -72,11 +72,15 @@ class RequestDetailScreen extends StatelessWidget {
             SubsidySectionTitle(title: l10n.subsidyRequestInformation),
             const SizedBox(height: 12),
             _InfoRow(l10n.subsidyType, subsidyTypeLabel(l10n, r.subsidyType)),
-            _InfoRow(l10n.subsidyRequestLevel,
-                subsidyLevelLabel(l10n, r.requestedToLevel)),
+            _InfoRow(
+              l10n.subsidyRequestLevel,
+              subsidyLevelLabel(l10n, r.requestedToLevel),
+            ),
             if (r.createdAt != null)
-              _InfoRow(l10n.subsidyRequestedOnLabel,
-                  context.shortDate(r.createdAt)),
+              _InfoRow(
+                l10n.subsidyRequestedOnLabel,
+                context.shortDate(r.createdAt),
+              ),
 
             if (desc.isNotEmpty) ...[
               const SizedBox(height: 14),
@@ -133,7 +137,11 @@ class RequestDetailScreen extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: TextStyle(fontSize: 14, height: 1.45, color: colors.textSecondary),
+        style: TextStyle(
+          fontSize: 14,
+          height: 1.45,
+          color: colors.textSecondary,
+        ),
       ),
     );
   }
@@ -195,7 +203,11 @@ class _Hero extends StatelessWidget {
             width: 52,
             height: 52,
             decoration: BoxDecoration(color: c, shape: BoxShape.circle),
-            child: Icon(applicationStatusIcon(status), color: Colors.white, size: 28),
+            child: Icon(
+              applicationStatusIcon(status),
+              color: Colors.white,
+              size: 28,
+            ),
           ),
           const SizedBox(width: 14),
           Expanded(
@@ -268,7 +280,9 @@ class _CancelButton extends StatelessWidget {
                     width: 18,
                     height: 18,
                     child: CircularProgressIndicator(
-                        strokeWidth: 2, color: colors.error),
+                      strokeWidth: 2,
+                      color: colors.error,
+                    ),
                   )
                 : Icon(Icons.delete_outline, color: colors.error),
             label: Text(
@@ -281,8 +295,9 @@ class _CancelButton extends StatelessWidget {
             ),
             style: OutlinedButton.styleFrom(
               side: BorderSide(color: colors.error),
-              shape:
-                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
             ),
           ),
         );

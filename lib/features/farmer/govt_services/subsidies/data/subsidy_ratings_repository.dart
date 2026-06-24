@@ -1,6 +1,6 @@
-import 'package:smart_kishan/shared/ratings/rating_aggregate.dart';
-import 'package:smart_kishan/shared/ratings/ratings_repository.dart';
-import 'package:smart_kishan/shared/ratings/review.dart';
+import 'package:smart_kishan/shared/ratings/data/rating_aggregate.dart';
+import 'package:smart_kishan/shared/ratings/data/ratings_repository.dart';
+import 'package:smart_kishan/shared/ratings/data/review.dart';
 
 import 'subsidy_rating.dart';
 import 'subsidy_repository.dart';

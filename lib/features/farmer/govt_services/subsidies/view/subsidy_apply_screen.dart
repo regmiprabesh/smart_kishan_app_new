@@ -24,7 +24,7 @@ import '../data/application_form_field.dart';
 import '../data/subsidy.dart';
 import '../data/subsidy_document.dart';
 import '../data/subsidy_repository.dart';
-import '../subsidy_labels.dart';
+import '../data/subsidy_labels.dart';
 import '../widgets/subsidy_document_upload.dart';
 import '../widgets/subsidy_form_field.dart';
 import 'subsidy_detail_args.dart';

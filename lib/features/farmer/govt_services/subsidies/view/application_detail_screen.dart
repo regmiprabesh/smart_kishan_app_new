@@ -12,7 +12,7 @@ import '../cubit/application_withdraw_state.dart';
 import '../data/application_form_field.dart';
 import '../data/subsidy.dart';
 import '../data/subsidy_document.dart';
-import '../subsidy_labels.dart';
+import '../data/subsidy_labels.dart';
 import '../widgets/application_status.dart';
 import '../widgets/application_timeline.dart';
 import '../widgets/subsidy_document_tile.dart';

@@ -1,6 +1,6 @@
 import 'package:smart_kishan/core/constants/api_endpoints.dart';
 import 'package:smart_kishan/core/network/api_client.dart';
-import 'package:smart_kishan/shared/ratings/rating_aggregate.dart';
+import 'package:smart_kishan/shared/ratings/data/rating_aggregate.dart';
 
 import 'service_center.dart';
 
@@ -102,10 +102,15 @@ class ServiceCenterRepository {
     required int serviceCenterId,
     required int rating,
     String? review,
+    List<String> tags = const [],
   }) async {
     final res = await _api.post(
       ApiEndpoints.serviceCenterRating(serviceCenterId),
-      body: {'rating': rating, 'review': review},
+      body: {
+        'rating': rating,
+        'review': review,
+        if (tags.isNotEmpty) 'tags': tags,
+      },
     );
     return RatingAggregate.fromJson(res.data as Map<String, dynamic>);
   }

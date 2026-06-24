@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-import '../review.dart';
-import '../review_sort.dart';
+import '../data/review.dart';
+import '../data/review_sort.dart';
 
 /// Shared state for the ratings section + reviews/rate pages: the (sorted)
 /// reviews, the current sort, the signed-in user's own review, the headline
@@ -9,6 +9,7 @@ import '../review_sort.dart';
 class RatingsState extends Equatable {
   const RatingsState({
     this.loading = true,
+    this.loaded = false,
     this.reviews = const [],
     this.sort = ReviewSort.newest,
     this.myReview,
@@ -18,6 +19,11 @@ class RatingsState extends Equatable {
   });
 
   final bool loading;
+
+  /// True once the full list has been fetched from the repository (vs. merely
+  /// seeded with a preview). Lets the reviews page skip a redundant fetch when
+  /// the detail screen already loaded.
+  final bool loaded;
   final List<Review> reviews;
   final ReviewSort sort;
   final Review? myReview;
@@ -27,6 +33,7 @@ class RatingsState extends Equatable {
 
   RatingsState copyWith({
     bool? loading,
+    bool? loaded,
     List<Review>? reviews,
     ReviewSort? sort,
     Review? myReview,
@@ -37,6 +44,7 @@ class RatingsState extends Equatable {
   }) {
     return RatingsState(
       loading: loading ?? this.loading,
+      loaded: loaded ?? this.loaded,
       reviews: reviews ?? this.reviews,
       sort: sort ?? this.sort,
       myReview: clearMyReview ? null : (myReview ?? this.myReview),
@@ -49,6 +57,7 @@ class RatingsState extends Equatable {
   @override
   List<Object?> get props => [
     loading,
+    loaded,
     reviews,
     sort,
     myReview,

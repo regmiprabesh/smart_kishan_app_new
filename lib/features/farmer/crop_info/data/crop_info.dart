@@ -63,7 +63,7 @@ class CropInfo {
 
     return CropInfo(
       id: json['id'] as int?,
-      image: json['image'] as String?,
+      image: json['image_url'] as String?,
       name: ml(json['name']),
       description: ml(json['description']),
       activities: acts,

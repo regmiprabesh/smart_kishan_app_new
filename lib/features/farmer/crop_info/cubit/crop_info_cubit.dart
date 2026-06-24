@@ -13,6 +13,7 @@ class CropInfoCubit extends Cubit<CropInfoState> {
     emit(const CropInfoLoading());
     try {
       final crops = await _repository.fetchCrops();
+      print(crops[0].image);
       emit(CropInfoLoaded(crops: crops));
     } catch (e) {
       debugPrint('Crops load failed: $e');

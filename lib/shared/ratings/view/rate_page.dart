@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
+import 'package:smart_kishan/core/di/injector.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/app_snackbar.dart';
 import 'package:smart_kishan/core/widgets/app_bar.dart';
@@ -8,9 +9,10 @@ import 'package:smart_kishan/core/widgets/app_primary_button.dart';
 import 'package:smart_kishan/core/widgets/app_text_field.dart';
 
 import '../cubit/ratings_cubit.dart';
+import '../data/rating_tag_catalog.dart';
 import '../ratings_config.dart';
-import '../ratings_repository.dart';
-import '../review.dart';
+import '../data/ratings_repository.dart';
+import '../data/review.dart';
 import '../widgets/ratings_entity_header.dart';
 import '../widgets/satisfaction.dart';
 import '../widgets/satisfaction_rating.dart';
@@ -35,6 +37,20 @@ class _RatePageState extends State<RatePage> {
   late final _textController = TextEditingController(
     text: widget.existing?.text ?? '',
   );
+
+  @override
+  void initState() {
+    super.initState();
+    // Make sure the tag catalog is available so chips render with labels.
+    if (widget.config.tagContext != null) {
+      final catalog = sl<RatingTagCatalog>();
+      if (!catalog.isLoaded) {
+        catalog.ensureLoaded().then((_) {
+          if (mounted) setState(() {});
+        });
+      }
+    }
+  }
 
   @override
   void dispose() {
@@ -113,7 +129,9 @@ class _RatePageState extends State<RatePage> {
               ),
             ),
           ),
-          if (widget.config.suggestedTags.isNotEmpty) ...[
+          if (sl<RatingTagCatalog>()
+              .forContext(widget.config.tagContext)
+              .isNotEmpty) ...[
             const SizedBox(height: 24),
             Text(
               l10n.ratingTagsPrompt,
@@ -124,21 +142,29 @@ class _RatePageState extends State<RatePage> {
               ),
             ),
             const SizedBox(height: 12),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                for (final tag in widget.config.suggestedTags)
-                  _TagChip(
-                    label: tag,
-                    selected: _tags.contains(tag),
-                    onTap: () => setState(
-                      () => _tags.contains(tag)
-                          ? _tags.remove(tag)
-                          : _tags.add(tag),
-                    ),
-                  ),
-              ],
+            Builder(
+              builder: (context) {
+                final lang = Localizations.localeOf(context).languageCode;
+                final options = sl<RatingTagCatalog>().forContext(
+                  widget.config.tagContext,
+                );
+                return Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    for (final tag in options)
+                      _TagChip(
+                        label: tag.label(lang),
+                        selected: _tags.contains(tag.key),
+                        onTap: () => setState(
+                          () => _tags.contains(tag.key)
+                              ? _tags.remove(tag.key)
+                              : _tags.add(tag.key),
+                        ),
+                      ),
+                  ],
+                );
+              },
             ),
           ],
           const SizedBox(height: 24),

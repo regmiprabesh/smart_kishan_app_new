@@ -4,7 +4,7 @@ import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/formatters.dart';
 
 import '../data/subsidy.dart';
-import '../subsidy_labels.dart';
+import '../data/subsidy_labels.dart';
 
 /// A subsidy summary card: colored header (title + category + status), budget &
 /// rating chips, description, deadline, an expandable details section, and

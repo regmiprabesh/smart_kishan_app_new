@@ -23,6 +23,7 @@ import 'package:smart_kishan/features/farmer/weather/data/weather_repository.dar
 import 'package:smart_kishan/features/language/cubit/locale_cubit.dart';
 import 'package:smart_kishan/features/profile/data/location_repository.dart';
 import 'package:smart_kishan/shared/data/unit_repository.dart';
+import 'package:smart_kishan/shared/ratings/data/rating_tag_catalog.dart';
 
 /// Global service locator. Registration happens here and ONLY here —
 /// no scattered Get.put calls.
@@ -83,6 +84,7 @@ Future<void> initDependencies() async {
   sl.registerLazySingleton<SubsidyRepository>(
     () => SubsidyRepository(api: sl()),
   );
+  sl.registerLazySingleton<RatingTagCatalog>(() => RatingTagCatalog(sl()));
 
   // ── Global cubits (app-lifetime; feature cubits are created per
   //    route in app_router.dart, never registered here) ──────────

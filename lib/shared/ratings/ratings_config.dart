@@ -7,12 +7,13 @@ import 'package:flutter/widgets.dart';
 /// [description] / [imageUrl] drive the "what am I rating?" header shown on the
 /// rate and reviews pages — all optional, so a feature can supply none, some,
 /// or all. When there is no image, [fallbackIcon] is shown instead (e.g. a
-/// subsidy glyph). [suggestedTags] are the quick-pick chips on the rate page.
+/// subsidy glyph). [tagContext] selects which catalog of quick-pick tag chips
+/// to show on the rate page ('subsidy', 'service_center'); null hides them.
 class RatingsConfig {
   const RatingsConfig({
     required this.rateTitle,
     required this.targetType,
-    this.suggestedTags = const [],
+    this.tagContext,
     this.title,
     this.description,
     this.imageUrl,
@@ -21,7 +22,7 @@ class RatingsConfig {
 
   final String rateTitle;
   final String targetType;
-  final List<String> suggestedTags;
+  final String? tagContext;
   final String? title;
   final String? description;
   final String? imageUrl;

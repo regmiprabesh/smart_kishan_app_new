@@ -36,6 +36,22 @@ class SubsidyListCubit extends Cubit<SubsidyListState> {
     }
   }
 
+  /// Patch one subsidy's rating aggregate in place — no refetch. Called when a
+  /// rating made on the detail screen reports the new server aggregate, so the
+  /// card reflects it immediately.
+  void updateAggregate(int id, double average, int total) {
+    final current = state;
+    if (current is! SubsidyListLoaded) return;
+    emit(
+      SubsidyListLoaded([
+        for (final s in current.subsidies)
+          s.id == id
+              ? s.copyWith(averageRating: average, totalRatings: total)
+              : s,
+      ]),
+    );
+  }
+
   /// Mark one subsidy as applied in place — no network refetch. Called after a
   /// successful application so the card/badge reflect it immediately.
   void markApplied(int id) {

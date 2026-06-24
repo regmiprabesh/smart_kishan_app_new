@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/formatters.dart';
-import 'package:smart_kishan/features/farmer/govt_services/subsidies/subsidy_labels.dart';
+import 'package:smart_kishan/features/farmer/govt_services/subsidies/data/subsidy_labels.dart';
 
 import 'application_status.dart';
 

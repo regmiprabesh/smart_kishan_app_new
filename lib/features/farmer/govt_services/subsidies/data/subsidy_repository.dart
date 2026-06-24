@@ -1,6 +1,6 @@
 import 'package:smart_kishan/core/constants/api_endpoints.dart';
 import 'package:smart_kishan/core/network/api_client.dart';
-import 'package:smart_kishan/shared/ratings/rating_aggregate.dart';
+import 'package:smart_kishan/shared/ratings/data/rating_aggregate.dart';
 
 import 'subsidy.dart';
 import 'subsidy_request.dart';

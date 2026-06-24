@@ -10,8 +10,8 @@ import 'package:smart_kishan/shared/ratings/widgets/rating_section_card.dart';
 import '../cubit/ratings_cubit.dart';
 import '../cubit/ratings_state.dart';
 import '../ratings_config.dart';
-import '../ratings_repository.dart';
-import '../review.dart';
+import '../data/ratings_repository.dart';
+import '../data/review.dart';
 import '../view/rate_page.dart';
 import '../view/reviews_page.dart';
 import 'rating_summary_header.dart';
@@ -167,14 +167,16 @@ class RatingsSection extends StatelessWidget {
             if (i != shown.length - 1)
               Divider(height: 1, color: context.colors.divider),
           ],
-          // if (state.total > shown.length ||
-          //     state.reviews.length > shown.length) ...[
+          // Always offer the full reviews page (it adds sorting and the
+          // complete list) whenever at least one review exists. This block
+          // only renders when `shown` is non-empty, so a review is guaranteed
+          // here — gating on count would needlessly hide the entry point when
+          // there are 1–5 reviews.
           Divider(height: 1, color: context.colors.divider),
           TextButton(
             onPressed: () => _openReviews(context),
             child: Text(l10n.ratingSeeAllReviews),
           ),
-          // ],
         ],
       ),
     );

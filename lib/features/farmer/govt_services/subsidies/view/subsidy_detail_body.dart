@@ -8,7 +8,7 @@ import 'package:smart_kishan/features/farmer/govt_services/subsidies/widgets/sub
 import 'package:smart_kishan/features/farmer/govt_services/subsidies/widgets/subsidy_section_header.dart';
 
 import '../data/subsidy.dart';
-import '../subsidy_labels.dart';
+import '../data/subsidy_labels.dart';
 
 class SubsidyDetailBody extends StatelessWidget {
   const SubsidyDetailBody({
@@ -102,14 +102,7 @@ class SubsidyDetailBody extends StatelessWidget {
                     title: s.title?.of(context),
                     description: s.description?.of(context),
                     fallbackIcon: Icons.volunteer_activism_outlined,
-                    suggestedTags: [
-                      l10n.subsidyTagFastApproval,
-                      l10n.subsidyTagHelpfulStaff,
-                      l10n.subsidyTagClearProcess,
-                      l10n.subsidyTagWellOrganized,
-                      l10n.subsidyTagTooMuchPaperwork,
-                      l10n.subsidyTagSlowResponse,
-                    ],
+                    tagContext: 'subsidy',
                   ),
                 ),
                 const SizedBox(height: 28),

@@ -31,8 +31,8 @@ abstract final class ApiEndpoints {
   static String note(int id) => '/notes/$id';
 
   // Inventory Items
-  static const String inventoryItems = '/products';
-  static String inventoryItem(int id) => '/products/$id';
+  static const String inventoryItems = '/inventoryItems';
+  static String inventoryItem(int id) => '/inventoryItems/$id';
 
   // Unit
   static const String units = '/units';
@@ -72,4 +72,7 @@ abstract final class ApiEndpoints {
   static const String mySubsidyRequests = '/subsidy-requests/my-requests';
   static String subsidyRequest(int id) => '/subsidy-requests/$id';
   static String cancelSubsidyRequest(int id) => '/subsidy-requests/$id/cancel';
+
+  // Ratings
+  static const String ratingTags = '/rating-tags';
 }

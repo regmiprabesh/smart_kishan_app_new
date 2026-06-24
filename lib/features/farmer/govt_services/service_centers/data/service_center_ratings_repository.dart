@@ -1,6 +1,6 @@
-import 'package:smart_kishan/shared/ratings/rating_aggregate.dart';
-import 'package:smart_kishan/shared/ratings/ratings_repository.dart';
-import 'package:smart_kishan/shared/ratings/review.dart';
+import 'package:smart_kishan/shared/ratings/data/rating_aggregate.dart';
+import 'package:smart_kishan/shared/ratings/data/ratings_repository.dart';
+import 'package:smart_kishan/shared/ratings/data/review.dart';
 
 import 'service_center.dart';
 import 'service_center_repository.dart';
@@ -39,6 +39,7 @@ class ServiceCenterRatingsRepository implements RatingsRepository {
     serviceCenterId: serviceCenterId,
     rating: rating,
     review: text,
+    tags: tags,
   );
 
   @override
@@ -53,5 +54,6 @@ class ServiceCenterRatingsRepository implements RatingsRepository {
     rating: r.rating,
     text: r.review,
     createdAt: r.createdAt,
+    tags: r.tags,
   );
 }

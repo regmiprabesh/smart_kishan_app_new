@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
+import 'package:smart_kishan/core/di/injector.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 
-import '../review.dart';
+import '../data/rating_tag_catalog.dart';
+import '../data/review.dart';
 import 'star_rating.dart';
 
 /// A single review row: avatar initial, name, relative time, stars, optional
@@ -81,7 +83,10 @@ class ReviewTile extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Text(
-                            t,
+                            sl<RatingTagCatalog>().labelFor(
+                              t,
+                              Localizations.localeOf(context).languageCode,
+                            ),
                             style: TextStyle(
                               fontSize: 11,
                               color: colors.primary,

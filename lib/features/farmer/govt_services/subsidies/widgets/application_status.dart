@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 
-import '../subsidy_labels.dart';
+import '../data/subsidy_labels.dart';
 
 /// Status → theme color. pending=warning, under_review=info,
 /// approved=success, rejected=error.

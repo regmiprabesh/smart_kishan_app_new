@@ -114,14 +114,7 @@ class _Body extends StatelessWidget {
                   ? images.first
                   : null,
               fallbackIcon: Icons.storefront_outlined,
-              suggestedTags: [
-                l10n.serviceCenterTagHelpfulStaff,
-                l10n.serviceCenterTagKnowledgeable,
-                l10n.serviceCenterTagFairPrices,
-                l10n.serviceCenterTagWellStocked,
-                l10n.serviceCenterTagLongWait,
-                l10n.serviceCenterTagLimitedStock,
-              ],
+              tagContext: 'service_center',
             ),
           ),
         ),

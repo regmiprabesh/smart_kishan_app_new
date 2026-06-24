@@ -4,7 +4,7 @@ import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/formatters.dart';
 
 import '../data/subsidy_request.dart';
-import '../subsidy_labels.dart';
+import '../data/subsidy_labels.dart';
 import 'application_status.dart';
 
 /// My-Requests list card: status-tinted rail, title + status badge, category,
@@ -70,12 +70,18 @@ class RequestCard extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 10),
-                        _meta(context, Icons.category_outlined,
-                            subsidyTypeLabel(l10n, request.subsidyType)),
+                        _meta(
+                          context,
+                          Icons.category_outlined,
+                          subsidyTypeLabel(l10n, request.subsidyType),
+                        ),
                         if (request.requestedToLevel != null) ...[
                           const SizedBox(height: 6),
-                          _meta(context, Icons.account_balance_outlined,
-                              subsidyLevelLabel(l10n, request.requestedToLevel)),
+                          _meta(
+                            context,
+                            Icons.account_balance_outlined,
+                            subsidyLevelLabel(l10n, request.requestedToLevel),
+                          ),
                         ],
                         if (request.createdAt != null) ...[
                           const SizedBox(height: 6),
@@ -83,7 +89,8 @@ class RequestCard extends StatelessWidget {
                             context,
                             Icons.event_outlined,
                             l10n.subsidyRequestedOn(
-                                context.shortDate(request.createdAt)),
+                              context.shortDate(request.createdAt),
+                            ),
                           ),
                         ],
                       ],
@@ -109,8 +116,10 @@ class RequestCard extends StatelessWidget {
         Icon(icon, size: 14, color: colors.iconSecondary),
         const SizedBox(width: 5),
         Expanded(
-          child: Text(text,
-              style: TextStyle(fontSize: 12, color: colors.textSecondary)),
+          child: Text(
+            text,
+            style: TextStyle(fontSize: 12, color: colors.textSecondary),
+          ),
         ),
       ],
     );

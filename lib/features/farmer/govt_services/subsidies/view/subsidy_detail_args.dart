@@ -13,8 +13,13 @@ class SubsidyDetailArgs {
     required this.subsidy,
     this.onApplied,
     this.onLocationAdded,
+    this.onRated,
   });
   final Subsidy subsidy;
   final VoidCallback? onApplied;
   final VoidCallback? onLocationAdded;
+
+  /// Called with the server's recomputed aggregate when the user rates/deletes
+  /// on the detail screen, so the list can patch the card in place.
+  final void Function(double average, int total)? onRated;
 }

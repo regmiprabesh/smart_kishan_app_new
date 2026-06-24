@@ -4,13 +4,17 @@ import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/formatters.dart';
 
 import '../data/subsidy.dart';
-import '../subsidy_labels.dart';
+import '../data/subsidy_labels.dart';
 import 'application_status.dart';
 
 /// My-Applications list card: a status-tinted rail, the subsidy title with a
 /// status badge, category, and the applied date.
 class ApplicationCard extends StatelessWidget {
-  const ApplicationCard({super.key, required this.subsidy, required this.onTap});
+  const ApplicationCard({
+    super.key,
+    required this.subsidy,
+    required this.onTap,
+  });
 
   final Subsidy subsidy;
   final VoidCallback onTap;
@@ -81,7 +85,9 @@ class ApplicationCard extends StatelessWidget {
                           _meta(
                             context,
                             Icons.event_outlined,
-                            l10n.subsidyAppliedOn(context.shortDate(app!.appliedAt)),
+                            l10n.subsidyAppliedOn(
+                              context.shortDate(app!.appliedAt),
+                            ),
                           ),
                         ],
                       ],

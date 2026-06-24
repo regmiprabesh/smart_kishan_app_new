@@ -11,7 +11,7 @@ import 'package:smart_kishan/core/widgets/app_text_field.dart';
 
 import '../cubit/request_subsidy_cubit.dart';
 import '../cubit/request_subsidy_state.dart';
-import '../subsidy_labels.dart';
+import '../data/subsidy_labels.dart';
 
 class RequestSubsidyScreen extends StatefulWidget {
   const RequestSubsidyScreen({super.key});
@@ -30,11 +30,23 @@ class _RequestSubsidyScreenState extends State<RequestSubsidyScreen> {
   String? _level;
 
   static const _types = [
-    'fertilizer', 'equipment', 'training', 'irrigation', 'livestock',
-    'seeds', 'insurance', 'loan', 'organic', 'general',
+    'fertilizer',
+    'equipment',
+    'training',
+    'irrigation',
+    'livestock',
+    'seeds',
+    'insurance',
+    'loan',
+    'organic',
+    'general',
   ];
   static const _levels = [
-    'central', 'province', 'district', 'municipality', 'ward',
+    'central',
+    'province',
+    'district',
+    'municipality',
+    'ward',
   ];
 
   @override
@@ -50,13 +62,13 @@ class _RequestSubsidyScreenState extends State<RequestSubsidyScreen> {
     FocusScope.of(context).unfocus();
     if (!(_formKey.currentState?.validate() ?? false)) return;
     context.read<RequestSubsidyCubit>().submit(
-          title: _title.text.trim(),
-          description: _description.text.trim(),
-          subsidyType: _type!,
-          justification: _justification.text.trim(),
-          requestedToLevel: _level!,
-          targetCropOrSector: _targetCrop.text.trim(),
-        );
+      title: _title.text.trim(),
+      description: _description.text.trim(),
+      subsidyType: _type!,
+      justification: _justification.text.trim(),
+      requestedToLevel: _level!,
+      targetCropOrSector: _targetCrop.text.trim(),
+    );
   }
 
   @override
@@ -71,8 +83,9 @@ class _RequestSubsidyScreenState extends State<RequestSubsidyScreen> {
     final lblWhy = l10n.subsidyJustification;
     final lblCrop = l10n.subsidyTargetCropSector;
 
-    String? req(String? v, String label) =>
-        (v == null || v.trim().isEmpty) ? l10n.subsidyFieldRequiredNamed(label) : null;
+    String? req(String? v, String label) => (v == null || v.trim().isEmpty)
+        ? l10n.subsidyFieldRequiredNamed(label)
+        : null;
 
     return BlocConsumer<RequestSubsidyCubit, RequestSubsidyState>(
       listener: (context, state) {
@@ -114,8 +127,9 @@ class _RequestSubsidyScreenState extends State<RequestSubsidyScreen> {
                       label: '$lblType *',
                       hint: l10n.subsidyPleaseSelect(lblType),
                       onChanged: (v) => setState(() => _type = v),
-                      validator: (v) =>
-                          v == null ? l10n.subsidyFieldRequiredNamed(lblType) : null,
+                      validator: (v) => v == null
+                          ? l10n.subsidyFieldRequiredNamed(lblType)
+                          : null,
                     ),
                     const SizedBox(height: 16),
                     AppDropdown<String>(
@@ -125,8 +139,9 @@ class _RequestSubsidyScreenState extends State<RequestSubsidyScreen> {
                       label: '$lblLevel *',
                       hint: l10n.subsidyPleaseSelect(lblLevel),
                       onChanged: (v) => setState(() => _level = v),
-                      validator: (v) =>
-                          v == null ? l10n.subsidyFieldRequiredNamed(lblLevel) : null,
+                      validator: (v) => v == null
+                          ? l10n.subsidyFieldRequiredNamed(lblLevel)
+                          : null,
                     ),
                     const SizedBox(height: 16),
                     AppTextField(
@@ -186,7 +201,11 @@ class _RequestSubsidyScreenState extends State<RequestSubsidyScreen> {
           Expanded(
             child: Text(
               l10n.subsidyRequestIntro,
-              style: TextStyle(fontSize: 13, height: 1.4, color: colors.textSecondary),
+              style: TextStyle(
+                fontSize: 13,
+                height: 1.4,
+                color: colors.textSecondary,
+              ),
             ),
           ),
         ],

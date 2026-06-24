@@ -5,6 +5,7 @@ import 'package:smart_kishan/app/router/app_routes.dart';
 import 'package:smart_kishan/core/di/injector.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/shared/ratings/cubit/ratings_cubit.dart';
+import 'package:smart_kishan/shared/ratings/cubit/ratings_state.dart';
 import 'package:smart_kishan/core/widgets/app_bar.dart';
 import 'package:smart_kishan/features/auth/cubit/session_cubit.dart';
 
@@ -62,9 +63,13 @@ class _SubsidyDetailScreenState extends State<SubsidyDetailScreen> {
         seedAverage: _subsidy.averageRating,
         seedTotal: _subsidy.totalRatings,
       )..load(),
-      child: Scaffold(
-        appBar: AppAppBar(title: l10n.subsidyDetails),
-        body: SubsidyDetailBody(subsidy: _subsidy, onApply: _apply),
+      child: BlocListener<RatingsCubit, RatingsState>(
+        listenWhen: (p, c) => p.average != c.average || p.total != c.total,
+        listener: (_, s) => widget.args.onRated?.call(s.average, s.total),
+        child: Scaffold(
+          appBar: AppAppBar(title: l10n.subsidyDetails),
+          body: SubsidyDetailBody(subsidy: _subsidy, onApply: _apply),
+        ),
       ),
     );
   }
