@@ -1322,6 +1322,34 @@ abstract class AppLocalizations {
   /// **'Income (if any)'**
   String get dailyActivityIncomeLabel;
 
+  /// No description provided for @dailyActivityAdjustStockTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update stock?'**
+  String get dailyActivityAdjustStockTitle;
+
+  /// No description provided for @dailyActivityAdjustStockSellMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Reduce stock by {quantity} for this sale?'**
+  String dailyActivityAdjustStockSellMessage(int quantity);
+
+  /// No description provided for @dailyActivityAdjustStockBuyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Increase stock by {quantity} for this purchase?'**
+  String dailyActivityAdjustStockBuyMessage(int quantity);
+
+  /// No description provided for @dailyActivityInsufficientStock.
+  ///
+  /// In en, this message translates to:
+  /// **'{itemName} can\'t be sold with quantity {requested} — only {available} in stock.'**
+  String dailyActivityInsufficientStock(
+    String itemName,
+    String requested,
+    String available,
+  );
+
   /// No description provided for @myIncome.
   ///
   /// In en, this message translates to:
@@ -1729,6 +1757,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No commodities match your search'**
   String get marketNoResults;
+
+  /// No description provided for @marketPricesStale.
+  ///
+  /// In en, this message translates to:
+  /// **'Showing last available prices — live data temporarily unavailable'**
+  String get marketPricesStale;
 
   /// No description provided for @minPrice.
   ///

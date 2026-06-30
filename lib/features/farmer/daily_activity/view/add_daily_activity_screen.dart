@@ -3,12 +3,15 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
 import 'package:smart_kishan/core/utils/app_snackbar.dart';
+import 'package:smart_kishan/core/utils/formatters.dart';
 import 'package:smart_kishan/core/widgets/app_bar.dart';
+import 'package:smart_kishan/core/widgets/app_confirm_dialog.dart';
 import 'package:smart_kishan/core/widgets/app_dropdown.dart';
 import 'package:smart_kishan/core/widgets/app_field_card.dart';
 import 'package:smart_kishan/core/widgets/app_primary_button.dart';
 import 'package:smart_kishan/core/widgets/app_text_field.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
+import 'package:smart_kishan/features/farmer/daily_activity/cubit/daily_activity_cubit.dart';
 import 'package:smart_kishan/features/farmer/daily_activity/cubit/daily_activity_state.dart';
 import 'package:smart_kishan/features/farmer/daily_activity/data/activity.dart';
 import 'package:smart_kishan/features/farmer/daily_activity/view/activity_args.dart';
@@ -91,8 +94,28 @@ class _AddDailyActivityScreenState extends State<AddDailyActivityScreen> {
     FocusScope.of(context).unfocus();
     if (!_formKey.currentState!.validate()) return;
 
-    setState(() => _saving = true);
     final l10n = AppLocalizations.of(context)!;
+    final quantity = int.tryParse(_quantity.text.trim());
+
+    // Buy/Sell with a real item + quantity → ask whether stock should move.
+    // Other, or a Buy/Sell missing either field, skips the prompt entirely
+    // (there's nothing meaningful to adjust).
+    var adjustStock = false;
+    if (_needsInventoryItem && _inventoryItemId != null && quantity != null) {
+      final confirmed = await AppConfirmDialog.show(
+        context,
+        title: l10n.dailyActivityAdjustStockTitle,
+        message: _type == 'Sell'
+            ? l10n.dailyActivityAdjustStockSellMessage(quantity)
+            : l10n.dailyActivityAdjustStockBuyMessage(quantity),
+        confirmLabel: l10n.commonYes,
+        cancelLabel: l10n.commonNo,
+      );
+      if (!mounted) return;
+      adjustStock = confirmed;
+    }
+
+    setState(() => _saving = true);
     final cubit = widget.args.cubit;
 
     // Route amounts by type:
@@ -121,14 +144,15 @@ class _AddDailyActivityScreenState extends State<AddDailyActivityScreen> {
           : null,
       expense: expense,
       income: income,
+      adjustStock: adjustStock,
     );
 
-    final ok = _isEdit
+    final result = _isEdit
         ? await cubit.update(activity)
         : await cubit.add(activity);
 
     if (!mounted) return;
-    if (ok) {
+    if (result.success) {
       AppSnackbar.success(
         _isEdit
             ? l10n.dailyActivityUpdatedSuccessfully
@@ -137,7 +161,37 @@ class _AddDailyActivityScreenState extends State<AddDailyActivityScreen> {
       context.pop();
     } else {
       setState(() => _saving = false);
-      AppSnackbar.error(l10n.errorGeneric);
+      AppSnackbar.error(_messageFor(context, l10n, result));
+    }
+  }
+
+  /// Turns a failed [ActivitySaveResult] into a localized string. Known
+  /// reasonKeys map to proper en/ne copy; anything else falls back to the
+  /// server's plain message (already in whatever language it responded in)
+  /// or the generic error string as a last resort.
+  ///
+  /// Numbers are passed through context.ld(...) before interpolation —
+  /// ICU placeholder substitution does NOT localize digits on its own
+  /// (see AppFormatters), so without this a Nepali sentence would still
+  /// show "205" in ASCII instead of "२०५".
+  String _messageFor(
+    BuildContext context,
+    AppLocalizations l10n,
+    ActivitySaveResult result,
+  ) {
+    final params = result.reasonParams;
+    switch (result.reasonKey) {
+      case 'insufficient_stock':
+        final itemName = params['item_name']?.toString() ?? '';
+        final requested = (params['requested'] as num?)?.toInt() ?? 0;
+        final available = (params['available'] as num?)?.toInt() ?? 0;
+        return l10n.dailyActivityInsufficientStock(
+          itemName,
+          context.ld(requested),
+          context.ld(available),
+        );
+      default:
+        return result.fallbackMessage ?? l10n.errorGeneric;
     }
   }
 

@@ -660,6 +660,28 @@ class AppLocalizationsNe extends AppLocalizations {
   String get dailyActivityIncomeLabel => 'आम्दानी (छ भने)';
 
   @override
+  String get dailyActivityAdjustStockTitle => 'स्टक परिवर्तन गर्ने?';
+
+  @override
+  String dailyActivityAdjustStockSellMessage(int quantity) {
+    return 'यो बिक्रीको लागि स्टक $quantity ले घटाउने?';
+  }
+
+  @override
+  String dailyActivityAdjustStockBuyMessage(int quantity) {
+    return 'यो खरिदको लागि स्टक $quantity ले बढाउने?';
+  }
+
+  @override
+  String dailyActivityInsufficientStock(
+    String itemName,
+    String requested,
+    String available,
+  ) {
+    return '$itemName परिमाण $requested मा बिक्री गर्न सकिँदैन — स्टकमा $available मात्र छ।';
+  }
+
+  @override
   String get myIncome => 'मेरो आम्दानी';
 
   @override
@@ -874,6 +896,10 @@ class AppLocalizationsNe extends AppLocalizations {
 
   @override
   String get marketNoResults => 'तपाईंको खोजसँग मिल्ने कुनै वस्तु छैन';
+
+  @override
+  String get marketPricesStale =>
+      'अन्तिम उपलब्ध मूल्यहरू देखाइँदैछ — लाइभ डेटा अस्थायी रूपमा अनुपलब्ध छ';
 
   @override
   String get minPrice => 'न्यूनतम मूल्य';

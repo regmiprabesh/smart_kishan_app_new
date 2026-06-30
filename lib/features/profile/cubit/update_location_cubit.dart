@@ -1,10 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_kishan/features/auth/cubit/session_cubit.dart';
-import 'package:smart_kishan/features/auth/cubit/session_state.dart';
 import 'package:smart_kishan/features/profile/cubit/update_location_state.dart';
 import 'package:smart_kishan/features/profile/data/location_repository.dart';
-import 'package:smart_kishan/shared/models/user.dart';
 
 /// Drives the cascading location picker. Loads provinces on [init] (preselecting
 /// and cascading down from the user's saved location if any), reloads each child
@@ -17,32 +15,9 @@ class UpdateLocationCubit extends Cubit<UpdateLocationState> {
   final LocationRepository _repo;
   final SessionCubit _session;
 
-  User? get _user {
-    final s = _session.state;
-    return s is Authenticated ? s.user : null;
-  }
-
-  /// Load provinces, then preselect + cascade-load from the saved location.
+  /// Load provinces; the user selects their location fresh.
   Future<void> init() async {
     await _loadProvinces();
-    final user = _user;
-    final pid = user?.provinceId;
-    if (pid == null) return;
-    emit(state.copyWith(provinceId: pid));
-    await _loadDistricts(pid);
-
-    final did = user?.districtId;
-    if (did == null) return;
-    emit(state.copyWith(districtId: did));
-    await _loadMunicipalities(did);
-
-    final mid = user?.municipalityId;
-    if (mid == null) return;
-    emit(state.copyWith(municipalityId: mid));
-    await _loadWards(mid);
-
-    final wid = user?.wardId;
-    if (wid != null) emit(state.copyWith(wardId: wid));
   }
 
   Future<void> selectProvince(int? id) async {

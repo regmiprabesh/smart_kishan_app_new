@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:smart_kishan/shared/models/location.dart';
-
 List<User> userListFromJson(String val) => List<User>.from(
   json.decode(val).map((user) => User.fromJson(user)),
 ).toList();
@@ -17,44 +15,16 @@ class User {
   String? createdAt;
   String? image;
   String? mode;
-  // NEW FIELDS for location
   String? address;
-  int? provinceId;
-  int? districtId;
-  int? municipalityId;
-  int? wardId;
-  Province? province;
-  District? district;
-  Municipality? municipality;
-  Ward? ward;
+  int? governmentUnitId;
 
   // For prefilling - computed properties
   String? get fullName => name;
   String? get phoneNumber => phone;
   String? get emailAddress => email;
 
-  // Get full address
-  String? get fullAddress {
-    List<String> addressParts = [];
-
-    if (address != null && address!.isNotEmpty) {
-      addressParts.add(address!);
-    }
-    if (ward != null && ward!.name != null) {
-      addressParts.add(ward!.name!.get('en'));
-    }
-    if (municipality != null && municipality!.name != null) {
-      addressParts.add(municipality!.name!.get('en'));
-    }
-    if (district != null && district!.name != null) {
-      addressParts.add(district!.name!.get('en'));
-    }
-    if (province != null && province!.name != null) {
-      addressParts.add(province!.name!.get('en'));
-    }
-
-    return addressParts.isNotEmpty ? addressParts.join(', ') : null;
-  }
+  String? get fullAddress =>
+      (address != null && address!.isNotEmpty) ? address : null;
 
   User({
     this.id,
@@ -67,14 +37,7 @@ class User {
     this.createdAt,
     this.image,
     this.address,
-    this.provinceId,
-    this.districtId,
-    this.municipalityId,
-    this.wardId,
-    this.province,
-    this.district,
-    this.municipality,
-    this.ward,
+    this.governmentUnitId,
     this.mode,
   });
 
@@ -88,24 +51,8 @@ class User {
     updatedAt = json['updated_at'];
     createdAt = json['created_at'];
     mode = json['mode'];
-    // NEW: Parse location fields
     address = json['address'];
-    provinceId = json['province_id'];
-    districtId = json['district_id'];
-    municipalityId = json['municipality_id'];
-    wardId = json['ward_id'];
-
-    // Parse location objects if available
-    province = json['province'] != null
-        ? Province.fromJson(json['province'])
-        : null;
-    district = json['district'] != null
-        ? District.fromJson(json['district'])
-        : null;
-    municipality = json['municipality'] != null
-        ? Municipality.fromJson(json['municipality'])
-        : null;
-    ward = json['ward'] != null ? Ward.fromJson(json['ward']) : null;
+    governmentUnitId = json['government_unit_id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -120,10 +67,7 @@ class User {
     data['created_at'] = createdAt;
     data['image'] = image;
     data['address'] = address;
-    data['province_id'] = provinceId;
-    data['district_id'] = districtId;
-    data['municipality_id'] = municipalityId;
-    data['ward_id'] = wardId;
+    data['government_unit_id'] = governmentUnitId;
     return data;
   }
 }

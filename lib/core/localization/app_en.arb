@@ -281,6 +281,24 @@
 "dailyActivityExpenseLabel": "Expense (if any)",
 "dailyActivityIncomeLabel": "Income (if any)",
 
+"dailyActivityAdjustStockTitle": "Update stock?",
+"dailyActivityAdjustStockSellMessage": "Reduce stock by {quantity} for this sale?",
+"@dailyActivityAdjustStockSellMessage": {
+  "placeholders": { "quantity": { "type": "int" } }
+},
+"dailyActivityAdjustStockBuyMessage": "Increase stock by {quantity} for this purchase?",
+"@dailyActivityAdjustStockBuyMessage": {
+  "placeholders": { "quantity": { "type": "int" } }
+},
+"dailyActivityInsufficientStock": "{itemName} can't be sold with quantity {requested} — only {available} in stock.",
+"@dailyActivityInsufficientStock": {
+  "placeholders": {
+    "itemName": { "type": "String" },
+    "requested": { "type": "String" },
+    "available": { "type": "String" }
+  }
+},
+
 "myIncome": "My Income",
 "myExpense": "My Expense",
 
@@ -391,6 +409,7 @@
 "marketSearchHint": "Search commodity...",
 "marketLastUpdated": "Last updated",
 "marketNoResults": "No commodities match your search",
+"marketPricesStale": "Showing last available prices — live data temporarily unavailable",
 
 "minPrice": "Min Price",
 "maxPrice": "Max Price",

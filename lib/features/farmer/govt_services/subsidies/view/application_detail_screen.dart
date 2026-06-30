@@ -137,11 +137,11 @@ class ApplicationDetailScreen extends StatelessWidget {
                   Icons.payments_outlined,
                   '${l10n.currencySymbol} ${context.ld(s.budgetPerBeneficiary!)}',
                 ),
-              if (s.locationLevel != null)
+              if (s.ownerUnit?.level != null)
                 _tag(
                   context,
                   Icons.place_outlined,
-                  subsidyLevelLabel(l10n, s.locationLevel),
+                  subsidyLevelLabel(l10n, s.ownerUnit!.level),
                 ),
             ],
           ),

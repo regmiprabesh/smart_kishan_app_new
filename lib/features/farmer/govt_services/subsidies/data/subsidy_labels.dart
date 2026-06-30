@@ -29,6 +29,7 @@ String subsidyTypeLabel(AppLocalizations l10n, String? type) {
 
 String subsidyLevelLabel(AppLocalizations l10n, String? level) {
   switch (level?.toLowerCase()) {
+    case 'country':
     case 'central':
       return l10n.subsidyLevelCentral;
     case 'province':

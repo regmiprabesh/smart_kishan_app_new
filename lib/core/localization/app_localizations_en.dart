@@ -656,6 +656,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dailyActivityIncomeLabel => 'Income (if any)';
 
   @override
+  String get dailyActivityAdjustStockTitle => 'Update stock?';
+
+  @override
+  String dailyActivityAdjustStockSellMessage(int quantity) {
+    return 'Reduce stock by $quantity for this sale?';
+  }
+
+  @override
+  String dailyActivityAdjustStockBuyMessage(int quantity) {
+    return 'Increase stock by $quantity for this purchase?';
+  }
+
+  @override
+  String dailyActivityInsufficientStock(
+    String itemName,
+    String requested,
+    String available,
+  ) {
+    return '$itemName can\'t be sold with quantity $requested — only $available in stock.';
+  }
+
+  @override
   String get myIncome => 'My Income';
 
   @override
@@ -869,6 +891,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get marketNoResults => 'No commodities match your search';
+
+  @override
+  String get marketPricesStale =>
+      'Showing last available prices — live data temporarily unavailable';
 
   @override
   String get minPrice => 'Min Price';

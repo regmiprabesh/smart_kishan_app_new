@@ -95,14 +95,6 @@ class _SubsidyApplyScreenState extends State<SubsidyApplyScreen> {
         return u.emailAddress;
       case 'phone':
         return u.phoneNumber;
-      case 'province':
-        return u.province?.name?.get('en');
-      case 'district':
-        return u.district?.name?.get('en');
-      case 'municipality':
-        return u.municipality?.name?.get('en');
-      case 'ward':
-        return u.ward?.name?.get('en');
       case 'address':
         return u.fullAddress ?? u.address;
       default:

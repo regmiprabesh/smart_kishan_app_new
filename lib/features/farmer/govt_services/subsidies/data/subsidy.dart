@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:smart_kishan/shared/models/location.dart';
 import 'package:smart_kishan/shared/models/multilingual_field.dart';
 
 import 'application_form_field.dart';
@@ -25,13 +24,10 @@ class Subsidy {
     this.deadlineNepali,
     this.budgetPerBeneficiary,
     this.totalBudget,
-    this.locationLevel,
     this.status,
     this.notes,
-    this.province,
-    this.district,
-    this.municipality,
-    this.ward,
+    this.targets = const [],
+    this.ownerUnit,
     this.hasApplied = false,
     this.averageRating = 0,
     this.totalRatings = 0,
@@ -62,13 +58,10 @@ class Subsidy {
       deadlineNepali: deadlineNepali,
       budgetPerBeneficiary: budgetPerBeneficiary,
       totalBudget: totalBudget,
-      locationLevel: locationLevel,
       status: status,
       notes: notes,
-      province: province,
-      district: district,
-      municipality: municipality,
-      ward: ward,
+      targets: targets,
+      ownerUnit: ownerUnit,
       hasApplied: hasApplied ?? this.hasApplied,
       averageRating: averageRating ?? this.averageRating,
       totalRatings: totalRatings ?? this.totalRatings,
@@ -97,15 +90,15 @@ class Subsidy {
   final String? budgetPerBeneficiary;
   final String? totalBudget;
 
-  /// central | province | district | municipality | ward
-  final String? locationLevel;
   final String? status;
   final MultilingualField? notes;
 
-  final Province? province;
-  final District? district;
-  final Municipality? municipality;
-  final Ward? ward;
+  /// Areas this subsidy applies to (mixed levels). Replaces the old single
+  /// province/district/municipality/ward + location_level.
+  final List<SubsidyUnit> targets;
+
+  /// The government unit that issued this subsidy.
+  final SubsidyUnit? ownerUnit;
 
   final bool hasApplied;
   final double averageRating;
@@ -145,19 +138,12 @@ class Subsidy {
       deadlineNepali: json['deadline_nepali'],
       budgetPerBeneficiary: json['budget_per_beneficiary']?.toString(),
       totalBudget: json['total_budget']?.toString(),
-      locationLevel: json['location_level'],
       status: json['status'],
       notes: MultilingualField.fromJson(json['notes']),
-      province: json['province'] != null
-          ? Province.fromJson(json['province'])
+      targets: _mapList(json['targets'], SubsidyUnit.fromJson),
+      ownerUnit: json['owner_unit'] != null
+          ? SubsidyUnit.fromJson(json['owner_unit'])
           : null,
-      district: json['district'] != null
-          ? District.fromJson(json['district'])
-          : null,
-      municipality: json['municipality'] != null
-          ? Municipality.fromJson(json['municipality'])
-          : null,
-      ward: json['ward'] != null ? Ward.fromJson(json['ward']) : null,
       hasApplied: json['has_applied'] ?? false,
       averageRating: double.tryParse('${json['average_rating'] ?? 0}') ?? 0,
       totalRatings: int.tryParse('${json['total_ratings'] ?? 0}') ?? 0,
@@ -245,4 +231,23 @@ Map<String, dynamic> _decodeMap(dynamic value) {
     } catch (_) {}
   }
   return const {};
+}
+
+/// A government_units node a subsidy targets or is owned by.
+class SubsidyUnit {
+  const SubsidyUnit({this.id, this.level, this.name});
+
+  final int? id;
+
+  /// country | province | district | municipality | ward
+  final String? level;
+  final MultilingualField? name;
+
+  factory SubsidyUnit.fromJson(Map<String, dynamic> json) {
+    return SubsidyUnit(
+      id: json['id'],
+      level: json['level'],
+      name: MultilingualField.fromJson(json['name']),
+    );
+  }
 }

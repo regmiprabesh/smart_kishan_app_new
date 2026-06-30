@@ -116,11 +116,7 @@ class SubsidyDetailBody extends StatelessWidget {
     );
   }
 
-  bool _hasLocation(Subsidy s) =>
-      s.province != null ||
-      s.district != null ||
-      s.municipality != null ||
-      s.ward != null;
+  bool _hasLocation(Subsidy s) => s.targets.isNotEmpty;
 
   Widget _header(BuildContext context, AppLocalizations l10n, Subsidy s) {
     final colors = context.colors;
@@ -157,9 +153,9 @@ class SubsidyDetailBody extends StatelessWidget {
                 bg: Colors.white,
                 fg: colors.primary,
               ),
-              if (s.locationLevel != null)
+              if (s.ownerUnit?.level != null)
                 _badge(
-                  subsidyLevelLabel(l10n, s.locationLevel),
+                  subsidyLevelLabel(l10n, s.ownerUnit!.level),
                   bg: Colors.white.withValues(alpha: 0.25),
                   fg: Colors.white,
                 ),
@@ -227,34 +223,12 @@ class SubsidyDetailBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (s.province != null)
+          for (final t in s.targets)
             _locationItem(
               context,
-              Icons.map_outlined,
-              l10n.subsidyProvince,
-              s.province!.name?.of(context) ?? '',
-            ),
-          if (s.district != null)
-            _locationItem(
-              context,
-              Icons.location_city_outlined,
-              l10n.subsidyDistrict,
-              s.district!.name?.of(context) ?? '',
-            ),
-          if (s.municipality != null)
-            _locationItem(
-              context,
-              Icons.apartment_outlined,
-              l10n.subsidyMunicipality,
-              '${s.municipality!.name?.of(context) ?? ''}'
-              '${s.municipality!.type != null ? ' (${s.municipality!.type})' : ''}',
-            ),
-          if (s.ward != null)
-            _locationItem(
-              context,
-              Icons.home_outlined,
-              l10n.subsidyWard,
-              s.ward!.name?.of(context) ?? context.ld(s.ward!.wardNumber ?? ''),
+              Icons.place_outlined,
+              subsidyLevelLabel(l10n, t.level),
+              t.name?.of(context) ?? '',
             ),
         ],
       ),

@@ -276,11 +276,14 @@ class _SubsidyCardState extends State<SubsidyCard> {
               l10n.subsidyTargetSector,
               (s.targetCropOrSector?.of(context) ?? ''),
             ),
-          if (s.locationLevel != null)
+          if (s.targets.isNotEmpty)
             _detail(
               context,
               l10n.subsidyLocationLevel,
-              subsidyLevelLabel(l10n, s.locationLevel),
+              s.targets
+                  .map((t) => t.name?.of(context) ?? '')
+                  .where((n) => n.isNotEmpty)
+                  .join(', '),
             ),
         ],
       ),

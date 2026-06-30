@@ -12,11 +12,7 @@ import 'package:smart_kishan/features/auth/cubit/session_state.dart';
 /// so this gates the apply flow (browsing is always allowed).
 bool userHasSubsidyLocation(SessionState state) {
   if (state is! Authenticated) return false;
-  final u = state.user;
-  return u.provinceId != null &&
-      u.districtId != null &&
-      u.municipalityId != null &&
-      u.wardId != null;
+  return state.user.governmentUnitId != null;
 }
 
 /// Apply-time location gate. A farmer can browse every subsidy without a

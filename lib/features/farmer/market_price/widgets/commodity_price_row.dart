@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_kishan/app/theme/app_theme.dart';
 import 'package:smart_kishan/core/localization/app_localizations.dart';
+import 'package:smart_kishan/core/utils/formatters.dart';
 import '../data/market_price.dart';
 
 /// One commodity row: name + unit on top, min/max/avg as three small labeled
@@ -36,16 +37,17 @@ class CommodityPriceRow extends StatelessWidget {
               if (commodity.unit?.of(context) != null &&
                   commodity.unit!.of(context).isNotEmpty)
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 3,
+                  ),
                   decoration: BoxDecoration(
                     color: colors.surfaceAlt,
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(
                     commodity.unit!.of(context),
-                    style: TextStyle(
-                        fontSize: 11, color: colors.textSecondary),
+                    style: TextStyle(fontSize: 11, color: colors.textSecondary),
                   ),
                 ),
             ],
@@ -54,11 +56,23 @@ class CommodityPriceRow extends StatelessWidget {
           // Min / Max / Avg
           Row(
             children: [
-              _Price(label: l10n.minPrice, value: commodity.min, color: colors.success),
+              _Price(
+                label: l10n.minPrice,
+                value: commodity.min,
+                color: colors.success,
+              ),
               const SizedBox(width: 16),
-              _Price(label: l10n.maxPrice, value: commodity.max, color: colors.error),
+              _Price(
+                label: l10n.maxPrice,
+                value: commodity.max,
+                color: colors.error,
+              ),
               const SizedBox(width: 16),
-              _Price(label: l10n.avgPrice, value: commodity.avg, color: colors.primary),
+              _Price(
+                label: l10n.avgPrice,
+                value: commodity.avg,
+                color: colors.primary,
+              ),
             ],
           ),
         ],
@@ -79,22 +93,23 @@ class _Price extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label,
-            style: TextStyle(fontSize: 10, color: colors.textHint)),
+        Text(label, style: TextStyle(fontSize: 10, color: colors.textHint)),
         const SizedBox(height: 2),
         Row(
           children: [
             Container(
-              width: 6, height: 6,
+              width: 6,
+              height: 6,
               decoration: BoxDecoration(color: color, shape: BoxShape.circle),
             ),
             const SizedBox(width: 4),
             Text(
-              value ?? '—',
+              context.ld(value ?? '—'),
               style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  color: colors.textPrimary),
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+                color: colors.textPrimary,
+              ),
             ),
           ],
         ),

@@ -8,8 +8,12 @@ import '../cubit/market_price_cubit.dart';
 import '../data/market_price.dart';
 import 'commodity_price_row.dart';
 
-/// The price list for a single market: a last-updated date header and the
-/// filtered commodity rows (or an empty state when the search matches nothing).
+/// The price list for a single market: an optional stale-data warning banner,
+/// a last-updated date header, and the filtered commodity rows (or an empty
+/// state when the search matches nothing).
+///
+/// The stale banner is shown when the backend couldn't get fresh data today
+/// and is serving the last known good price list from a previous date.
 class MarketList extends StatelessWidget {
   const MarketList({
     super.key,
@@ -29,6 +33,26 @@ class MarketList extends StatelessWidget {
 
     return Column(
       children: [
+        // Stale data warning — shown when backend fell back to history cache
+        if (market.stale)
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            color: colors.warning.withOpacity(0.12),
+            child: Row(
+              children: [
+                Icon(Icons.history_rounded, size: 14, color: colors.warning),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    l10n.marketPricesStale,
+                    style: TextStyle(fontSize: 12, color: colors.warning),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
         // Last-updated date
         if (market.date != null && market.date!.isNotEmpty)
           Container(

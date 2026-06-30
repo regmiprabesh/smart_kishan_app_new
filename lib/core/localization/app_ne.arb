@@ -281,6 +281,11 @@
 "dailyActivityExpenseLabel": "खर्च (छ भने)",
 "dailyActivityIncomeLabel": "आम्दानी (छ भने)",
 
+"dailyActivityAdjustStockTitle": "स्टक परिवर्तन गर्ने?",
+"dailyActivityAdjustStockSellMessage": "यो बिक्रीको लागि स्टक {quantity} ले घटाउने?",
+"dailyActivityAdjustStockBuyMessage": "यो खरिदको लागि स्टक {quantity} ले बढाउने?",
+"dailyActivityInsufficientStock": "{itemName} परिमाण {requested} मा बिक्री गर्न सकिँदैन — स्टकमा {available} मात्र छ।",
+
 "myIncome": "मेरो आम्दानी",
 "myExpense": "मेरो खर्च",
 
@@ -391,6 +396,7 @@
 "marketSearchHint": "वस्तु खोज्नुहोस्...",
 "marketLastUpdated": "अन्तिम अद्यावधिक",
 "marketNoResults": "तपाईंको खोजसँग मिल्ने कुनै वस्तु छैन",
+"marketPricesStale": "अन्तिम उपलब्ध मूल्यहरू देखाइँदैछ — लाइभ डेटा अस्थायी रूपमा अनुपलब्ध छ",
 
 "minPrice": "न्यूनतम मूल्य",
 "maxPrice": "अधिकतम मूल्य",

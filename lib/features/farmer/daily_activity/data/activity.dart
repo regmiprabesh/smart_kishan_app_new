@@ -13,6 +13,8 @@ class Activity {
     this.userId,
     this.date,
     this.user,
+    this.adjustStock = false,
+    this.stockAdjusted = false,
   });
 
   final int? id;
@@ -27,6 +29,15 @@ class Activity {
   final String? date;
   final User? user;
 
+  /// Set on a create/update request to opt in to a stock change for this
+  /// save. Not persisted by the server under this name — see [stockAdjusted].
+  final bool adjustStock;
+
+  /// Read back from the server: whether THIS activity's last save actually
+  /// moved inventory stock. Source of truth for displaying "stock was
+  /// adjusted" in the UI; has no bearing on what a future save will do.
+  final bool stockAdjusted;
+
   factory Activity.fromJson(Map<String, dynamic> json) {
     return Activity(
       id: json['id'] as int?,
@@ -39,24 +50,28 @@ class Activity {
       income: json['income_amount'] != null
           ? double.tryParse(json['income_amount'].toString())
           : null,
-      inventoryItemId: json['product_id'] as int?,
+      inventoryItemId: json['inventory_item_id'] as int?,
       quantity: json['quantity'] as int?,
       userId: json['user_id'] as int?,
       date: json['created_at'] as String?,
       user: json['user'] != null
           ? User.fromJson(json['user'] as Map<String, dynamic>)
           : null,
+      stockAdjusted: json['stock_adjusted'] as bool? ?? false,
     );
   }
 
-  /// Body for create/update.
+  /// Body for create/update. `adjust_stock` is always sent explicitly — the
+  /// API requires it (no implicit default), so the caller must always state
+  /// whether this save should move inventory stock.
   Map<String, dynamic> toJson() => {
     'title': title,
     'description': description,
     'type': type,
     'expense_amount': expense,
     'income_amount': income,
-    'product_id': inventoryItemId,
+    'inventory_item_id': inventoryItemId,
     'quantity': quantity,
+    'adjust_stock': adjustStock,
   };
 }
